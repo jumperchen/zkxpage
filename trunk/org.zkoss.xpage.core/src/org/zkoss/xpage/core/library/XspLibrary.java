@@ -2,7 +2,7 @@ package org.zkoss.xpage.core.library;
 
 import com.ibm.xsp.library.AbstractXspLibrary;
 
-public class CoreLibrary extends AbstractXspLibrary {
+public class XspLibrary extends AbstractXspLibrary {
 
 	public String getLibraryId() {
 		return "org.zkoss.xpage.core.library";
