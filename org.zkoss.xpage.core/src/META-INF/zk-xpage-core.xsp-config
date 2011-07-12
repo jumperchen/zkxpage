@@ -1,11 +1,10 @@
 <faces-config>
 	<faces-config-extension>
 		<namespace-uri>http://www.zkoss.org/xpage/core</namespace-uri>
-		<default-prefix>zkc</default-prefix>
+		<default-prefix>zk</default-prefix>
 	</faces-config-extension>
 	<component>
-		<description>An button control used in
-			explaining zk is running well.</description>
+		<description>An button control used in explaining zk is running.</description>
 		<display-name>Button Control</display-name>
 		<component-type>org.zkoss.xpage.buttoncontrol</component-type>
 		<component-class>org.zkoss.xpage.core.component.ButtonControl</component-class>
@@ -14,6 +13,10 @@
 			<component-family>org.zkoss.xpage</component-family>
 			<renderer-type>org.zkoss.xpage.buttoncontrol</renderer-type>
 			<tag-name>buttonControl</tag-name>
+			<designer-extension>
+        		<in-palette>true</in-palette>
+        		<category>ZK</category>
+      		</designer-extension>			
 		</component-extension>
 		
 	</component>
