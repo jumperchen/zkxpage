@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.zkoss.xpage.feature_0.5.0.201107121548.jar" id="org.zkoss.xpage.feature" version="0.5.0.201107121548">
+      <category name="Core"/>
+   </feature>
+   <category-def name="Core" label="Core"/>
+</site>

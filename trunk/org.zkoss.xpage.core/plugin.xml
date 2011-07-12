@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="com.ibm.commons.Extension">
+      <service
+            class="org.zkoss.xpage.core.library.CoreLibrary"
+            type="com.ibm.xsp.Library">
+      </service>
+   </extension>
+	<extension
+        point="org.eclipse.equinox.http.registry.servlets">
+        <servlet
+         alias="/potix1"
+         class="org.zkoss.xpage.core.web.ExampleServlet"
+         load-on-startup="true">
+        </servlet>
+        <servlet
+         alias="/potix2"
+         class="org.zkoss.xpage.core.web.ExampleServlet"
+         load-on-startup="true">
+        </servlet>
+    </extension>
+    <extension
+        point="org.eclipse.equinox.http.registry.servlets">
+        <servlet httpcontextId="org.zkoss.xpage"
+         alias="/zklayout"
+         class="org.zkoss.xpage.core.web.LayoutServlet"
+         load-on-startup="true">
+        </servlet>
+        <servlet httpcontextId="org.zkoss.xpage"
+         alias="/zkau"
+         class="org.zkoss.xpage.core.web.AuServlet"
+         load-on-startup="true">
+        </servlet>
+    </extension>
+   <extension
+         point="org.eclipse.equinox.http.registry.httpcontexts">
+      <httpcontext
+            id="org.zkoss.xpage">
+      </httpcontext>
+   </extension>     
+    
+              
+</plugin>
