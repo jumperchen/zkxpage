@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ZK XPage Core Plug-in
+Bundle-SymbolicName: org.zkoss.xpage.core;singleton:=true
+Bundle-Version: 0.5.0.qualifier
+Bundle-Vendor: www.zkoss.org
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: com.ibm.xsp.core;bundle-version="8.5.2"
+Bundle-ClassPath: lib/zcommon.jar,
+ lib/zcommons-el.jar,
+ lib/zk.jar,
+ lib/zkex.jar,
+ lib/zkmax.jar,
+ lib/zkplus.jar,
+ lib/zml.jar,
+ lib/zul.jar,
+ lib/zweb.jar,
+ .
