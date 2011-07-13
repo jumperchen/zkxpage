@@ -1,3 +1,18 @@
+/* 
+{{IS_NOTE
+	Purpose:
+		
+	Description:
+		
+	History:
+		July 13, 2011 , Created by dennischen
+}}IS_NOTE
+
+Copyright (C) 2010 Potix Corporation. All Rights Reserved.
+
+{{IS_RIGHT
+}}IS_RIGHT
+*/
 package org.zkoss.xpage.core.web;
 
 import java.io.IOException;
@@ -25,6 +40,9 @@ public class ExampleServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		resp.setContentType("text/html");
+		resp.setHeader("Dennis", "verygood");
+		
+		
 		HttpSession hess = req.getSession();
 		PrintWriter pw = resp.getWriter();
 		HttpSession sess = req.getSession();
@@ -33,7 +51,7 @@ public class ExampleServlet extends HttpServlet{
 		pw.append("session_attr1="+session_attr1);
 		req.getSession().setAttribute("session_attr1", "set by "+this+",date:"+new Date());
 		
-		pw.append("<br/>THIS IS SERVLET AA "+this+", session instance is "+hess+" , id "+(hess==null?"":hess.getId()));
+		pw.append("<br/>THIS IS SERVLET BB "+this+", session instance is "+hess+" , id "+(hess==null?"":hess.getId()));
 		pw.flush();
 	}
 
