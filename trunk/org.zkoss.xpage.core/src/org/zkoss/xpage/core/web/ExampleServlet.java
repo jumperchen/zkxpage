@@ -41,7 +41,7 @@ public class ExampleServlet extends HttpServlet{
 
 	private static String getUserName(){
 		try{
-			NotesContext nc = NotesContext.getCurrent();
+			NotesContext nc = NotesContext.getCurrentUnchecked();
 			if(nc==null) return "no context";
 			Object sess = nc.getCurrentSession();
 			if(sess==null) return "no session";
@@ -59,7 +59,7 @@ public class ExampleServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		resp.setContentType("text/html");
-	
+		new Exception("in servlet").printStackTrace();
 		HttpSession hess = req.getSession();
 		PrintWriter pw = resp.getWriter();
 		HttpSession sess = req.getSession();

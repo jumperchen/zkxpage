@@ -47,7 +47,7 @@ public class VerifierRenderer extends javax.faces.render.Renderer {
 	
 	private static String getUserName(){
 		try{
-			NotesContext nc = NotesContext.getCurrent();
+			NotesContext nc = NotesContext.getCurrentUnchecked();
 			if(nc==null) return "no context";
 			Object sess = nc.getCurrentSession();
 			if(sess==null) return "no session";
@@ -63,10 +63,7 @@ public class VerifierRenderer extends javax.faces.render.Renderer {
 	
 	@Override
 	public void encodeBegin(FacesContext context, UIComponent component)
-
 	throws IOException {
-		
-		
 		
 		final HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
 		final HttpServletResponse response = (HttpServletResponse) context.getExternalContext().getResponse();

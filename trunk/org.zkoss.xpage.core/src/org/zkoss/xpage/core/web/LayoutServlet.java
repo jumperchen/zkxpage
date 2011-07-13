@@ -25,8 +25,6 @@ public class LayoutServlet extends DHtmlLayoutServlet {
 	
 	public void init(final ServletConfig config) throws ServletException {
 		Log.log(this,"init::" + this+",context = "+config.getServletContext());
-		config.getServletContext().setAttribute("att1", "AAAAAAAAAAAAA");
-		
 		ClassLoader cl = Thread.currentThread().getContextClassLoader();
 		try {
 			Thread.currentThread().setContextClassLoader(LayoutServlet.class.getClassLoader());
