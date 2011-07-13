@@ -27,8 +27,9 @@ public class ExampleServlet extends HttpServlet{
 		resp.setContentType("text/html");
 		HttpSession hess = req.getSession();
 		PrintWriter pw = resp.getWriter();
+		HttpSession sess = req.getSession();
 		
-		String session_attr1 = (String)req.getSession().getAttribute("session_attr1");
+		String session_attr1 = (String)sess.getAttribute("session_attr1");
 		pw.append("session_attr1="+session_attr1);
 		req.getSession().setAttribute("session_attr1", "set by "+this+",date:"+new Date());
 		
