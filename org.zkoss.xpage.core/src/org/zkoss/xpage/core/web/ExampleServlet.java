@@ -17,6 +17,7 @@ package org.zkoss.xpage.core.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Method;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -27,6 +28,8 @@ import javax.servlet.http.HttpSession;
 
 import org.zkoss.util.logging.Log;
 
+import com.ibm.domino.xsp.module.nsf.NotesContext;
+
 
 public class ExampleServlet extends HttpServlet{
 	private static final Log log = Log.lookup(ExampleServlet.class);
@@ -36,22 +39,39 @@ public class ExampleServlet extends HttpServlet{
 		doPost(req, resp);
 	}
 
+	private static String getUserName(){
+		try{
+			NotesContext nc = NotesContext.getCurrent();
+			if(nc==null) return "no context";
+			Object sess = nc.getCurrentSession();
+			if(sess==null) return "no session";
+			
+			Method sm = sess.getClass().getMethod("getUserName");
+            String username = (String)sm.invoke(sess, (Object[])null);
+            return username;
+		}catch(Throwable x){
+			x.printStackTrace();
+			return x.getMessage();
+		}
+	}
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		resp.setContentType("text/html");
-		resp.setHeader("Dennis", "verygood");
-		
-		
+	
 		HttpSession hess = req.getSession();
 		PrintWriter pw = resp.getWriter();
 		HttpSession sess = req.getSession();
 		
+		pw.append("<br/>Hi "+getUserName());
+		pw.append("<br/>this"+this+", session instance is "+hess+" , id "+(hess==null?"":hess.getId()));
+		
+		
 		String session_attr1 = (String)sess.getAttribute("session_attr1");
-		pw.append("session_attr1="+session_attr1);
+		pw.append("<br/>session_attr1="+session_attr1);
 		req.getSession().setAttribute("session_attr1", "set by "+this+",date:"+new Date());
 		
-		pw.append("<br/>THIS IS SERVLET BB "+this+", session instance is "+hess+" , id "+(hess==null?"":hess.getId()));
 		pw.flush();
 	}
 

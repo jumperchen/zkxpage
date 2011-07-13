@@ -15,10 +15,7 @@ Copyright (C) 2010 Potix Corporation. All Rights Reserved.
 */
 package org.zkoss.xpage.core.web;
 
-import java.util.Enumeration;
-
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
 import org.zkoss.zk.ui.http.DHtmlLayoutServlet;
@@ -33,7 +30,7 @@ public class LayoutServlet extends DHtmlLayoutServlet {
 		ClassLoader cl = Thread.currentThread().getContextClassLoader();
 		try {
 			Thread.currentThread().setContextClassLoader(LayoutServlet.class.getClassLoader());
-			super.init(new ServletConfigAdapter(config));
+			super.init(config);
 		}catch(Exception x){
 			Log.error(this,x.getMessage(),x);
 			throw new ServletException(x.getMessage(),x);

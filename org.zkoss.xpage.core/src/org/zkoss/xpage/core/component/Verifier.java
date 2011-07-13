@@ -17,10 +17,10 @@ package org.zkoss.xpage.core.component;
 
 import javax.faces.component.UIComponentBase;
 
-public class ButtonControl extends UIComponentBase {
-	public ButtonControl() {
+public class Verifier extends UIComponentBase {
+	public Verifier() {
 		super();
-		setRendererType("org.zkoss.xpage.buttoncontrol");
+		setRendererType("org.zkoss.xpage.verifier");
 	}
 
 	@Override

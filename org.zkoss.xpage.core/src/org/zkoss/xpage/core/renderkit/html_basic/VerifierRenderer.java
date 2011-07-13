@@ -16,6 +16,7 @@ Copyright (C) 2010 Potix Corporation. All Rights Reserved.
 package org.zkoss.xpage.core.renderkit.html_basic;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.Date;
 
 import javax.faces.component.UIComponent;
@@ -37,14 +38,36 @@ import org.zkoss.zkplus.embed.Renders;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Messagebox;
 
-public class ButtonRenderer extends javax.faces.render.Renderer {
+import com.ibm.domino.xsp.module.nsf.NotesContext;
+
+public class VerifierRenderer extends javax.faces.render.Renderer {
 	
-	private static final Log log = Log.lookup(ButtonRenderer.class);
+	private static final Log log = Log.lookup(VerifierRenderer.class);
+	
+	
+	private static String getUserName(){
+		try{
+			NotesContext nc = NotesContext.getCurrent();
+			if(nc==null) return "no context";
+			Object sess = nc.getCurrentSession();
+			if(sess==null) return "no session";
+			
+			Method sm = sess.getClass().getMethod("getCommonUserName");
+            String username = (String)sm.invoke(sess, (Object[])null);
+            return username;
+		}catch(Throwable x){
+			x.printStackTrace();
+			return x.getMessage();
+		}
+	}
 	
 	@Override
 	public void encodeBegin(FacesContext context, UIComponent component)
 
 	throws IOException {
+		
+		
+		
 		final HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
 		final HttpServletResponse response = (HttpServletResponse) context.getExternalContext().getResponse();
 		
@@ -53,7 +76,10 @@ public class ButtonRenderer extends javax.faces.render.Renderer {
 		ResponseWriter writer = context.getResponseWriter();
 		writer.startElement("div", component);
 		writer.writeAttribute("style", "border:orange solid thin;width:400px;", null);
-		writer.writeText("You should see a ZK button in a green block, when clicking on it, it show a zk message box", null);
+		writer.writeText("Hi "+getUserName()+". You should able to see a ZK button in a green block.", null);
+		writer.write("<br/>");
+		writer.writeText("Please click on the button, it should shows a zk message box with your name", null);
+		writer.write("<br/>");
 		
 		HttpSession sess = request.getSession();
 		
@@ -71,11 +97,11 @@ public class ButtonRenderer extends javax.faces.render.Renderer {
 							
 							Button button = new Button();
 							button.setPage(page);
-							button.setLabel("CLICK ME");
+							button.setLabel("Click me to verify zk ajax");
 							button.addEventListener("onClick", new EventListener(){
 								public void onEvent(Event evt)
 										throws Exception {
-									Messagebox.show("hi user");
+									Messagebox.show("Hi "+getUserName()+", zk is ajax update is running");
 								}});
 							log.warning("current session is "+request.getSession().getId()+",desktop is ::"+Executions.getCurrent().getDesktop());
 						}
