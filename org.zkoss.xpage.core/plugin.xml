@@ -5,6 +5,10 @@
 		<service class="org.zkoss.xpage.core.library.XspLibrary" type="com.ibm.xsp.Library">
 		</service>
 	</extension>
+	<extension point="com.ibm.commons.Extension">
+		<service class="org.zkoss.xpage.core.library.XspServletFactory" type="com.ibm.xsp.adapter.servletFactory">
+		</service>
+	</extension>	
 	<extension point="org.eclipse.equinox.http.registry.servlets">
 		<servlet alias="/potix1" class="org.zkoss.xpage.core.web.ExampleServlet"
 			load-on-startup="true">
@@ -13,6 +17,7 @@
 			load-on-startup="true">
 		</servlet>
 	</extension>
+	<!-- 
 	<extension point="org.eclipse.equinox.http.registry.servlets">
 		<servlet httpcontextId="org.zkoss.xpage" alias="/zklayout"
 			class="org.zkoss.xpage.core.web.LayoutServlet" load-on-startup="true">
@@ -28,4 +33,5 @@
 		<httpcontext id="org.zkoss.xpage">
 		</httpcontext>
 	</extension>
+	 -->
 </plugin>

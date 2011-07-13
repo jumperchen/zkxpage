@@ -7,7 +7,8 @@ Bundle-Version: 0.5.0.qualifier
 Bundle-Vendor: www.zkoss.org
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: com.ibm.xsp.core;bundle-version="8.5.2",
- com.ibm.xsp.domino;bundle-version="8.5.2"
+ com.ibm.xsp.domino;bundle-version="8.5.2",
+ com.ibm.domino.xsp.adapter;bundle-version="8.5.2"
 Bundle-ClassPath: lib/zcommon.jar,
  lib/zcommons-el.jar,
  lib/zk.jar,
