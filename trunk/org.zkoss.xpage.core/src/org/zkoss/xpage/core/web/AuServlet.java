@@ -16,10 +16,8 @@ Copyright (C) 2010 Potix Corporation. All Rights Reserved.
 package org.zkoss.xpage.core.web;
 
 import java.io.IOException;
-import java.util.Enumeration;
 
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,7 +36,7 @@ public class AuServlet /* extends HttpServlet {// */extends DHtmlUpdateServlet {
 		try {
 			Thread.currentThread().setContextClassLoader(AuServlet.class.getClassLoader());
 			Log.log(this,"init:: att1 = "+config.getServletContext().getAttribute("att1"));
-			super.init(new ServletConfigAdapter(config));
+			super.init(config);
 		} catch (Exception x) {
 			Log.error(this,x.getMessage(), x);
 			throw new ServletException(x.getMessage(), x);
@@ -75,9 +73,6 @@ public class AuServlet /* extends HttpServlet {// */extends DHtmlUpdateServlet {
 			Thread.currentThread().setContextClassLoader(cl);
 		}
 		Log.log(this,"doGet end::" + this);
-		// PrintWriter pw = response.getWriter();
-		// pw.append("this is au update servlet " + this);
-		// pw.flush();
 
 	}
 	

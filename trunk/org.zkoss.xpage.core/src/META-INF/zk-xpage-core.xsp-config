@@ -4,15 +4,15 @@
 		<default-prefix>zk</default-prefix>
 	</faces-config-extension>
 	<component>
-		<description>An button control used in explaining zk is running.</description>
-		<display-name>Button Control</display-name>
-		<component-type>org.zkoss.xpage.buttoncontrol</component-type>
-		<component-class>org.zkoss.xpage.core.component.ButtonControl</component-class>
+		<description>This component renders a html message and a zk button to verify zk is running well</description>
+		<display-name>ZK Verifier</display-name>
+		<component-type>org.zkoss.xpage.verifier</component-type>
+		<component-class>org.zkoss.xpage.core.component.Verifier</component-class>
 		<component-extension>
 			<since>0.5.0</since>
 			<component-family>org.zkoss.xpage</component-family>
-			<renderer-type>org.zkoss.xpage.buttoncontrol</renderer-type>
-			<tag-name>buttonControl</tag-name>
+			<renderer-type>org.zkoss.xpage.verifier</renderer-type>
+			<tag-name>verifier</tag-name>
 			<designer-extension>
         		<in-palette>true</in-palette>
         		<category>ZK</category>
