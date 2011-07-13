@@ -10,6 +10,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.zkoss.util.logging.Log;
 import org.zkoss.zk.ui.Executions;
@@ -39,7 +40,9 @@ public class ButtonRenderer extends javax.faces.render.Renderer {
 		writer.writeAttribute("style", "border:orange solid thin;width:400px;", null);
 		writer.writeText("You should see a ZK button in a green block, when clicking on it, it show a zk message box", null);
 		
-		String session_attr1 = (String)request.getSession().getAttribute("session_attr1");
+		HttpSession sess = request.getSession();
+		
+		String session_attr1 = (String)sess.getAttribute("session_attr1");
 		writer.writeText(", session_attr1="+session_attr1, null);
 		request.getSession().setAttribute("session_attr1", "set by "+this+",date:"+new Date());
 		writer.startElement("div", null);
@@ -60,12 +63,6 @@ public class ButtonRenderer extends javax.faces.render.Renderer {
 									Messagebox.show("hi user");
 								}});
 							log.warning("current session is "+request.getSession().getId()+",desktop is ::"+Executions.getCurrent().getDesktop());
-							
-//							spreadsheet = new Spreadsheet();
-//							spreadsheet.setPage(page);
-//							applyProperties();
-//							spreadsheet.setId(getClientId());
-//							doAfterCompose();
 						}
 					}, null, writer);
 		} catch (ServletException e) {

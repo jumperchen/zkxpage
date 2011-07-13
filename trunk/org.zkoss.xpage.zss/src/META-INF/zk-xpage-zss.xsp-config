@@ -1,0 +1,23 @@
+<faces-config>
+	<faces-config-extension>
+		<namespace-uri>http://www.zkoss.org/xpage/zss</namespace-uri>
+		<default-prefix>zss</default-prefix>
+	</faces-config-extension>
+	<component>
+		<description>A zk spreadsheet component</description>
+		<display-name>Spreadsheet</display-name>
+		<component-type>org.zkoss.xpage.spreadsheet</component-type>
+		<component-class>org.zkoss.xpage.zss.component.Spreadsheet</component-class>
+		<component-extension>
+			<since>0.5.0</since>
+			<component-family>org.zkoss.xpage</component-family>
+			<renderer-type>org.zkoss.xpage.spreadsheet</renderer-type>
+			<tag-name>spreadsheet</tag-name>
+			<designer-extension>
+        		<in-palette>true</in-palette>
+        		<category>ZK</category>
+      		</designer-extension>
+		</component-extension>
+		
+	</component>
+</faces-config>
