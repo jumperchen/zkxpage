@@ -26,7 +26,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.zkoss.util.logging.Log;
+import org.zkoss.xpage.core.util.Log;
 import org.zkoss.zk.ui.GenericRichlet;
 import org.zkoss.zk.ui.Page;
 import org.zkoss.zkplus.embed.Renders;
@@ -36,9 +36,6 @@ import org.zkoss.zss.model.impl.ExcelImporter;
 import org.zkoss.zss.ui.Spreadsheet;
 
 public class SpreadsheetRenderer extends javax.faces.render.Renderer {
-
-	private static final Log log = Log.lookup(SpreadsheetRenderer.class);
-
 	@Override
 	public void encodeEnd(FacesContext context, UIComponent component)
 			throws IOException {
@@ -75,7 +72,7 @@ public class SpreadsheetRenderer extends javax.faces.render.Renderer {
 						Book book = importer.imports(is, "empty");
 						spreadsheet.setBook(book);
 					}catch(Exception x){
-						log.error(x.getMessage(),x);
+						Log.error(this,x.getMessage(),x);
 						throw x;
 					}finally{
 						if(is!=null){
@@ -90,7 +87,7 @@ public class SpreadsheetRenderer extends javax.faces.render.Renderer {
 				}
 			}, null, writer);
 		} catch (ServletException e) {
-			log.error(e.getMessage());
+			Log.error(this,e.getMessage(),e);
 			throw new IOException(e.getMessage());
 		}
 	}
