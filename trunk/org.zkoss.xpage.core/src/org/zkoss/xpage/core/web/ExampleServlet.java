@@ -26,13 +26,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.zkoss.util.logging.Log;
-
 import com.ibm.domino.xsp.module.nsf.NotesContext;
 
 
 public class ExampleServlet extends HttpServlet{
-	private static final Log log = Log.lookup(ExampleServlet.class);
+
+	private static final long serialVersionUID = 3492056914599940177L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {

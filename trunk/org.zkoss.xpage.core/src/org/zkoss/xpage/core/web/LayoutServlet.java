@@ -18,6 +18,7 @@ package org.zkoss.xpage.core.web;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 
+import org.zkoss.xpage.core.util.Log;
 import org.zkoss.zk.ui.http.DHtmlLayoutServlet;
 
 public class LayoutServlet extends DHtmlLayoutServlet {

@@ -13,7 +13,7 @@ Copyright (C) 2010 Potix Corporation. All Rights Reserved.
 {{IS_RIGHT
 }}IS_RIGHT
 */
-package org.zkoss.xpage.core.web;
+package org.zkoss.xpage.core.util;
 
 /** a simple helper to do log**/
 public class Log {
@@ -33,6 +33,7 @@ public class Log {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	private static String toBasePrefix(Object base) {
 		if(base==null) return "";
 		StringBuilder sb = new StringBuilder();

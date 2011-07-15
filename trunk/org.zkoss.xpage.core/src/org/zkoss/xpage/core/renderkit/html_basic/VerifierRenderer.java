@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.zkoss.util.logging.Log;
+import org.zkoss.xpage.core.util.Log;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.GenericRichlet;
 import org.zkoss.zk.ui.Page;
@@ -41,10 +41,7 @@ import org.zkoss.zul.Messagebox;
 import com.ibm.domino.xsp.module.nsf.NotesContext;
 
 public class VerifierRenderer extends javax.faces.render.Renderer {
-	
-	private static final Log log = Log.lookup(VerifierRenderer.class);
-	
-	
+
 	private static String getUserName(){
 		try{
 			NotesContext nc = NotesContext.getCurrentUnchecked();
@@ -100,11 +97,11 @@ public class VerifierRenderer extends javax.faces.render.Renderer {
 										throws Exception {
 									Messagebox.show("Hi "+getUserName()+", zk is ajax update is running");
 								}});
-							log.warning("current session is "+request.getSession().getId()+",desktop is ::"+Executions.getCurrent().getDesktop());
+							Log.log(this,"current session is "+request.getSession().getId()+",desktop is ::"+Executions.getCurrent().getDesktop());
 						}
 					}, null, writer);
 		} catch (ServletException e) {
-			log.error(e.getMessage());
+			Log.error(this,e.getMessage(),e);
 			throw new IOException(e.getMessage());
 		} 
 		writer.endElement("div");

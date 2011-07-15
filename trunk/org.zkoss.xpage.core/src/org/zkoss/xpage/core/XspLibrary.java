@@ -13,13 +13,14 @@ Copyright (C) 2010 Potix Corporation. All Rights Reserved.
 {{IS_RIGHT
 }}IS_RIGHT
 */
-package org.zkoss.xpage.core.library;
+package org.zkoss.xpage.core;
 
 import com.ibm.xsp.library.AbstractXspLibrary;
 
 public class XspLibrary extends AbstractXspLibrary {
 
 	public String getLibraryId() {
+		//the id of this xsp component, will be related by application 
 		return "org.zkoss.xpage.core.library";
 	}
 

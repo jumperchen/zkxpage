@@ -2,11 +2,11 @@
 <?eclipse version="3.4"?>
 <plugin>
 	<extension point="com.ibm.commons.Extension">
-		<service class="org.zkoss.xpage.core.library.XspLibrary" type="com.ibm.xsp.Library">
+		<service class="org.zkoss.xpage.core.XspLibrary" type="com.ibm.xsp.Library">
 		</service>
 	</extension>
 	<extension point="com.ibm.commons.Extension">
-		<service class="org.zkoss.xpage.core.library.XspServletFactory" type="com.ibm.xsp.adapter.servletFactory">
+		<service class="org.zkoss.xpage.core.XspServletFactory" type="com.ibm.xsp.adapter.servletFactory">
 		</service>
 	</extension>	
 	<extension point="org.eclipse.equinox.http.registry.servlets">
