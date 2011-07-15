@@ -15,9 +15,8 @@ Copyright (C) 2010 Potix Corporation. All Rights Reserved.
 */
 package org.zkoss.xpage.core.component;
 
-import javax.faces.component.UIComponentBase;
 
-public class Verifier extends UIComponentBase {
+public class Verifier extends ZKComponentBase {
 	public Verifier() {
 		super();
 		setRendererType("org.zkoss.xpage.verifier");
