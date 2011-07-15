@@ -28,7 +28,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.zkoss.xpage.core.component.Verifier;
+import org.zkoss.xpage.core.component.ZKComponentBase;
 import org.zkoss.xpage.core.util.Log;
+import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.GenericRichlet;
 import org.zkoss.zk.ui.Page;
@@ -61,6 +64,10 @@ public class VerifierRenderer extends javax.faces.render.Renderer {
 	@Override
 	public void encodeBegin(FacesContext context, UIComponent component)
 	throws IOException {
+		if(!(component instanceof Verifier)){
+			throw new IllegalArgumentException("unsupported component "+component);
+		}
+		final Verifier zcomp = (Verifier)component;
 		
 		final HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
 		final HttpServletResponse response = (HttpServletResponse) context.getExternalContext().getResponse();
@@ -83,33 +90,53 @@ public class VerifierRenderer extends javax.faces.render.Renderer {
 		writer.startElement("div", null);
 		writer.writeAttribute("style", "border:green solid thin;", null);
 		// ZK component
+		
 		ServletContext svlctx = (ServletContext)context.getExternalContext().getContext();
-		try {
-			Renders.render(svlctx, request, response, 
+		Component comp = zcomp.getComponent();
+		if(comp!=null){
+			boolean inUpdateBlock = false;//TODO how to know???
+			if(zcomp.isDesktopTimeout()){
+				//TODO
+			}else if(inUpdateBlock){
+				//TODO how do I update this button to client , if i use Renders, it will create a new desktop
+			}
+		}else{
+			try {
+				Renders.render(svlctx, request, response, 
 					new GenericRichlet() {
 						public void service(Page page) throws Exception {
-							
-							Button button = new Button();
-							button.setPage(page);
-							button.setLabel("Click me to verify zk ajax");
-							button.addEventListener("onClick", new EventListener(){
-								public void onEvent(Event evt)
-										throws Exception {
-									Messagebox.show("Hi "+getUserName()+", zk is ajax update is running");
-								}});
-							Log.log(this,"current session is "+request.getSession().getId()+",desktop is ::"+Executions.getCurrent().getDesktop());
+							Component comp = createZKComponent(page);
+							comp.setPage(page);
+							zcomp.setComponent(comp);
+							Log.log(VerifierRenderer.class,"current session is "+request.getSession().getId()+",desktop is ::"+Executions.getCurrent().getDesktop());
 						}
 					}, null, writer);
-		} catch (ServletException e) {
-			Log.error(this,e.getMessage(),e);
-			throw new IOException(e.getMessage());
-		} 
+			} catch (ServletException e) {
+				Log.error(this,e.getMessage(),e);
+				throw new IOException(e.getMessage());
+			} 
+		}
 		writer.endElement("div");
 	}
+	
+	
+	
 	@Override
 	public void encodeEnd(FacesContext context, UIComponent component)
 	throws IOException {
 		ResponseWriter writer = context.getResponseWriter();
 		writer.endElement("div");
+	}
+	
+	
+	protected Component createZKComponent(Page page) throws Exception{
+		Button button = new Button();
+		button.setLabel("Click me to verify zk ajax");
+		button.addEventListener("onClick", new EventListener(){
+			public void onEvent(Event evt)
+					throws Exception {
+				Messagebox.show("Hi "+getUserName()+", zk is ajax update is running");
+			}});
+		return button;
 	}
 }
