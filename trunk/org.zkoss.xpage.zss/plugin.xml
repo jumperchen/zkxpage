@@ -4,7 +4,7 @@
    <extension
          point="com.ibm.commons.Extension">
       <service
-            class="org.zkoss.xpage.zss.library.XspLibrary"
+            class="org.zkoss.xpage.zss.XspLibrary"
             type="com.ibm.xsp.Library">
       </service>
    </extension>
