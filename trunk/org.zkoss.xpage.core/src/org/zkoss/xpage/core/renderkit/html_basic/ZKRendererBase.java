@@ -33,26 +33,30 @@ public abstract class ZKRendererBase extends javax.faces.render.Renderer {
 			// TODO
 		} else {
 			Component comp = zcomp.getComponent();
-			// TODO what about a full page submit
-			if (comp != null) {
-				try {
-					// TODO don't know how to make it work
-					doInvalidZKComponent(zcomp, context, component.getClientId(context));
-				} catch (ServletException e) {
-					Log.error(this, e.getMessage(), e);
-					throw new IOException(e.getMessage());
-				}
+			//need to know, it is postback, ajax-postback, contained in a ajax-postback refresh
+			boolean invalidate  = comp!=null;//how to now invalidate or create new?
+			
+			writer.startElement("div", component);
+			writer.writeAttribute("id", component.getClientId(context), null);
+			if (invalidate) {
+				// TODO don't know how to make it work
+//				try {
+//					
+//					doInvalidZKComponent(zcomp, context, component.getClientId(context));
+//				} catch (ServletException e) {
+//					Log.error(this, e.getMessage(), e);
+//					throw new IOException(e.getMessage());
+//				}
 			} else {
-				writer.startElement("div", component);
-				writer.writeAttribute("id", component.getClientId(context), null);
 				try {
 					doCreateZKComponent(zcomp, context);
 				} catch (ServletException e) {
 					Log.error(this, e.getMessage(), e);
 					throw new IOException(e.getMessage());
 				}
-				writer.endElement("div");
+				
 			}
+			writer.endElement("div");
 		}
 	}
 
@@ -82,18 +86,24 @@ public abstract class ZKRendererBase extends javax.faces.render.Renderer {
 		final HttpServletResponse response = (HttpServletResponse) context.getExternalContext().getResponse();
 		final ServletContext svlctx = (ServletContext) context.getExternalContext().getContext();
 		final ResponseWriter writer = context.getResponseWriter();
+		
+		//detach the old one, the dom is not exsit already here
+		startJs(writer);
+		writer.write("zkXPage.detach('$" + zcomp.getComponent().getId() + "');");//must be component id
+		endJs(writer);
+		
+		//write a fake widget dom what will be 
+		writer.startElement("div", null);
+		writer.writeAttribute("id", zcomp.getComponent().getUuid(), null);
+		writer.endElement("div");
+		
 		Bridge bridge = Bridge.start(svlctx, request, response, dt);
 		try {
 			zcomp.getComponent().invalidate();
 			String auResult = bridge.getResult();
-			startJs(writer);
-			writer.write("zkXPage.detach('$" + zcomp.getComponent().getId() + "');");
-
+			startJs(writer);	
+			//recreate new one on the fake
 			writer.write(auResult);
-
-			// hook to new dom parent; don't use zk uuid it is dom id and too
-			// late
-
 			endJs(writer);
 		} finally {
 			bridge.close();
