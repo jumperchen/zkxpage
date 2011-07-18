@@ -15,9 +15,12 @@ Copyright (C) 2010 Potix Corporation. All Rights Reserved.
 */
 package org.zkoss.xpage.zss.component;
 
-import javax.faces.component.UIComponentBase;
+import org.zkoss.xpage.core.component.ZKComponentBase;
 
-public class Spreadsheet extends UIComponentBase {
+public class Spreadsheet extends ZKComponentBase {
+
+	private static final long serialVersionUID = 1L;
+
 	public Spreadsheet() {
 		super();
 		setRendererType("org.zkoss.xpage.spreadsheet");

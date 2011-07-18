@@ -28,6 +28,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.zkoss.xpage.core.component.Action;
 import org.zkoss.xpage.core.component.Verifier;
 import org.zkoss.xpage.core.component.ZKComponentBase;
 import org.zkoss.xpage.core.util.Log;
@@ -43,7 +44,7 @@ import org.zkoss.zul.Messagebox;
 
 import com.ibm.domino.xsp.module.nsf.NotesContext;
 
-public class VerifierRenderer extends javax.faces.render.Renderer {
+public class VerifierRenderer extends ZKRendererBase {
 
 	private static String getUserName(){
 		try{
@@ -62,7 +63,7 @@ public class VerifierRenderer extends javax.faces.render.Renderer {
 	}
 	
 	@Override
-	public void encodeBegin(FacesContext context, UIComponent component)
+	public void encodeEnd(FacesContext context, UIComponent component)
 	throws IOException {
 		if(!(component instanceof Verifier)){
 			throw new IllegalArgumentException("unsupported component "+component);
@@ -76,61 +77,52 @@ public class VerifierRenderer extends javax.faces.render.Renderer {
 		// ExampleControl control = (ExampleControl) component;
 		ResponseWriter writer = context.getResponseWriter();
 		writer.startElement("div", component);
+		writer.writeAttribute("id", component.getClientId(context), null);
+		
 		writer.writeAttribute("style", "border:orange solid thin;width:400px;", null);
 		writer.writeText("Hi "+getUserName()+". You should able to see a ZK button in a green block.", null);
 		writer.write("<br/>");
 		writer.writeText("Please click on the button, it should shows a zk message box with your name", null);
-		writer.write("<br/>");
 		
-		HttpSession sess = request.getSession();
 		
-		String session_attr1 = (String)sess.getAttribute("session_attr1");
-		writer.writeText(", session_attr1="+session_attr1, null);
-		request.getSession().setAttribute("session_attr1", "set by "+this+",date:"+new Date());
-		writer.startElement("div", null);
-		writer.writeAttribute("style", "border:green solid thin;", null);
+		
+		
 		// ZK component
 		
 		ServletContext svlctx = (ServletContext)context.getExternalContext().getContext();
-		Component comp = zcomp.getComponent();
-		if(comp!=null){
-			boolean inUpdateBlock = false;//TODO how to know???
-			if(zcomp.isDesktopTimeout()){
-				//TODO
-			}else if(inUpdateBlock){
-				//TODO how do I update this button to client , if i use Renders, it will create a new desktop
-			}
+		
+		if(zcomp.isDesktopTimeout()){
+			//TODO
 		}else{
-			try {
-				Renders.render(svlctx, request, response, 
-					new GenericRichlet() {
-						public void service(Page page) throws Exception {
-							Component comp = createZKComponent(page);
-							comp.setPage(page);
-							zcomp.setComponent(comp);
-							Log.log(VerifierRenderer.class,"current session is "+request.getSession().getId()+",desktop is ::"+Executions.getCurrent().getDesktop());
-						}
-					}, null, writer);
-			} catch (ServletException e) {
-				Log.error(this,e.getMessage(),e);
-				throw new IOException(e.getMessage());
-			} 
+			Component comp = zcomp.getComponent();
+			//TODO what about a full page submit
+			if(comp!=null){
+				try {
+					//TODO don't know how to make it work
+					doInvalidZKComponent(zcomp,context,component.getClientId(context));
+				} catch (ServletException e) {
+					Log.error(this,e.getMessage(),e);
+					throw new IOException(e.getMessage());
+				}
+			}else{
+				writer.startElement("div", null);
+				writer.writeAttribute("style", "border:green solid thin;", null);
+				try {
+					doCreateZKComponent(zcomp,context);
+				} catch (ServletException e) {
+					Log.error(this,e.getMessage(),e);
+					throw new IOException(e.getMessage());
+				}
+				writer.endElement("div");
+			}			
 		}
 		writer.endElement("div");
 	}
 	
-	
-	
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component)
-	throws IOException {
-		ResponseWriter writer = context.getResponseWriter();
-		writer.endElement("div");
-	}
-	
-	
-	protected Component createZKComponent(Page page) throws Exception{
+	protected Component createZKComponent(Page page,ZKComponentBase zcomp){
 		Button button = new Button();
+		button.setId(zcomp.getId());
 		button.setLabel("Click me to verify zk ajax");
 		button.addEventListener("onClick", new EventListener(){
 			public void onEvent(Event evt)

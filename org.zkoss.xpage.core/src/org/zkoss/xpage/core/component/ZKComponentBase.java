@@ -7,10 +7,14 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.zkoss.lang.Strings;
+import org.zkoss.xpage.core.bean.AuResult;
 import org.zkoss.xpage.core.util.DesktopUtil;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Desktop;
+import org.zkoss.zkplus.embed.Bridge;
 
 public abstract class ZKComponentBase extends UIComponentBase implements
 		ZKComponent, Serializable {
@@ -83,34 +87,34 @@ public abstract class ZKComponentBase extends UIComponentBase implements
 		return state;
 	}
 
-	public void execute(ZKAction action) {
+	public void execute(Action action) {
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-//		PartialResponseWriter responseWriter = FacesContext
-//				.getCurrentInstance().getPartialViewContext()
-//				.getPartialResponseWriter();
-//		ServletContext svlctx = (ServletContext) ec.getContext();
-//		HttpServletRequest request = (HttpServletRequest) ec.getRequest();
-//		HttpServletResponse response = (HttpServletResponse) ec.getResponse();
-//
-//		Bridge bridge = Bridge.start(svlctx, request, response,
-//				myBeanSpreadsheet.getSpreadsheet().getDesktop());
-//		try {
-//
-//			final Range range = Ranges.range(myBeanSpreadsheet.getSpreadsheet()
-//					.getSelectedSheet(), cellReference);
-//			range.setEditText(cvalue);
-//
-//			responseWriter.startDocument();
-//			responseWriter.startEval();
-//			responseWriter.write(bridge.getResult());
-//			responseWriter.endEval();
-//			responseWriter.endDocument();
-//			responseWriter.flush();
-//			responseWriter.close();
-//
-//		} finally {
-//			bridge.close();
-//		}
+		ServletContext svlctx = (ServletContext) ec.getContext();
+		HttpServletRequest request = (HttpServletRequest) ec.getRequest();
+		HttpServletResponse response = (HttpServletResponse) ec.getResponse();
+
+		Desktop dt = getDesktop();
+		
+		if(dt==null){
+			throw new IllegalStateException("desktop not found");
+		}
+
+		Bridge bridge = Bridge.start(svlctx, request, response,dt);
+		try {
+			action.doAction();
+			String auResult = bridge.getResult();
+			if(!Strings.isBlank(auResult)){
+				AuResult.instance().addScript(auResult);
+			}
+		} finally {
+			bridge.close();
+		}
+	}
+	
+	@Override
+	public boolean getRendersChildren() {
+		/* zk component should control children rendering.*/
+		return true;
 	}
 
 }
