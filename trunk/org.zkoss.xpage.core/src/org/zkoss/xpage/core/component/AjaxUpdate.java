@@ -15,18 +15,20 @@ Copyright (C) 2010 Potix Corporation. All Rights Reserved.
 */
 package org.zkoss.xpage.core.component;
 
+import javax.faces.component.UIComponentBase;
 
-public class Verifier extends ZKComponentBase {
+
+public class AjaxUpdate extends UIComponentBase {
 	private static final long serialVersionUID = 1L;
 
-	public Verifier() {
+	public AjaxUpdate() {
 		super();
-		setRendererType("org.zkoss.xpage.verifier");
+		setRendererType("org.zkoss.xpage.ajaxUpdate");
 	}
 
 	@Override
 	public String getFamily() {
 		return "org.zkoss.xpage";
-	}
+	}	
 
 }

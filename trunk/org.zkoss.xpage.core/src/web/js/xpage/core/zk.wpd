@@ -1,0 +1,3 @@
+<package name="xpage.core" language="xul/html" depends="zul" cacheable="false">
+	
+</package>
