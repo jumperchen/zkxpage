@@ -10,7 +10,6 @@ Require-Bundle: com.ibm.xsp.core;bundle-version="8.5.2",
  org.zkoss.xpage.core;bundle-version="0.5.0"
 Bundle-ClassPath: lib/zpoi.jar,
  lib/zss.jar,
- lib/zssex.jar,
  .
 Export-Package: org.zkoss.poi,
  org.zkoss.poi.common.usermodel,

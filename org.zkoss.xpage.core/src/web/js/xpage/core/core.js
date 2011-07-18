@@ -8,8 +8,7 @@ zkXPage.jqid =  function(id) {
 };
 
 zkXPage.detach = function(widgetid){
-	var w = zk.Widget.$(zkXPage.jqid(widgetid)); 
-	alert(">>"+w);
+	var w = zk.Widget.$(zkXPage.jqid(widgetid));
 	if(w){
 		w.detach();
 	}
