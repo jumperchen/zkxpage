@@ -25,6 +25,8 @@ public abstract class ZKComponentBase extends UIComponentBase implements
 	transient boolean desktopTimeout;
 	
 	Object apply = null;
+	StateValueMap states = new StateValueMap();
+
 
 	public Object getApply() {
 		if(apply!=null){
@@ -57,17 +59,84 @@ public abstract class ZKComponentBase extends UIComponentBase implements
 		return desktopTimeout;
 	}
 
+
+	public String getStyle() {
+		return states.getString("style");
+	}
+
+	public void setStyle(String style) {
+		states.set("style", style);
+	}
+
+	public String getSclass() {
+		return states.getString("sclass");
+	}
+
+	public void setSclass(String sclass) {
+		states.set("sclass", sclass);
+	}
+
+	public String getZclass() {
+		return states.getString("zclass");
+	}
+
+	public void setZclass(String zclass) {
+		states.set("zclass", zclass);
+	}
+
+	public int getZindex() {
+		Integer z = states.getInteger("zindex");
+		return z==null?-1:z.intValue();
+	}
+
+	public void setZindex(int zindex) {
+		states.set("zindex", zindex);
+	}
+
+	public String getWidth() {
+		return states.getString("width");
+	}
+
+	public void setWidth(String width) {
+		states.set("width", width);
+	}
+
+	public String getHeight() {
+		return states.getString("height");
+	}
+
+	public void setHeight(String height) {
+		states.set("height", height);
+	}
+
+	public String getHflex() {
+		return states.getString("hflex");
+	}
+
+	public void setHflex(String hflex) {
+		states.set("hflex", hflex);
+	}
+
+	public String getVfex() {
+		return states.getString("vfex");
+	}
+
+	public void setVfex(String vfex) {
+		states.set("vfex", vfex);
+	}
+
 	@Override
 	public void restoreState(FacesContext context, Object state) {
 		Object values[] = (Object[]) state;
 		super.restoreState(context, values[0]);
-
-		String uuid = (String) values[1];
+		states = (StateValueMap)values[1];
+		
+		String uuid = (String) values[2];
 
 		// not work, this is new Desktop, not the original one, and after get
 		// component from this desktop, the component.getDesktop is always null
 		// Desktop desktop = (Desktop)values[2]
-		String dtid = (String) values[2];
+		String dtid = (String) values[3];
 		ServletContext servletContext = (ServletContext) context
 				.getExternalContext().getContext();
 		HttpServletRequest req = (HttpServletRequest) context
@@ -83,7 +152,7 @@ public abstract class ZKComponentBase extends UIComponentBase implements
 			desktopTimeout = true;
 		}
 		
-		apply = values[3];
+		apply = values[4];
 	}
 
 	@Override
@@ -97,13 +166,15 @@ public abstract class ZKComponentBase extends UIComponentBase implements
 					+ " not found");
 		}
 
-		Object state[] = new Object[4];
+		Object state[] = new Object[5];
 		state[0] = super.saveState(context);
-		state[1] = component.getUuid();
+		state[1] = states;
+		
+		state[2] = component.getUuid();
 		// state[2] = dt;//not work, state will be serialized and deserialized,
 		// after reference between desktop and component is lost.
-		state[2] = getDesktop().getId();
-		state[3] = apply instanceof String?(String)apply:null;
+		state[3] = getDesktop().getId();
+		state[4] = apply instanceof String?(String)apply:null;
 		
 		return state;
 	}
