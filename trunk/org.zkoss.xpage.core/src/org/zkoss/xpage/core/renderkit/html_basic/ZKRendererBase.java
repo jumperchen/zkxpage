@@ -19,7 +19,6 @@ import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zk.ui.GenericRichlet;
 import org.zkoss.zk.ui.Page;
 import org.zkoss.zk.ui.util.Composer;
-import org.zkoss.zkplus.embed.Bridge;
 import org.zkoss.zkplus.embed.Renders;
 
 public abstract class ZKRendererBase extends javax.faces.render.Renderer {
@@ -78,7 +77,7 @@ public abstract class ZKRendererBase extends javax.faces.render.Renderer {
 	}
 
 	protected void applyDynamicAttributes(ZKComponentBase zcomp, Component comp) throws Exception {
-		//TODO how?
+		//TODO how? not supported in domino
 	}
 
 	protected void doRecreateZKComponent(final ZKComponentBase zcomp, FacesContext context)
