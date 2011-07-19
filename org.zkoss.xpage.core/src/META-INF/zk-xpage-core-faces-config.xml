@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faces-config>
+	<lifecycle>
+	  <phase-listener>org.zkoss.xpage.core.JsfPhaseListener</phase-listener>
+	</lifecycle>
   <render-kit>
     <renderer>
       <component-family>org.zkoss.xpage</component-family>

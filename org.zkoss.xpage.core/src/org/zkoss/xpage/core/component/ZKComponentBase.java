@@ -5,12 +5,13 @@ import java.io.Serializable;
 import javax.faces.component.UIComponentBase;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.el.ValueBinding;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.zkoss.lang.Strings;
-import org.zkoss.xpage.core.bean.AuResult;
+import org.zkoss.xpage.core.bean.AuContext;
 import org.zkoss.xpage.core.util.DesktopUtil;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Desktop;
@@ -22,6 +23,23 @@ public abstract class ZKComponentBase extends UIComponentBase implements
 
 	transient Component component;
 	transient boolean desktopTimeout;
+	
+	Object apply = null;
+
+	public Object getApply() {
+		if(apply!=null){
+			return apply;
+		}
+		ValueBinding vb = getValueBinding("apply");
+		if(vb!=null){
+			return vb.getValue(getFacesContext());
+		}
+		return null;
+	}
+
+	public void setApply(Object apply) {
+		this.apply = apply;
+	}
 
 	public Component getComponent() {
 		return component;
@@ -29,7 +47,6 @@ public abstract class ZKComponentBase extends UIComponentBase implements
 
 	public void setComponent(Component component) {
 		this.component = component;
-		;
 	}
 
 	public Desktop getDesktop() {
@@ -65,6 +82,8 @@ public abstract class ZKComponentBase extends UIComponentBase implements
 		} else {
 			desktopTimeout = true;
 		}
+		
+		apply = values[3];
 	}
 
 	@Override
@@ -78,12 +97,14 @@ public abstract class ZKComponentBase extends UIComponentBase implements
 					+ " not found");
 		}
 
-		Object state[] = new Object[3];
+		Object state[] = new Object[4];
 		state[0] = super.saveState(context);
 		state[1] = component.getUuid();
 		// state[2] = dt;//not work, state will be serialized and deserialized,
 		// after reference between desktop and component is lost.
 		state[2] = getDesktop().getId();
+		state[3] = apply instanceof String?(String)apply:null;
+		
 		return state;
 	}
 
@@ -104,7 +125,7 @@ public abstract class ZKComponentBase extends UIComponentBase implements
 			action.doAction();
 			String auResult = bridge.getResult();
 			if(!Strings.isBlank(auResult)){
-				AuResult.instance().addScript(auResult);
+				AuContext.instance().addScript(auResult);
 			}
 		} finally {
 			bridge.close();

@@ -63,67 +63,10 @@ public class VerifierRenderer extends ZKRendererBase {
 	}
 	
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component)
-	throws IOException {
-		if(!(component instanceof Verifier)){
-			throw new IllegalArgumentException("unsupported component "+component);
-		}
-		final Verifier zcomp = (Verifier)component;
-		
-		final HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
-		final HttpServletResponse response = (HttpServletResponse) context.getExternalContext().getResponse();
-		
-		// Note, the component passed in is the ExampleControl
-		// ExampleControl control = (ExampleControl) component;
-		ResponseWriter writer = context.getResponseWriter();
-		writer.startElement("div", component);
-		writer.writeAttribute("id", component.getClientId(context), null);
-		
-		writer.writeAttribute("style", "border:orange solid thin;width:400px;", null);
-		writer.writeText("Hi "+getUserName()+". You should able to see a ZK button in a green block.", null);
-		writer.write("<br/>");
-		writer.writeText("Please click on the button, it should shows a zk message box with your name", null);
-		
-		
-		
-		
-		// ZK component
-		
-		ServletContext svlctx = (ServletContext)context.getExternalContext().getContext();
-		
-		if(zcomp.isDesktopTimeout()){
-			//TODO
-		}else{
-			Component comp = zcomp.getComponent();
-			//TODO what about a full page submit
-			if(comp!=null){
-				try {
-					//TODO don't know how to make it work
-					doInvalidZKComponent(zcomp,context,component.getClientId(context));
-				} catch (ServletException e) {
-					Log.error(this,e.getMessage(),e);
-					throw new IOException(e.getMessage());
-				}
-			}else{
-				writer.startElement("div", null);
-				writer.writeAttribute("style", "border:green solid thin;", null);
-				try {
-					doCreateZKComponent(zcomp,context);
-				} catch (ServletException e) {
-					Log.error(this,e.getMessage(),e);
-					throw new IOException(e.getMessage());
-				}
-				writer.endElement("div");
-			}			
-		}
-		writer.endElement("div");
-	}
-	
-	@Override
 	protected Component createZKComponent(Page page,ZKComponentBase zcomp){
 		Button button = new Button();
 		button.setId(zcomp.getId());
-		button.setLabel("Click me to verify zk ajax");
+		button.setLabel("Hi "+getUserName()+", Click me to verify zk ajax");
 		button.addEventListener("onClick", new EventListener(){
 			public void onEvent(Event evt)
 					throws Exception {
