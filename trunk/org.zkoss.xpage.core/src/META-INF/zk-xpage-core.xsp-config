@@ -3,11 +3,30 @@
 		<namespace-uri>http://www.zkoss.org/xpage/core</namespace-uri>
 		<default-prefix>zk</default-prefix>
 	</faces-config-extension>
+    <group>
+        <group-type>org.zkoss.xpage.components</group-type>
+
+        <!--  Properties -->
+        <property>
+            <description></description>
+            <display-name>Apply</display-name>
+            <property-name>apply</property-name>
+            <property-class>java.lang.Object</property-class>
+            <property-extension>
+                <designer-extension>
+                    <category>control</category>
+                </designer-extension>
+            </property-extension>
+        </property>
+    </group>
+    	
+	
 	<component>
 		<description>This component renders a html message and a zk button to verify zk is running well</description>
 		<display-name>Installation Verifier</display-name>
 		<component-type>org.zkoss.xpage.verifier</component-type>
 		<component-class>org.zkoss.xpage.core.component.Verifier</component-class>
+		<group-type-ref>org.zkoss.xpage.components</group-type-ref>
 		<component-extension>
 			<since>0.5.0</since>
 			<component-family>org.zkoss.xpage</component-family>
@@ -19,8 +38,9 @@
       		</designer-extension>			
 		</component-extension>		
 	</component>
+	
 	<component>
-		<description>This component renders all zk ajax update response, you have to add this component to your ajax update list</description>
+		<description>This component renders all zk ajax update response, you have to add this component to your ajax update area</description>
 		<display-name>AjaxUpdate</display-name>
 		<component-type>org.zkoss.xpage.ajaxUpdate</component-type>
 		<component-class>org.zkoss.xpage.core.component.AjaxUpdate</component-class>

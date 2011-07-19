@@ -22,7 +22,8 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import org.zkoss.xpage.core.bean.AuResult;
+import org.zkoss.xpage.core.bean.AuContext;
+import org.zkoss.xpage.core.bean.JsfContext;
 import org.zkoss.xpage.core.component.AjaxUpdate;
 
 public class AjaxUpdateRenderer extends javax.faces.render.Renderer {
@@ -36,16 +37,19 @@ public class AjaxUpdateRenderer extends javax.faces.render.Renderer {
 		ResponseWriter writer = context.getResponseWriter();
 		writer.startElement("div", component);
 		writer.writeAttribute("id", component.getClientId(context), null);
-		
-		writer.startElement("script",null);
-		writer.writeAttribute("type", "text/javascript",  null);
-		
-		Iterator iter = AuResult.instance().iteratorScripts();
-		while(iter.hasNext()){
-			String script = (String)iter.next();
-			writer.write(script);
+		JsfContext jsfc = JsfContext.instance();
+		if(jsfc.isAjaxPartialRefresh()){
+			writer.startElement("script",null);
+			writer.writeAttribute("type", "text/javascript",  null);
+			AuContext au = AuContext.instance();
+			Iterator iter = au.iteratorScripts();
+			while(iter.hasNext()){
+				String script = (String)iter.next();
+				writer.write(script);
+			}
+			au.clearScripts();
+			writer.endElement("script");
 		}
-		writer.endElement("script");
 		writer.endElement("div");
 	}
 }
