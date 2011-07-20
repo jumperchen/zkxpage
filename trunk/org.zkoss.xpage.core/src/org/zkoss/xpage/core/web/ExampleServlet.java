@@ -67,11 +67,6 @@ public class ExampleServlet extends HttpServlet{
 		pw.append("<br/>Hi "+getUserName());
 		pw.append("<br/>this"+this+", session instance is "+hess+" , id "+(hess==null?"":hess.getId()));
 		
-		
-		String session_attr1 = (String)sess.getAttribute("session_attr1");
-		pw.append("<br/>session_attr1="+session_attr1);
-		req.getSession().setAttribute("session_attr1", "set by "+this+",date:"+new Date());
-		
 		pw.flush();
 	}
 

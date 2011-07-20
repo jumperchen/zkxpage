@@ -41,4 +41,8 @@ public class AuContext {
 		auScripts.clear();
 	}
 
+	public boolean hasScript() {
+		return auScripts.size()>0;
+	}
+
 }

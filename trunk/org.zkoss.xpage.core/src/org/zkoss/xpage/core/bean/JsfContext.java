@@ -51,6 +51,14 @@ public class JsfContext {
 	public boolean isAjaxRendered(UIComponent comp){
 		FacesContextEx fc =  (FacesContextEx)check();
 		boolean r = fc.isAjaxRendered(comp);
+		while(!r){
+			comp = comp.getParent();
+			if(comp!=null){
+				r = fc.isAjaxRendered(comp);
+			}else{
+				break;
+			}
+		}
 		return r;
 	}
 	
