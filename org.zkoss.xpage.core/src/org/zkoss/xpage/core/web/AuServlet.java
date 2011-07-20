@@ -59,8 +59,9 @@ public class AuServlet /* extends HttpServlet {// */extends DHtmlUpdateServlet {
 			final Session sess = WebManager.getSession(getServletContext(), request, false);
 			Desktop dt = getDesktop(sess,dtid);
 			
-			Log.log(this,"session="+request.getSession().getId()+", dtid="+dtid+",desktop = "+dt+",session_attr1::" + request.getSession().getAttribute("session_attr1"));
+			Log.log(this,"session="+request.getSession().getId()+", dtid="+dtid+",desktop = "+dt);
 			super.doGet(request, response);
+			
 		} catch (ServletException x) {
 			Log.error(this,x.getMessage(),x);
 			throw x;

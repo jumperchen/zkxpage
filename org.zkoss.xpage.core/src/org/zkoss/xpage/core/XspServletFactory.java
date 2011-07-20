@@ -1,6 +1,7 @@
 package org.zkoss.xpage.core;
 
 import java.io.IOException;
+import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.zkoss.lang.Library;
+import org.zkoss.web.servlet.http.HttpBufferedResponse;
 import org.zkoss.xpage.core.util.Log;
 import org.zkoss.xpage.core.web.AuServlet;
 import org.zkoss.xpage.core.web.LayoutServlet;
@@ -27,6 +29,7 @@ public class XspServletFactory implements IServletFactory {
 	static final String EMBED_AU_URI = "org.zkoss.zkplus.embed.updateURI";
 	static final String XSP_AU = "/xsp/zkau";
 	static final String AU = "/zkau";
+	static final Boolean COMPRESS= Boolean.FALSE;//in xpage, compress header is not work
 	static{
 		Library.setProperty(EMBED_AU_URI,XSP_AU);
 	}
@@ -46,7 +49,7 @@ public class XspServletFactory implements IServletFactory {
 		Log.log(this,"init:"+module.getModuleName()+":in "+this);
 		config.put("update-uri", XSP_AU);
 		//disable compress, domino doesn't allow it.
-		config.put("compress", Boolean.FALSE.toString());
+		config.put("compress", COMPRESS.toString());
 		
 	}
 	
@@ -54,7 +57,8 @@ public class XspServletFactory implements IServletFactory {
 			throws ServletException {
 		if(path.startsWith(XSP_AU)){
 			initialServelts();
-			return new ServletMatch(servlet,AU,path.substring(XSP_AU.length()));
+			ServletMatch sm = new ServletMatch(servlet,AU,path.substring(XSP_AU.length()));
+			return sm;
 		}
 		return null;
 	}
@@ -108,9 +112,17 @@ public class XspServletFactory implements IServletFactory {
 				//not work
 //				req.getRequestDispatcher("/zkau").forward(req,res);
 //				req.getRequestDispatcher("/zkau").include(req,res);
-				
+
+//				StringWriter sw = new StringWriter();
 				//work
+//				auServlet.service(req,HttpBufferedResponse.getInstance(res, sw));
+//				String result = sw.toString();
+//				res.getWriter().print(result);
+//				res.setContentLength(result.length());
 				auServlet.service(req,res);
+				
+				//bad, I have to flush my self.
+				res.flushBuffer();
 			}catch(ServletException x){
 				Log.error(this,x.getMessage(),x);
 				throw x;

@@ -38,10 +38,10 @@ public class AjaxUpdateRenderer extends javax.faces.render.Renderer {
 		writer.startElement("div", component);
 		writer.writeAttribute("id", component.getClientId(context), null);
 		JsfContext jsfc = JsfContext.instance();
-		if(jsfc.isAjaxPartialRefresh()){
+		AuContext au = AuContext.instance();
+		if(au.hasScript() && jsfc.isAjaxPartialRefresh() && jsfc.isAjaxRendered(component)){
 			writer.startElement("script",null);
 			writer.writeAttribute("type", "text/javascript",  null);
-			AuContext au = AuContext.instance();
 			Iterator iter = au.iteratorScripts();
 			while(iter.hasNext()){
 				String script = (String)iter.next();
