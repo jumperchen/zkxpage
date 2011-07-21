@@ -15,6 +15,8 @@ Copyright (C) 2010 Potix Corporation. All Rights Reserved.
 */
 package org.zkoss.xpage.core.component;
 
+import org.zkoss.xpage.core.Constants;
+
 
 public class Verifier extends ZKComponentBase {
 	private static final long serialVersionUID = 1L;
@@ -26,7 +28,7 @@ public class Verifier extends ZKComponentBase {
 
 	@Override
 	public String getFamily() {
-		return "org.zkoss.xpage";
+		return Constants.COMPONENT_FAMILY;
 	}
 
 }

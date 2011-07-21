@@ -15,7 +15,7 @@ public class JsfPhaseListener implements javax.faces.event.PhaseListener{
 		}
 	}
 
-	public void beforePhase(PhaseEvent event) {		
+	public void beforePhase(PhaseEvent event) {	
 	}
 
 	public PhaseId getPhaseId() {
