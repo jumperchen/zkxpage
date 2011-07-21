@@ -1,6 +1,11 @@
 package org.zkoss.xpage.core.component;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import javax.faces.component.UIComponentBase;
 import javax.faces.context.ExternalContext;
@@ -11,21 +16,43 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.zkoss.lang.Strings;
-import org.zkoss.xpage.core.bean.AuContext;
+import org.zkoss.xpage.core.Constants;
 import org.zkoss.xpage.core.util.DesktopUtil;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zkplus.embed.Bridge;
 
-public abstract class ZKComponentBase extends UIComponentBase implements
-		ZKComponent, Serializable {
+import com.ibm.xsp.ajax.AjaxUtil;
+import com.ibm.xsp.component.UIViewRootEx;
+import com.ibm.xsp.resource.ScriptResource;
+
+public abstract class ZKComponentBase extends UIComponentBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	transient Component component;
 	transient boolean desktopTimeout;
+	transient List auScripts = new ArrayList();
 	
 	Object apply = null;
 	StateValueMap states = new StateValueMap();
+	
+	
+	
+	public void addScript(String script) {
+		auScripts.add(script);
+	}
+
+	public List getScripts() {
+		return Collections.unmodifiableList(auScripts);
+	}
+
+	public void clearScripts() {
+		auScripts.clear();
+	}
+
+	public boolean hasScript() {
+		return auScripts.size()>0;
+	}
 
 
 	public Object getApply() {
@@ -196,8 +223,25 @@ public abstract class ZKComponentBase extends UIComponentBase implements
 			action.doAction();
 			String auResult = bridge.getResult();
 			if(!Strings.isBlank(auResult)){
-				AuContext.instance().addScript(auResult);
+				addScript(auResult);
 			}
+			
+//			FacesContext ctx = FacesContext.getCurrentInstance();
+//			boolean isRendering = AjaxUtil.isRendering(FacesContext.getCurrentInstance());
+//            AjaxUtil.setRendering(ctx, true);
+//            try {
+//                ScriptResource r = new ScriptResource();
+//                r.setClientSide(true);
+//                r.setContents(auResult);
+//                ((UIViewRootEx)ctx.getViewRoot()).addEncodeResource(r);
+//                return;
+//            } finally {
+//                AjaxUtil.setRendering(ctx, isRendering);
+//            }
+//			UIScriptCollector sc = UIScriptCollector.find();
+//	        sc.addScript(script);
+			
+			
 		} finally {
 			bridge.close();
 		}

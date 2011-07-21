@@ -44,6 +44,7 @@ public class JsfContext {
 	
 	public boolean isAjaxPartialRefresh(){
 		FacesContextEx fc =  (FacesContextEx)check();
+		
 		boolean r = fc.isAjaxPartialRefresh();
 		return r;
 	}
