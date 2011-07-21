@@ -7,6 +7,7 @@ import javax.faces.event.PhaseId;
 public class JsfPhaseListener implements javax.faces.event.PhaseListener{
 	private static final long serialVersionUID = 1L;
 	
+	@SuppressWarnings("unchecked")
 	public void afterPhase(PhaseEvent event) {
 		PhaseId pi = event.getPhaseId();
 		if(PhaseId.RESTORE_VIEW.equals(pi)){

@@ -1,7 +1,6 @@
 package org.zkoss.xpage.core;
 
 import java.io.IOException;
-import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.zkoss.lang.Library;
-import org.zkoss.web.servlet.http.HttpBufferedResponse;
 import org.zkoss.xpage.core.util.Log;
 import org.zkoss.xpage.core.web.AuServlet;
 import org.zkoss.xpage.core.web.LayoutServlet;
@@ -113,12 +111,7 @@ public class XspServletFactory implements IServletFactory {
 //				req.getRequestDispatcher("/zkau").forward(req,res);
 //				req.getRequestDispatcher("/zkau").include(req,res);
 
-//				StringWriter sw = new StringWriter();
 				//work
-//				auServlet.service(req,HttpBufferedResponse.getInstance(res, sw));
-//				String result = sw.toString();
-//				res.getWriter().print(result);
-//				res.setContentLength(result.length());
 				auServlet.service(req,res);
 				
 				//bad, I have to flush my self.
