@@ -114,33 +114,16 @@
     	
 	
 	<component>
-		<description>This component renders a html message and a zk button to verify zk is running well</description>
-		<display-name>Installation Verifier</display-name>
-		<component-type>org.zkoss.xpage.verifier</component-type>
-		<component-class>org.zkoss.xpage.core.component.Verifier</component-class>
+		<description>This component renders a zk button to verify zk is running well</description>
+		<display-name>Hello ZK Button</display-name>
+		<component-type>org.zkoss.xpage.hellozk</component-type>
+		<component-class>org.zkoss.xpage.core.component.HelloZk</component-class>
 		<group-type-ref>org.zkoss.xpage.components</group-type-ref>
 		<component-extension>
 			<since>0.5.0</since>
 			<component-family>org.zkoss.xpage</component-family>
-			<renderer-type>org.zkoss.xpage.verifier</renderer-type>
-			<tag-name>verifier</tag-name>
-			<designer-extension>
-        		<in-palette>true</in-palette>
-        		<category>ZK</category>
-      		</designer-extension>			
-		</component-extension>		
-	</component>
-	
-	<component>
-		<description>This component renders all zk ajax update response, you have to add this component to your ajax update area</description>
-		<display-name>AjaxUpdate</display-name>
-		<component-type>org.zkoss.xpage.ajaxUpdate</component-type>
-		<component-class>org.zkoss.xpage.core.component.AjaxUpdate</component-class>
-		<component-extension>
-			<since>0.5.0</since>
-			<component-family>org.zkoss.xpage</component-family>
-			<renderer-type>org.zkoss.xpage.ajaxUpdate</renderer-type>
-			<tag-name>ajaxUpdate</tag-name>
+			<renderer-type>org.zkoss.xpage.hellozk</renderer-type>
+			<tag-name>hellozk</tag-name>
 			<designer-extension>
         		<in-palette>true</in-palette>
         		<category>ZK</category>

@@ -14,9 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.zkoss.lang.Classes;
-import org.zkoss.lang.Strings;
 import org.zkoss.xpage.core.bean.JsfContext;
-import org.zkoss.xpage.core.component.ZKComponentBase;
+import org.zkoss.xpage.core.component.ZulComponentBase;
 import org.zkoss.xpage.core.util.Log;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Desktop;
@@ -30,15 +29,15 @@ import com.ibm.xsp.ajax.AjaxUtil;
 import com.ibm.xsp.component.UIViewRootEx;
 import com.ibm.xsp.resource.ScriptResource;
 
-public abstract class ZKRendererBase extends javax.faces.render.Renderer {
+public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 
-	abstract protected Component createZKComponent(Page page, ZKComponentBase zcomp);
+	abstract protected Component createZKComponent(Page page, ZulComponentBase zcomp);
 
 	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
-		if (!(component instanceof ZKComponentBase)) {
+		if (!(component instanceof ZulComponentBase)) {
 			throw new IllegalArgumentException("unsupported component " + component);
 		}
-		ZKComponentBase zcomp = (ZKComponentBase) component;
+		ZulComponentBase zcomp = (ZulComponentBase) component;
 		ResponseWriter writer = context.getResponseWriter();
 		if (zcomp.isDesktopTimeout()) {
 			// TODO
@@ -91,11 +90,13 @@ public abstract class ZKRendererBase extends javax.faces.render.Renderer {
 			}
 		}
 	}
+	@SuppressWarnings("unchecked")
 	protected void outXspJs(String script){
 		List al =new ArrayList();
 		al.add(script);
 		outXspUpdateJs(al);
 	}
+	@SuppressWarnings("unchecked")
 	protected void outXspUpdateJs(List scripts){
 		if(scripts.size()==0) return;
 		FacesContext ctx = FacesContext.getCurrentInstance();
@@ -116,7 +117,7 @@ public abstract class ZKRendererBase extends javax.faces.render.Renderer {
         }
 	}
 
-	protected void newZKComponent(final ZKComponentBase zcomp, FacesContext context) throws ServletException,
+	protected void newZKComponent(final ZulComponentBase zcomp, FacesContext context) throws ServletException,
 			IOException {
 		final HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
 		final HttpServletResponse response = (HttpServletResponse) context.getExternalContext().getResponse();
@@ -125,6 +126,7 @@ public abstract class ZKRendererBase extends javax.faces.render.Renderer {
 		Renders.render(svlctx, request, response, new GenericRichlet() {
 			public void service(Page page) throws Exception {
 				Component comp = createZKComponent(page, zcomp);
+				comp.setId(zcomp.getId());
 				comp.setPage(page);
 //				applyDynamicAttributes(zcomp,comp);
 				applyComposer(zcomp,comp);
@@ -137,7 +139,7 @@ public abstract class ZKRendererBase extends javax.faces.render.Renderer {
 //		//TODO how? not supported in domino
 //	}
 
-	protected void reattachZKComponent(final ZKComponentBase zcomp, FacesContext context)
+	protected void reattachZKComponent(final ZulComponentBase zcomp, FacesContext context)
 			throws ServletException, IOException {
 		Desktop dt = zcomp.getDesktop();
 		if (dt == null) {
@@ -165,7 +167,7 @@ public abstract class ZKRendererBase extends javax.faces.render.Renderer {
 		}, null, writer);
 	}
 	
-	protected void applyComposer(final ZKComponentBase zcomp, final Component comp) throws Exception{
+	protected void applyComposer(final ZulComponentBase zcomp, final Component comp) throws Exception{
 		Object o = zcomp.getApply();
 		if(o instanceof String) {
 			o = Classes.newInstanceByThread(o.toString());
@@ -174,14 +176,18 @@ public abstract class ZKRendererBase extends javax.faces.render.Renderer {
 			((Composer)o).doAfterCompose(comp);
 		}
 	}
+	
+	protected String getBodyTag(){
+		return "div";
+	}
 
 	protected void startBodyTag(FacesContext context,ResponseWriter writer,UIComponent component) throws IOException {
-		writer.startElement("div", component);
+		writer.startElement(getBodyTag(), component);
 		writer.writeAttribute("id", component.getClientId(context), null);
 	}
 	
 	protected void endBodyTag(FacesContext context,ResponseWriter writer,UIComponent component) throws IOException {
-		writer.endElement("div");
+		writer.endElement(getBodyTag());
 	}
 	
 	protected void startJsTag(ResponseWriter writer) throws IOException {
