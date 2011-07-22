@@ -2,10 +2,10 @@
 <classpath>
 	<classpathentry exported="true" kind="lib" path="lib/zcommon.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/zcommons-el.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/zk.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/zk.jar" sourcepath="Y:/zk/download/zkee-bin-eval-5.0.7.1/dist/src/zk-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/zkplus.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/zul.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/zweb.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/zweb.jar" sourcepath="Y:/zk/download/zkee-bin-eval-5.0.7.1/dist/src/zweb-sources.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
