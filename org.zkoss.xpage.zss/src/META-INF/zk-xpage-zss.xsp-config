@@ -5,8 +5,8 @@
 	</faces-config-extension>
 
 	<!--
-	group is not extend form core, so we have to define here again,
-	this group should allways copy from core
+	I don't whay group is not extend from core, so we have to define here again,
+	this group should always copy from core
 	-->
 	<group>
         <group-type>org.zkoss.xpage.xul</group-type>
