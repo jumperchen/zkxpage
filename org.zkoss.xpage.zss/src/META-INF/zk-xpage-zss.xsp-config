@@ -5,15 +5,15 @@
 	</faces-config-extension>
 
 	<!--
-	I don't whay group is not extend from core, so we have to define here again,
-	this group should always copy from core
+	I don't why group is not extend from core plugin, so we have to define here again,
+	this group should always copy from core plugin
 	-->
 	<group>
         <group-type>org.zkoss.xpage.xul</group-type>
 
         <!--  Properties -->
         <property>
-            <description></description>
+            <description>The composer class name or instance to control the zk component</description>
             <display-name>Apply</display-name>
             <property-name>apply</property-name>
             <property-class>java.lang.Object</property-class>
@@ -26,7 +26,7 @@
         
         <!-- html style properties -->
         <property>
-            <description></description>
+            <description>the CSS style</description>
             <display-name>Style</display-name>
             <property-name>style</property-name>
             <property-class>java.lang.String</property-class>
@@ -37,7 +37,7 @@
             </property-extension>
         </property>
         <property>
-            <description></description>
+            <description>the CSS class</description>
             <display-name>Sclass</display-name>
             <property-name>sclass</property-name>
             <property-class>java.lang.String</property-class>
@@ -48,7 +48,7 @@
             </property-extension>
         </property>
         <property>
-            <description></description>
+            <description>the ZK Cascading Style class(es) for this component</description>
             <display-name>Zclass</display-name>
             <property-name>zclass</property-name>
             <property-class>java.lang.String</property-class>
@@ -59,7 +59,7 @@
             </property-extension>
         </property>
         <property>
-            <description></description>
+            <description>the Z index</description>
             <display-name>Zindex</display-name>
             <property-name>zindex</property-name>
             <property-class>int</property-class>
@@ -72,7 +72,7 @@
         
         <!-- size properties -->
         <property>
-            <description></description>
+            <description>the width</description>
             <display-name>Width</display-name>
             <property-name>width</property-name>
             <property-class>java.lang.String</property-class>
@@ -83,7 +83,7 @@
             </property-extension>
         </property>
         <property>
-            <description></description>
+            <description>the height</description>
             <display-name>Height</display-name>
             <property-name>height</property-name>
             <property-class>java.lang.String</property-class>
@@ -94,7 +94,7 @@
             </property-extension>
         </property>
         <property>
-            <description></description>
+            <description>horizontal flex hint of this component</description>
             <display-name>Hflex</display-name>
             <property-name>hflex</property-name>
             <property-class>java.lang.String</property-class>
@@ -105,7 +105,7 @@
             </property-extension>
         </property>
         <property>
-            <description></description>
+            <description>vertical flex hint of this component</description>
             <display-name>Vflex</display-name>
             <property-name>vflex</property-name>
             <property-class>java.lang.String</property-class>
@@ -115,11 +115,15 @@
                 </designer-extension>
             </property-extension>
         </property>
-    </group>	
+    </group>
 	
 	<component>
 		<description>A zk spreadsheet component</description>
 		<display-name>Spreadsheet</display-name>
+		<icon>
+			<small-icon>images/icon/zss_16.png</small-icon>
+			<large-icon>images/icon/zss_24.png</large-icon>
+		</icon>		
 		<component-type>org.zkoss.xpage.spreadsheet</component-type>
 		<component-class>org.zkoss.xpage.zss.component.Spreadsheet</component-class>
 		<group-type-ref>org.zkoss.xpage.xul</group-type-ref>
@@ -131,6 +135,13 @@
 			<designer-extension>
         		<in-palette>true</in-palette>
         		<category>ZK</category>
+				<render-markup>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xd;
+&lt;xp:view xmlns:xp="http://www.ibm.com/xsp/core"&gt;&#xd;
+	&lt;div style="width:100px" &gt;&#xd;
+	&lt;xp:image url="/images/zss_preview.jpg" id="image1"&gt;&lt;/xp:image&gt;&#xd;
+	&lt;/div&gt;&#xd;
+&lt;/xp:view&gt;&#xd;
+				</render-markup>         		
       		</designer-extension>
 		</component-extension>
 		<property>
@@ -145,18 +156,18 @@
             </property-extension>
         </property>
         <property>
-            <description></description>
+            <description>the maximum visible number of rows of this spreadsheet</description>
             <display-name>Maxrows</display-name>
             <property-name>maxrows</property-name>
             <property-class>int</property-class>
             <property-extension>
                 <designer-extension>
-                    <category>spreadsheet</category>
+                    <category>control</category>
                 </designer-extension>
             </property-extension>
         </property>
 		<property>
-            <description>the src location of book model</description>
+            <description>the src location of book model, it could locate in WebContent or class path</description>
             <display-name>Source</display-name>
             <property-name>src</property-name>
             <property-class>java.lang.String</property-class>
