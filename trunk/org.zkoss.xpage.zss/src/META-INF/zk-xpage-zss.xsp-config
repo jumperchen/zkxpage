@@ -151,7 +151,7 @@
             <property-class>int</property-class>
             <property-extension>
                 <designer-extension>
-                    <category>spreadsheet</category>
+                    <category>control</category>
                 </designer-extension>
             </property-extension>
         </property>

@@ -15,8 +15,6 @@ Copyright (C) 2010 Potix Corporation. All Rights Reserved.
 */
 package org.zkoss.xpage.core.bean;
 
-import java.util.Map;
-
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 
@@ -37,13 +35,7 @@ public class JsfContext {
 			//not in faces scope.
 			return new JsfContext();
 		}
-		Map reqMap = fc.getExternalContext().getRequestMap();
-		
-		JsfContext context = (JsfContext)reqMap.get(Constants.JSFCONTEXT_KEY);
-		if(context==null){
-			context = new JsfContext();
-			reqMap.put(Constants.JSFCONTEXT_KEY, context);
-		}
+		JsfContext context = (JsfContext)fc.getApplication().createValueBinding("#{zkJsfContext}").getValue(fc);
 		return context;
 	}
 	private FacesContext check(){
