@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.zkoss.xpage.zss.feature_0.8.0.201107221749.jar" id="org.zkoss.xpage.zss.feature" version="0.8.0.201107221749">
+   <feature url="features/org.zkoss.xpage.zss.feature_0.8.0.201107221830.jar" id="org.zkoss.xpage.zss.feature" version="0.8.0.201107221830">
       <category name="ZK XPage"/>
    </feature>
    <category-def name="ZK XPage" label="ZK XPage">
