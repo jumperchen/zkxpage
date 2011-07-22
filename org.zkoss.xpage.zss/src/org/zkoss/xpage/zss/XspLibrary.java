@@ -17,10 +17,15 @@ package org.zkoss.xpage.zss;
 
 import com.ibm.xsp.library.AbstractXspLibrary;
 
+/**
+ * 
+ * @author Dennis Chen
+ *
+ */
 public class XspLibrary extends AbstractXspLibrary {
 
 	public String getLibraryId() {
-		//the id of this xsp component, will be related by application
+		//the id of this xsp component, will be related by application, so don't modify after release
 		return "org.zkoss.xpage.zss.library";
 	}
 
@@ -41,7 +46,7 @@ public class XspLibrary extends AbstractXspLibrary {
 
 	@Override
 	public String getTagVersion() {
-		return "0.5.0";
+		return "0.8.0";
 	}
 
 }

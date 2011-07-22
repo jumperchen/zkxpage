@@ -1,3 +1,18 @@
+/* 
+{{IS_NOTE
+	Purpose:
+		
+	Description:
+		
+	History:
+		Jul 22, 2011 , Created by Dennis Chen
+}}IS_NOTE
+
+Copyright (C) 2010 Potix Corporation. All Rights Reserved.
+
+{{IS_RIGHT
+}}IS_RIGHT
+*/
 package org.zkoss.xpage.core.component;
 
 import java.io.Serializable;
@@ -8,6 +23,11 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.el.ValueBinding;
 
+/**
+ * util class to save component states
+ * @author Dennis Chen
+ *
+ */
 public class StateValueMap implements Serializable{
 	private static final long serialVersionUID = 1L;
 	

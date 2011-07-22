@@ -1,3 +1,18 @@
+/* 
+{{IS_NOTE
+	Purpose:
+		
+	Description:
+		
+	History:
+		Jul 22, 2011 , Created by Dennis Chen
+}}IS_NOTE
+
+Copyright (C) 2010 Potix Corporation. All Rights Reserved.
+
+{{IS_RIGHT
+}}IS_RIGHT
+*/
 package org.zkoss.xpage.core.bean;
 
 import java.util.Map;
@@ -8,7 +23,11 @@ import javax.faces.context.FacesContext;
 import org.zkoss.xpage.core.Constants;
 
 import com.ibm.xsp.context.FacesContextEx;
-
+/**
+ * a request scope jsf helper context 
+ * @author Dennis Chen
+ *
+ */
 public class JsfContext {
 
 	@SuppressWarnings("unchecked")
@@ -35,6 +54,9 @@ public class JsfContext {
 		return fc;
 	}
 	
+	/**
+	 * is current request a postback request
+	 */
 	public boolean isPostback(){
 		FacesContext fc = check();
 		if(fc.getExternalContext().getRequestMap().get(Constants.POSTBACK_KEY)!=null){
@@ -43,6 +65,9 @@ public class JsfContext {
 		return false;
 	}
 	
+	/**
+	 * is current request a partial refresh request
+	 */
 	public boolean isAjaxPartialRefresh(){
 		FacesContextEx fc =  (FacesContextEx)check();
 		
@@ -50,6 +75,9 @@ public class JsfContext {
 		return r;
 	}
 	
+	/**
+	 * is comp in the partial refresh list (include descendant).
+	 */
 	public boolean isAjaxRendered(UIComponent comp){
 		FacesContextEx fc =  (FacesContextEx)check();
 		boolean r = fc.isAjaxRendered(comp);

@@ -17,7 +17,11 @@ package org.zkoss.xpage.core.component;
 
 import org.zkoss.xpage.core.Constants;
 
-
+/**
+ * a simple hello zk component
+ * @author Dennis Chen
+ *
+ */
 public class HelloZk extends ZulComponentBase {
 	private static final long serialVersionUID = 1L;
 

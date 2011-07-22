@@ -28,6 +28,11 @@ import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.http.WebManager;
 
+/**
+ * warp {@link DHtmlUpdateServlet}
+ * @author Dennis Chen
+ *
+ */
 public class AuServlet /* extends HttpServlet {// */extends DHtmlUpdateServlet {
 	private static final long serialVersionUID = 1L;
 

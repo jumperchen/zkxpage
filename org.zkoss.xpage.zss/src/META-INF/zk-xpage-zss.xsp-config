@@ -1,7 +1,7 @@
 <faces-config>
 	<faces-config-extension>
-		<namespace-uri>http://www.zkoss.org/xpage/zss</namespace-uri>
-		<default-prefix>zss</default-prefix>
+		<namespace-uri>http://www.zkoss.org/xpage</namespace-uri>
+		<default-prefix>zk</default-prefix>
 	</faces-config-extension>
 
 	<!--
@@ -124,7 +124,7 @@
 		<component-class>org.zkoss.xpage.zss.component.Spreadsheet</component-class>
 		<group-type-ref>org.zkoss.xpage.xul</group-type-ref>
 		<component-extension>
-			<since>0.5.0</since>
+			<since>0.8.0</since>
 			<component-family>org.zkoss.xpage</component-family>
 			<renderer-type>org.zkoss.xpage.spreadsheet</renderer-type>
 			<tag-name>spreadsheet</tag-name>

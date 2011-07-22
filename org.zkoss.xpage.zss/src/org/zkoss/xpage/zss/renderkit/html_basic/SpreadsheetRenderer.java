@@ -29,12 +29,10 @@ import org.zkoss.xpage.core.component.ZulComponentBase;
 import org.zkoss.xpage.core.renderkit.html_basic.ZulRendererBase;
 import org.zkoss.xpage.core.util.Log;
 import org.zkoss.zk.ui.Component;
-import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Page;
 import org.zkoss.zk.ui.UiException;
 import org.zkoss.zss.model.Book;
 import org.zkoss.zss.model.Importer;
-import org.zkoss.zss.model.Importers;
 import org.zkoss.zss.model.impl.ExcelImporter;
 import org.zkoss.zss.ui.Spreadsheet;
 
@@ -53,14 +51,14 @@ public class SpreadsheetRenderer extends ZulRendererBase {
 			org.zkoss.xpage.zss.component.Spreadsheet zss = (org.zkoss.xpage.zss.component.Spreadsheet)zcomp;
 			Spreadsheet ss = (Spreadsheet)comp;
 			
-			Integer mr = zss.getMaxrows();
-			Integer mc = zss.getMaxcolumns();
-			
-			if(mr!=null){
-				ss.setMaxrows(mr.intValue());
+			Integer in = zss.getMaxrows();
+
+			if(in!=null){
+				ss.setMaxrows(in.intValue());
 			}
-			if(mc!=null){
-				ss.setMaxcolumns(mc.intValue());
+			in = zss.getMaxcolumns();
+			if(in!=null){
+				ss.setMaxcolumns(in.intValue());
 			}
 			
 			String src = zss.getSrc();
@@ -76,7 +74,7 @@ public class SpreadsheetRenderer extends ZulRendererBase {
 		}
 	}
 	
-	/**
+	/*
 	 * the zk implementation cannot load resource form web content, so we use jsfcontext to load web context resource here 
 	 */
 	private Book loadBook(FacesContext context, Importer importer, String src) throws MalformedURLException {
@@ -117,7 +115,7 @@ public class SpreadsheetRenderer extends ZulRendererBase {
 		return book;
 	}
 
-	/** load default empty book **/
+	/* load default empty book */
 	private Book loadDefaultBook() {
 		final ExcelImporter importer = new ExcelImporter();
 		//TODO read from some configuration
