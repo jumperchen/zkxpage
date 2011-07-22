@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.zkoss.xpage.feature"
-      label="ZK XPage Features"
+      id="org.zkoss.xpage.pivot.feature"
+      label="ZK XPage Pivottable Features"
       version="0.8.0.qualifier"
       provider-name="www.zkoss.org">
 
@@ -18,14 +18,14 @@
    </license>
 
    <plugin
-         id="org.zkoss.xpage.core"
+         id="org.zkoss.xpage.pivot"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.zkoss.xpage.zss"
+         id="org.zkoss.xpage.core"
          download-size="0"
          install-size="0"
          version="0.0.0"
