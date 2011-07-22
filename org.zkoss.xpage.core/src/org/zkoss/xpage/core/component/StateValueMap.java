@@ -16,7 +16,7 @@ public class StateValueMap implements Serializable{
 
 	@SuppressWarnings("unchecked")
 	public void set(String key,Object value){
-		if(values!=null){
+		if(values==null){
 			values = new HashMap();
 		}
 		if(value==null){

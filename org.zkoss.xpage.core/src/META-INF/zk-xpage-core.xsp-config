@@ -4,7 +4,7 @@
 		<default-prefix>zk</default-prefix>
 	</faces-config-extension>
     <group>
-        <group-type>org.zkoss.xpage.components</group-type>
+        <group-type>org.zkoss.xpage.xul</group-type>
 
         <!--  Properties -->
         <property>
@@ -118,7 +118,7 @@
 		<display-name>Hello ZK Button</display-name>
 		<component-type>org.zkoss.xpage.hellozk</component-type>
 		<component-class>org.zkoss.xpage.core.component.HelloZk</component-class>
-		<group-type-ref>org.zkoss.xpage.components</group-type-ref>
+		<group-type-ref>org.zkoss.xpage.xul</group-type-ref>
 		<component-extension>
 			<since>0.5.0</since>
 			<component-family>org.zkoss.xpage</component-family>
