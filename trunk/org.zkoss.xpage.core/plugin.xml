@@ -8,7 +8,9 @@
 	<extension point="com.ibm.commons.Extension">
 		<service class="org.zkoss.xpage.core.XspServletFactory" type="com.ibm.xsp.adapter.servletFactory">
 		</service>
-	</extension>	
+	</extension>
+	
+	<!--	
 	<extension point="org.eclipse.equinox.http.registry.servlets">
 		<servlet alias="/potix1" class="org.zkoss.xpage.core.web.ExampleServlet"
 			load-on-startup="true">
@@ -17,6 +19,7 @@
 			load-on-startup="true">
 		</servlet>
 	</extension>
+	-->
 	<!-- 
 	<extension point="org.eclipse.equinox.http.registry.servlets">
 		<servlet httpcontextId="org.zkoss.xpage" alias="/zklayout"
