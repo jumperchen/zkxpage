@@ -26,7 +26,11 @@ import org.zkoss.zul.Button;
 import org.zkoss.zul.Messagebox;
 
 import com.ibm.domino.xsp.module.nsf.NotesContext;
-
+/**
+ * this is a very simple component's renderer, it test zk ajax and access notes context in zk au 
+ * @author Dennis Chen
+ *
+ */
 public class HelloZkRenderer extends ZulRendererBase {
 
 	private static String getUserName(){

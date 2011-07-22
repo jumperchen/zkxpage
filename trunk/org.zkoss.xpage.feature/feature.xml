@@ -2,7 +2,7 @@
 <feature
       id="org.zkoss.xpage.feature"
       label="ZK XPage Features"
-      version="0.5.0.qualifier"
+      version="0.8.0.qualifier"
       provider-name="www.zkoss.org">
 
    <description url="http://www.example.com/description">

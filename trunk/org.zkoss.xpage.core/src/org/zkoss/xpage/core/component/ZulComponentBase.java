@@ -1,3 +1,18 @@
+/* 
+{{IS_NOTE
+	Purpose:
+		
+	Description:
+		
+	History:
+		Jul 22, 2011 , Created by Dennis Chen
+}}IS_NOTE
+
+Copyright (C) 2010 Potix Corporation. All Rights Reserved.
+
+{{IS_RIGHT
+}}IS_RIGHT
+*/
 package org.zkoss.xpage.core.component;
 
 import java.io.Serializable;
@@ -14,16 +29,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.zkoss.lang.Strings;
-import org.zkoss.xpage.core.util.DesktopUtil;
+import org.zkoss.xpage.core.util.ZkUtil;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zkplus.embed.Bridge;
-
+/**
+ * 
+ * @author Dennis Chen
+ *
+ */
 public abstract class ZulComponentBase extends UIComponentBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	/* zk component instance, will be assign by renderer */
 	transient Component component;
+	/* is desktop already timeout */
 	transient boolean desktopTimeout;
+	
 	@SuppressWarnings("unchecked")
 	transient List auScripts = new ArrayList();
 	
@@ -33,20 +55,20 @@ public abstract class ZulComponentBase extends UIComponentBase implements Serial
 	
 	
 	@SuppressWarnings("unchecked")
-	public void addScript(String script) {
+	public void addAuScript(String script) {
 		auScripts.add(script);
 	}
 
 	@SuppressWarnings("unchecked")
-	public List getScripts() {
+	public List getAuScripts() {
 		return Collections.unmodifiableList(auScripts);
 	}
 
-	public void clearScripts() {
+	public void clearAuScripts() {
 		auScripts.clear();
 	}
 
-	public boolean hasScript() {
+	public boolean hasAuScript() {
 		return auScripts.size()>0;
 	}
 
@@ -66,18 +88,22 @@ public abstract class ZulComponentBase extends UIComponentBase implements Serial
 		this.apply = apply;
 	}
 
+	/** get ZK Component that was created by this ZK JSF Component**/
 	public Component getComponent() {
 		return component;
 	}
 
+	/** sets ZK component, you should never set this, this is only for renderer **/
 	public void setComponent(Component component) {
 		this.component = component;
 	}
 
+	/** get ZK Desktop that relates to component **/ 
 	public Desktop getDesktop() {
 		return component == null ? null : component.getDesktop();
 	}
 
+	/** is desktop already timeout **/
 	public boolean isDesktopTimeout() {
 		return desktopTimeout;
 	}
@@ -152,20 +178,15 @@ public abstract class ZulComponentBase extends UIComponentBase implements Serial
 		Object values[] = (Object[]) state;
 		super.restoreState(context, values[0]);
 		states = (StateValueMap)values[1];
-		
 		String uuid = (String) values[2];
-
-		// not work, this is new Desktop, not the original one, and after get
-		// component from this desktop, the component.getDesktop is always null
-		// Desktop desktop = (Desktop)values[2]
 		String dtid = (String) values[3];
 		ServletContext servletContext = (ServletContext) context
 				.getExternalContext().getContext();
 		HttpServletRequest req = (HttpServletRequest) context
 				.getExternalContext().getRequest();
-		Desktop desktop = DesktopUtil.findDesktop(servletContext, req, dtid);
+		Desktop desktop = ZkUtil.findDesktop(servletContext, req, dtid);
 		if (desktop != null) {
-			component = DesktopUtil.findComponent(desktop, uuid);
+			component = ZkUtil.findComponent(desktop, uuid);
 			if (component == null) {
 				throw new IllegalStateException("component " + uuid
 						+ " not in desktop " + desktop);
@@ -201,6 +222,11 @@ public abstract class ZulComponentBase extends UIComponentBase implements Serial
 		return state;
 	}
 
+	/**
+	 * Execute the Action, in the {@link Action#doAction()} you can access ZK component by {@link ZulComponentBase#getComponent()},
+	 * and any zk update automatically update to client side
+	 * @param action
+	 */
 	public void execute(Action action) {
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		ServletContext svlctx = (ServletContext) ec.getContext();
@@ -215,12 +241,11 @@ public abstract class ZulComponentBase extends UIComponentBase implements Serial
 
 		Bridge bridge = Bridge.start(svlctx, request, response,dt);
 		try {
-			action.doAction();
+			action.doAction(this);
 			String auResult = bridge.getResult();
 			if(!Strings.isBlank(auResult)){
-				addScript(auResult);
+				addAuScript(auResult);
 			}
-			
 		} finally {
 			bridge.close();
 		}
@@ -228,7 +253,7 @@ public abstract class ZulComponentBase extends UIComponentBase implements Serial
 	
 	@Override
 	public boolean getRendersChildren() {
-		/* zk component should control children rendering.*/
+		/* zk component should control children rendering. which means, not allow children to be rendered by default*/
 		return true;
 	}
 

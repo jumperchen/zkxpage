@@ -1,3 +1,18 @@
+/* 
+{{IS_NOTE
+	Purpose:
+		
+	Description:
+		
+	History:
+		Jul 22, 2011 , Created by Dennis Chen
+}}IS_NOTE
+
+Copyright (C) 2010 Potix Corporation. All Rights Reserved.
+
+{{IS_RIGHT
+}}IS_RIGHT
+*/
 package org.zkoss.xpage.core;
 
 import java.io.IOException;
@@ -19,7 +34,11 @@ import org.zkoss.xpage.core.web.LayoutServlet;
 import com.ibm.designer.runtime.domino.adapter.ComponentModule;
 import com.ibm.designer.runtime.domino.adapter.IServletFactory;
 import com.ibm.designer.runtime.domino.adapter.ServletMatch;
-
+/**
+ * handle zk servlets in xsp context
+ * @author Dennis Chen
+ *
+ */
 public class XspServletFactory implements IServletFactory {
 
 
@@ -27,7 +46,10 @@ public class XspServletFactory implements IServletFactory {
 	static final String EMBED_AU_URI = "org.zkoss.zkplus.embed.updateURI";
 	static final String XSP_AU = "/xsp/zkau";
 	static final String AU = "/zkau";
-	static final Boolean COMPRESS= Boolean.FALSE;//in xpage, compress header is not work
+	
+	//in xpage (8.5.2), compress header is not work, so always disable
+	static final Boolean COMPRESS= Boolean.FALSE;
+	
 	static{
 		Library.setProperty(EMBED_AU_URI,XSP_AU);
 	}
@@ -61,6 +83,7 @@ public class XspServletFactory implements IServletFactory {
 		return null;
 	}
 
+	/** initial zk servlets, NOTE no way to destroy for now **/
 	private void initialServelts() throws ServletException {
 		if(servlet!=null) return;
 		synchronized(this){
@@ -71,6 +94,10 @@ public class XspServletFactory implements IServletFactory {
 		}
 	}
 	
+	/** 
+	 * a servlet for xsp ServletMatch, this servlet will be created every request,
+	 * however we always use same zk servlet instance to service the request. 
+	 */
 	public class XspAuServlet extends HttpServlet {
 		private static final long serialVersionUID = 1L;
 		public void init(ServletConfig config) throws ServletException {
@@ -87,16 +114,19 @@ public class XspServletFactory implements IServletFactory {
 		
 		@Override
 		public void destroy() {
+			//never called in xsp 
 			super.destroy();
-			synchronized(this){
-				if(layoutServlet!=null){
-					layoutServlet.destroy();
-					auServlet.destroy();
-					layoutServlet = null;
-					auServlet = null;
-					servlet = null;
-				}
-			}
+			
+			//we should not destory sicne this servlet is created every request
+//			synchronized(this){
+//				if(layoutServlet!=null){
+//					layoutServlet.destroy();
+//					auServlet.destroy();
+//					layoutServlet = null;
+//					auServlet = null;
+//					servlet = null;
+//				}
+//			}
 		}
 
 		public void doPost(HttpServletRequest req, HttpServletResponse res)
@@ -114,7 +144,7 @@ public class XspServletFactory implements IServletFactory {
 				//work
 				auServlet.service(req,res);
 				
-				//bad, I have to flush my self.
+				//I have to flush my self, or something the response will not flush out
 				res.flushBuffer();
 			}catch(ServletException x){
 				Log.error(this,x.getMessage(),x);
@@ -127,9 +157,6 @@ public class XspServletFactory implements IServletFactory {
 				Log.error(this,x.getMessage(),x);
 				throw new ServletException(x.getMessage(),x);
 			}
-//			PrintWriter out = res.getWriter();
-//			out.println(":"+req.getPathInfo());
-//			out.close();
 		}
 	}
 }

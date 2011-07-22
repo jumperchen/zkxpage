@@ -20,7 +20,11 @@ import javax.servlet.ServletException;
 
 import org.zkoss.xpage.core.util.Log;
 import org.zkoss.zk.ui.http.DHtmlLayoutServlet;
-
+/**
+ * wrap {@link DHtmlLayoutServlet}
+ * @author Dennis Chen
+ *
+ */
 public class LayoutServlet extends DHtmlLayoutServlet {
 	private static final long serialVersionUID = 1L;
 	

@@ -1,3 +1,18 @@
+/* 
+{{IS_NOTE
+	Purpose:
+		
+	Description:
+		
+	History:
+		Jul 22, 2011 , Created by Dennis Chen
+}}IS_NOTE
+
+Copyright (C) 2010 Potix Corporation. All Rights Reserved.
+
+{{IS_RIGHT
+}}IS_RIGHT
+*/
 package org.zkoss.xpage.core.renderkit.html_basic;
 
 import java.io.IOException;
@@ -21,17 +36,21 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zk.ui.GenericRichlet;
 import org.zkoss.zk.ui.Page;
-import org.zkoss.zk.ui.api.HtmlBasedComponent;
 import org.zkoss.zk.ui.util.Composer;
 import org.zkoss.zkplus.embed.Bridge;
 import org.zkoss.zkplus.embed.Renders;
-import org.zkoss.zul.Label;
 import org.zkoss.zul.impl.XulElement;
 
 import com.ibm.xsp.ajax.AjaxUtil;
 import com.ibm.xsp.component.UIViewRootEx;
 import com.ibm.xsp.resource.ScriptResource;
 
+/**
+ * the basic zk component renderer, it handle 4 cases of jsf-life cycle.
+ * 1. direct link, 2. postback, 3. ajax-postback, 4. ajax-postback but no in refresh area. 
+ * @author Dennis Chen
+ *
+ */
 public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 
 	abstract protected Component createZKComponent(Page page, ZulComponentBase zcomp);
@@ -63,7 +82,7 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 
 				
 			}else if(!jsfc.isAjaxPartialRefresh()){
-				//full refresh, attach to new desktop
+				//full postback, attach to new desktop
 				startBodyTag(context,writer,component);
 				
 				newFakePage(zcomp,context);
@@ -79,19 +98,21 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 
 				
 			}else if(jsfc.isAjaxRendered(component)){
+				//ajax-postback
 				startBodyTag(context,writer,component);
 				endBodyTag(context,writer,component);
 
 				//add au
-				outXspUpdateJs(zcomp.getScripts());
-	            zcomp.clearScripts();
+				outXspUpdateJs(zcomp.getAuScripts());
+	            zcomp.clearAuScripts();
 	            //reattach client widget to new dom (old one was replaced by new one with sam id)
 	            outXspJs("zkXPage.reattach('$" + zcomp.getComponent().getId() + "','#"+zcomp.getClientId(context)+"');");
 
-			}else if(zcomp.hasScript()){
+			}else if(zcomp.hasAuScript()){
+				// ajax-postback but no in refresh area. 
 				//add au
-				outXspUpdateJs(zcomp.getScripts());
-	            zcomp.clearScripts();
+				outXspUpdateJs(zcomp.getAuScripts());
+	            zcomp.clearAuScripts();
 			}
 		}
 	}
@@ -101,6 +122,12 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 		al.add(script);
 		outXspUpdateJs(al);
 	}
+	
+	/*
+	 *  out javascript for a ajax-post back,
+	 *  the js will be rendered in the end of response content , wrapped by 
+	 *  <!-- XSP_UPDATE_HEADER_START --> ... <!-- XSP_UPDATE_HEADER_END -->
+	 */
 	@SuppressWarnings("unchecked")
 	protected void outXspUpdateJs(List scripts){
 		if(scripts.size()==0) return;
@@ -166,18 +193,40 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 	protected void applyAttributes(ZulComponentBase zcomp, Component comp) throws Exception {
 		if(comp instanceof XulElement){
 			XulElement xul = (XulElement)comp;
-			xul.setStyle(zcomp.getStyle());
-			xul.setSclass(zcomp.getSclass());
-			xul.setZclass(zcomp.getZclass());
+			String s ;
+			s = zcomp.getStyle();
+			if(s!=null){
+				xul.setStyle(zcomp.getStyle());
+			}
+			s = zcomp.getSclass();
+			if(s!=null){
+			xul.setSclass(s);
+			}
+			s = zcomp.getZclass();
+			if(s!=null){
+				xul.setZclass(s);
+			}
 			Integer zi = zcomp.getZindex();
 			if(zi!=null){
 				xul.setZindex(zi.intValue());
 			}
 			
-			xul.setHeight(zcomp.getHeight());
-			xul.setWidth(zcomp.getWidth());
-			xul.setHflex(zcomp.getHflex());
-			xul.setVflex(zcomp.getVflex());
+			s = zcomp.getHeight();
+			if(s!=null){
+				xul.setHeight(s);
+			}
+			s = zcomp.getWidth();
+			if(s!=null){
+				xul.setWidth(s);
+			}
+			s = zcomp.getHflex();
+			if(s!=null){
+				xul.setHflex(s);
+			}
+			s = zcomp.getVflex();
+			if(s!=null){
+				xul.setVflex(s);
+			}
 		}
 		
 	}

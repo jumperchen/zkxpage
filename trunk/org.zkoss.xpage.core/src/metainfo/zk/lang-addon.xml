@@ -3,5 +3,5 @@
 	<language-name>xul/html</language-name>
 	<javascript src="~./js/xpage/core/core.js"/>
 	<javascript package="xpage.core" ondemand="true"/>
-	<javascript-module name="xpage.core" version="0.5.0"/>
+	<javascript-module name="xpage.core" version="0.8.0"/>
 </language-addon>
