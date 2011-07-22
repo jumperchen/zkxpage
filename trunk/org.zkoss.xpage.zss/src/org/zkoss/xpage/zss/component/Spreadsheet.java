@@ -15,9 +15,13 @@ Copyright (C) 2010 Potix Corporation. All Rights Reserved.
 */
 package org.zkoss.xpage.zss.component;
 
-import org.zkoss.xpage.core.component.ZKComponentBase;
+import javax.faces.el.ValueBinding;
 
-public class Spreadsheet extends ZKComponentBase {
+import org.zkoss.xpage.core.Constants;
+import org.zkoss.xpage.core.component.ZulComponentBase;
+import org.zkoss.zss.model.Book;
+
+public class Spreadsheet extends ZulComponentBase {
 
 	private static final long serialVersionUID = 1L;
 
@@ -28,7 +32,42 @@ public class Spreadsheet extends ZKComponentBase {
 
 	@Override
 	public String getFamily() {
-		return "org.zkoss.xpage";
+		return Constants.COMPONENT_FAMILY;
 	}
+
+	public Integer getMaxrows() {
+		return states.getInteger("maxrows",getFacesContext(),this);
+	}
+
+	public void setMaxrows(Integer maxrows) {
+		states.set("maxrows", maxrows);
+	}
+
+	public Integer getMaxcolumns() {
+		return states.getInteger("maxcolumns",getFacesContext(),this);
+	}
+
+	public void setMaxcolumns(Integer maxcolumns) {
+		states.set("maxcolumns", maxcolumns);
+	}
+
+	public String getSrc() {
+		return states.getString("src",getFacesContext(),this);
+	}
+
+	public void setSrc(String src) {
+		states.set("src", src);
+	}
+	
+	
+	public Book getBook() {
+		ValueBinding vb = getValueBinding("book");
+		if(vb!=null){
+			return (Book)vb.getValue(getFacesContext());
+		}
+		return null;
+	}
+	
+	
 
 }

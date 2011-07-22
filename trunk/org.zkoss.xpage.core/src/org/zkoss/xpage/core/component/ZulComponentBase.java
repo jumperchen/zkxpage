@@ -27,8 +27,8 @@ public abstract class ZulComponentBase extends UIComponentBase implements Serial
 	@SuppressWarnings("unchecked")
 	transient List auScripts = new ArrayList();
 	
-	Object apply = null;
-	StateValueMap states = new StateValueMap();
+	private Object apply = null;
+	protected StateValueMap states = new StateValueMap();
 	
 	
 	
@@ -84,7 +84,7 @@ public abstract class ZulComponentBase extends UIComponentBase implements Serial
 
 
 	public String getStyle() {
-		return states.getString("style");
+		return states.getString("style",getFacesContext(),this);
 	}
 
 	public void setStyle(String style) {
@@ -92,7 +92,7 @@ public abstract class ZulComponentBase extends UIComponentBase implements Serial
 	}
 
 	public String getSclass() {
-		return states.getString("sclass");
+		return states.getString("sclass",getFacesContext(),this);
 	}
 
 	public void setSclass(String sclass) {
@@ -100,24 +100,23 @@ public abstract class ZulComponentBase extends UIComponentBase implements Serial
 	}
 
 	public String getZclass() {
-		return states.getString("zclass");
+		return states.getString("zclass",getFacesContext(),this);
 	}
 
 	public void setZclass(String zclass) {
 		states.set("zclass", zclass);
 	}
 
-	public int getZindex() {
-		Integer z = states.getInteger("zindex");
-		return z==null?-1:z.intValue();
+	public Integer getZindex() {
+		return states.getInteger("zindex",getFacesContext(),this);
 	}
 
-	public void setZindex(int zindex) {
+	public void setZindex(Integer zindex) {
 		states.set("zindex", zindex);
 	}
 
 	public String getWidth() {
-		return states.getString("width");
+		return states.getString("width",getFacesContext(),this);
 	}
 
 	public void setWidth(String width) {
@@ -125,7 +124,7 @@ public abstract class ZulComponentBase extends UIComponentBase implements Serial
 	}
 
 	public String getHeight() {
-		return states.getString("height");
+		return states.getString("height",getFacesContext(),this);
 	}
 
 	public void setHeight(String height) {
@@ -133,19 +132,19 @@ public abstract class ZulComponentBase extends UIComponentBase implements Serial
 	}
 
 	public String getHflex() {
-		return states.getString("hflex");
+		return states.getString("hflex",getFacesContext(),this);
 	}
 
 	public void setHflex(String hflex) {
 		states.set("hflex", hflex);
 	}
 
-	public String getVfex() {
-		return states.getString("vfex");
+	public String getVflex() {
+		return states.getString("vflex",getFacesContext(),this);
 	}
 
-	public void setVfex(String vfex) {
-		states.set("vfex", vfex);
+	public void setVflex(String vfex) {
+		states.set("vflex", vfex);
 	}
 
 	@Override

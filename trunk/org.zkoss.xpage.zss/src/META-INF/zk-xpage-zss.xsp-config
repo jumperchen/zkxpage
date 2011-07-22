@@ -3,11 +3,126 @@
 		<namespace-uri>http://www.zkoss.org/xpage/zss</namespace-uri>
 		<default-prefix>zss</default-prefix>
 	</faces-config-extension>
+
+	<!--
+	group is not extend form core, so we have to define here again,
+	this group should allways copy from core
+	-->
+	<group>
+        <group-type>org.zkoss.xpage.xul</group-type>
+
+        <!--  Properties -->
+        <property>
+            <description></description>
+            <display-name>Apply</display-name>
+            <property-name>apply</property-name>
+            <property-class>java.lang.Object</property-class>
+            <property-extension>
+                <designer-extension>
+                    <category>control</category>
+                </designer-extension>
+            </property-extension>
+        </property>
+        
+        <!-- html style properties -->
+        <property>
+            <description></description>
+            <display-name>Style</display-name>
+            <property-name>style</property-name>
+            <property-class>java.lang.String</property-class>
+            <property-extension>
+                <designer-extension>
+                    <category>style</category>
+                </designer-extension>
+            </property-extension>
+        </property>
+        <property>
+            <description></description>
+            <display-name>Sclass</display-name>
+            <property-name>sclass</property-name>
+            <property-class>java.lang.String</property-class>
+            <property-extension>
+                <designer-extension>
+                    <category>style</category>
+                </designer-extension>
+            </property-extension>
+        </property>
+        <property>
+            <description></description>
+            <display-name>Zclass</display-name>
+            <property-name>zclass</property-name>
+            <property-class>java.lang.String</property-class>
+            <property-extension>
+                <designer-extension>
+                    <category>style</category>
+                </designer-extension>
+            </property-extension>
+        </property>
+        <property>
+            <description></description>
+            <display-name>Zindex</display-name>
+            <property-name>zindex</property-name>
+            <property-class>int</property-class>
+            <property-extension>
+                <designer-extension>
+                    <category>style</category>
+                </designer-extension>
+            </property-extension>
+        </property>
+        
+        <!-- size properties -->
+        <property>
+            <description></description>
+            <display-name>Width</display-name>
+            <property-name>width</property-name>
+            <property-class>java.lang.String</property-class>
+            <property-extension>
+                <designer-extension>
+                    <category>size</category>
+                </designer-extension>
+            </property-extension>
+        </property>
+        <property>
+            <description></description>
+            <display-name>Height</display-name>
+            <property-name>height</property-name>
+            <property-class>java.lang.String</property-class>
+            <property-extension>
+                <designer-extension>
+                    <category>size</category>
+                </designer-extension>
+            </property-extension>
+        </property>
+        <property>
+            <description></description>
+            <display-name>Hflex</display-name>
+            <property-name>hflex</property-name>
+            <property-class>java.lang.String</property-class>
+            <property-extension>
+                <designer-extension>
+                    <category>size</category>
+                </designer-extension>
+            </property-extension>
+        </property>
+        <property>
+            <description></description>
+            <display-name>Vflex</display-name>
+            <property-name>vflex</property-name>
+            <property-class>java.lang.String</property-class>
+            <property-extension>
+                <designer-extension>
+                    <category>size</category>
+                </designer-extension>
+            </property-extension>
+        </property>
+    </group>	
+	
 	<component>
 		<description>A zk spreadsheet component</description>
 		<display-name>Spreadsheet</display-name>
 		<component-type>org.zkoss.xpage.spreadsheet</component-type>
 		<component-class>org.zkoss.xpage.zss.component.Spreadsheet</component-class>
+		<group-type-ref>org.zkoss.xpage.xul</group-type-ref>
 		<component-extension>
 			<since>0.5.0</since>
 			<component-family>org.zkoss.xpage</component-family>
@@ -18,6 +133,38 @@
         		<category>ZK</category>
       		</designer-extension>
 		</component-extension>
-		
+		<property>
+            <description>the maximum visible number of columns of this spreadsheet</description>
+            <display-name>Maxcolumns</display-name>
+            <property-name>maxcolumns</property-name>
+            <property-class>int</property-class>
+            <property-extension>
+                <designer-extension>
+                    <category>spreadsheet</category>
+                </designer-extension>
+            </property-extension>
+        </property>
+        <property>
+            <description></description>
+            <display-name>Maxrows</display-name>
+            <property-name>maxrows</property-name>
+            <property-class>int</property-class>
+            <property-extension>
+                <designer-extension>
+                    <category>spreadsheet</category>
+                </designer-extension>
+            </property-extension>
+        </property>
+		<property>
+            <description>the src location of book model</description>
+            <display-name>Source</display-name>
+            <property-name>src</property-name>
+            <property-class>java.lang.String</property-class>
+            <property-extension>
+                <designer-extension>
+                    <category>model</category>
+                </designer-extension>
+            </property-extension>
+        </property>
 	</component>
 </faces-config>
