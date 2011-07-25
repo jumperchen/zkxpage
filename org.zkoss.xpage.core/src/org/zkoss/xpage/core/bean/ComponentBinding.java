@@ -41,7 +41,7 @@ public class ComponentBinding extends HashMap{
 		return binding;
 	}
 	
-	public static ZulBridgeBase getComponent(String name){
+	public static ZulBridgeBase getBridge(String name){
 		return ((ZulBridgeBase)ComponentBinding.instance().get(name));
 	}
 }
