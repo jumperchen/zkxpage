@@ -22,7 +22,7 @@ import org.zkoss.xpage.core.Constants;
  * @author Dennis Chen
  *
  */
-public class HelloZk extends ZulComponentBase {
+public class HelloZk extends ZulBridgeBase {
 	private static final long serialVersionUID = 1L;
 
 	public HelloZk() {

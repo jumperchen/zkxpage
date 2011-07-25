@@ -19,7 +19,7 @@ import java.util.HashMap;
 
 import javax.faces.context.FacesContext;
 
-import org.zkoss.xpage.core.component.ZulComponentBase;
+import org.zkoss.xpage.core.component.ZulBridgeBase;
 /**
  * a request scope jsf helper context 
  * @author Dennis Chen
@@ -41,7 +41,7 @@ public class ComponentBinding extends HashMap{
 		return binding;
 	}
 	
-	public static ZulComponentBase getComponent(String name){
-		return ((ZulComponentBase)ComponentBinding.instance().get(name));
+	public static ZulBridgeBase getComponent(String name){
+		return ((ZulBridgeBase)ComponentBinding.instance().get(name));
 	}
 }

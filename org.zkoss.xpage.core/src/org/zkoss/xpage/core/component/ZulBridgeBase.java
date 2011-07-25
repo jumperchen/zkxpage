@@ -38,7 +38,7 @@ import org.zkoss.zkplus.embed.Bridge;
  * @author Dennis Chen
  *
  */
-public abstract class ZulComponentBase extends UIComponentBase implements Serializable {
+public abstract class ZulBridgeBase extends UIComponentBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/* zk component instance, will be assign by renderer */
@@ -223,7 +223,7 @@ public abstract class ZulComponentBase extends UIComponentBase implements Serial
 	}
 
 	/**
-	 * Execute the Action, in the {@link Action#doAction()} you can access ZK component by {@link ZulComponentBase#getComponent()},
+	 * Execute the Action, in the {@link Action#doAction()} you can access ZK component by {@link ZulBridgeBase#getComponent()},
 	 * and any zk update automatically update to client side
 	 * @param action
 	 */

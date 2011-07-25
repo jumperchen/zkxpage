@@ -18,7 +18,6 @@ package org.zkoss.xpage.core.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -62,7 +61,6 @@ public class ExampleServlet extends HttpServlet{
 		new Exception("in servlet").printStackTrace();
 		HttpSession hess = req.getSession();
 		PrintWriter pw = resp.getWriter();
-		HttpSession sess = req.getSession();
 		
 		pw.append("<br/>Hi "+getUserName());
 		pw.append("<br/>this"+this+", session instance is "+hess+" , id "+(hess==null?"":hess.getId()));

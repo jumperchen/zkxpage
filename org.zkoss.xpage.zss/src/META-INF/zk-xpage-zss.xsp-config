@@ -141,7 +141,7 @@
 			<large-icon>images/icon/zss_24.png</large-icon>
 		</icon>		
 		<component-type>org.zkoss.xpage.spreadsheet</component-type>
-		<component-class>org.zkoss.xpage.zss.component.Spreadsheet</component-class>
+		<component-class>org.zkoss.xpage.zss.component.SpreadsheetBridge</component-class>
 		<group-type-ref>org.zkoss.xpage.xul</group-type-ref>
 		<component-extension>
 			<since>0.9.0</since>

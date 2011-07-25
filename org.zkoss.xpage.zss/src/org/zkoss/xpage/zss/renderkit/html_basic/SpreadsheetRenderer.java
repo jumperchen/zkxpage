@@ -25,7 +25,7 @@ import javax.faces.context.FacesContext;
 
 import org.zkoss.lang.Strings;
 import org.zkoss.util.resource.ClassLocator;
-import org.zkoss.xpage.core.component.ZulComponentBase;
+import org.zkoss.xpage.core.component.ZulBridgeBase;
 import org.zkoss.xpage.core.renderkit.html_basic.ZulRendererBase;
 import org.zkoss.xpage.core.util.Log;
 import org.zkoss.zk.ui.Component;
@@ -39,16 +39,16 @@ import org.zkoss.zss.ui.Spreadsheet;
 public class SpreadsheetRenderer extends ZulRendererBase {
 	
 	@Override
-	protected Component createZKComponent(Page page,ZulComponentBase zcomp){
+	protected Component createZKComponent(Page page,ZulBridgeBase zbridge){
 		Spreadsheet spreadsheet = new Spreadsheet();
 		return spreadsheet;
 	}
 	
 	@Override
-	protected void applyAttributes(ZulComponentBase zcomp, Component comp) throws Exception {
-		super.applyAttributes(zcomp, comp);
+	protected void applyAttributes(ZulBridgeBase bridge, Component comp) throws Exception {
+		super.applyAttributes(bridge, comp);
 		if(comp instanceof Spreadsheet){
-			org.zkoss.xpage.zss.component.Spreadsheet zss = (org.zkoss.xpage.zss.component.Spreadsheet)zcomp;
+			org.zkoss.xpage.zss.component.SpreadsheetBridge zss = (org.zkoss.xpage.zss.component.SpreadsheetBridge)bridge;
 			Spreadsheet ss = (Spreadsheet)comp;
 			
 			Integer in = zss.getMaxrows();

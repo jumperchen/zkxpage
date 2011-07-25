@@ -30,7 +30,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.zkoss.lang.Classes;
 import org.zkoss.xpage.core.bean.JsfContext;
-import org.zkoss.xpage.core.component.ZulComponentBase;
+import org.zkoss.xpage.core.component.ZulBridgeBase;
 import org.zkoss.xpage.core.util.Log;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Desktop;
@@ -53,15 +53,15 @@ import com.ibm.xsp.resource.ScriptResource;
  */
 public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 
-	abstract protected Component createZKComponent(Page page, ZulComponentBase zcomp);
+	abstract protected Component createZKComponent(Page page, ZulBridgeBase bridge);
 
 	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
-		if (!(component instanceof ZulComponentBase)) {
+		if (!(component instanceof ZulBridgeBase)) {
 			throw new IllegalArgumentException("unsupported component " + component);
 		}
-		ZulComponentBase zcomp = (ZulComponentBase) component;
+		ZulBridgeBase bridge = (ZulBridgeBase) component;
 		ResponseWriter writer = context.getResponseWriter();
-		if (zcomp.isDesktopTimeout()) {
+		if (bridge.isDesktopTimeout()) {
 			// TODO
 		} else {
 			JsfContext jsfc = JsfContext.instance();
@@ -69,32 +69,32 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 				//direct link
 				startBodyTag(context,writer,component);
 				//new a fake page, so all zk script and css will be generated here
-				newFakePage(zcomp,context);
+				newFakePage(bridge,context);
 				
 				startJsTag(writer);
 				//invoke relocate css to head in client side
-				writer.write("zkXPage.relocateCss('#"+zcomp.getClientId(context)+"');");
+				writer.write("zkXPage.relocateCss('#"+bridge.getClientId(context)+"');");
 				endJsTag(writer);
 				endBodyTag(context,writer,component);
 				
 				//create a new zk component and attach it to new page
-				newZKComponent(zcomp, context);
+				newZKComponent(bridge, context);
 
 				
 			}else if(!jsfc.isAjaxPartialRefresh()){
 				//full postback, attach to new desktop
 				startBodyTag(context,writer,component);
 				
-				newFakePage(zcomp,context);
+				newFakePage(bridge,context);
 
 				startJsTag(writer);
 				//relocate css in fake page
-				writer.write("zkXPage.relocateCss('#"+zcomp.getClientId(context)+"');");
+				writer.write("zkXPage.relocateCss('#"+bridge.getClientId(context)+"');");
 				endJsTag(writer);
 				endBodyTag(context,writer,component);
 				
 				//reuse old zk component and attach it to new page
-				reattachZKComponent(zcomp, context);
+				reattachZKComponent(bridge, context);
 
 				
 			}else if(jsfc.isAjaxRendered(component)){
@@ -103,16 +103,16 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 				endBodyTag(context,writer,component);
 
 				//add au
-				outXspUpdateJs(zcomp.getAuScripts());
-	            zcomp.clearAuScripts();
+				outXspUpdateJs(bridge.getAuScripts());
+	            bridge.clearAuScripts();
 	            //reattach client widget to new dom (old one was replaced by new one with sam id)
-	            outXspJs("zkXPage.reattach('$" + zcomp.getComponent().getId() + "','#"+zcomp.getClientId(context)+"');");
+	            outXspJs("zkXPage.reattach('$" + bridge.getComponent().getId() + "','#"+bridge.getClientId(context)+"');");
 
-			}else if(zcomp.hasAuScript()){
+			}else if(bridge.hasAuScript()){
 				// ajax-postback but no in refresh area. 
 				//add au
-				outXspUpdateJs(zcomp.getAuScripts());
-	            zcomp.clearAuScripts();
+				outXspUpdateJs(bridge.getAuScripts());
+	            bridge.clearAuScripts();
 			}
 		}
 	}
@@ -149,7 +149,7 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
         }
 	}
 
-	protected void newFakePage(final ZulComponentBase zcomp, FacesContext context) throws IOException {
+	protected void newFakePage(final ZulBridgeBase bridge, FacesContext context) throws IOException {
 		final HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
 		final HttpServletResponse response = (HttpServletResponse) context.getExternalContext().getResponse();
 		final ServletContext svlctx = (ServletContext) context.getExternalContext().getContext();
@@ -166,7 +166,7 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 		}
 	}
 	
-	protected void newZKComponent(final ZulComponentBase zcomp, FacesContext context) throws IOException {
+	protected void newZKComponent(final ZulBridgeBase bridge, FacesContext context) throws IOException {
 		final HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
 		final HttpServletResponse response = (HttpServletResponse) context.getExternalContext().getResponse();
 		final ServletContext svlctx = (ServletContext) context.getExternalContext().getContext();
@@ -175,12 +175,12 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 			
 			Renders.render(svlctx, request, response, new GenericRichlet() {
 				public void service(Page page) throws Exception {
-					Component comp = createZKComponent(page, zcomp);
-					comp.setId(zcomp.getId());
+					Component comp = createZKComponent(page, bridge);
+					comp.setId(bridge.getId());
 					comp.setPage(page);
-					applyAttributes(zcomp,comp);
-					applyComposer(zcomp,comp);
-					zcomp.setComponent(comp);
+					applyAttributes(bridge,comp);
+					applyComposer(bridge,comp);
+					bridge.setComponent(comp);
 				}
 			}, null, writer);
 		} catch (ServletException e) {
@@ -190,40 +190,40 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 		
 	}
 
-	protected void applyAttributes(ZulComponentBase zcomp, Component comp) throws Exception {
+	protected void applyAttributes(ZulBridgeBase bridge, Component comp) throws Exception {
 		if(comp instanceof XulElement){
 			XulElement xul = (XulElement)comp;
 			String s ;
-			s = zcomp.getStyle();
+			s = bridge.getStyle();
 			if(s!=null){
-				xul.setStyle(zcomp.getStyle());
+				xul.setStyle(bridge.getStyle());
 			}
-			s = zcomp.getSclass();
+			s = bridge.getSclass();
 			if(s!=null){
 			xul.setSclass(s);
 			}
-			s = zcomp.getZclass();
+			s = bridge.getZclass();
 			if(s!=null){
 				xul.setZclass(s);
 			}
-			Integer zi = zcomp.getZindex();
+			Integer zi = bridge.getZindex();
 			if(zi!=null){
 				xul.setZindex(zi.intValue());
 			}
 			
-			s = zcomp.getHeight();
+			s = bridge.getHeight();
 			if(s!=null){
 				xul.setHeight(s);
 			}
-			s = zcomp.getWidth();
+			s = bridge.getWidth();
 			if(s!=null){
 				xul.setWidth(s);
 			}
-			s = zcomp.getHflex();
+			s = bridge.getHflex();
 			if(s!=null){
 				xul.setHflex(s);
 			}
-			s = zcomp.getVflex();
+			s = bridge.getVflex();
 			if(s!=null){
 				xul.setVflex(s);
 			}
@@ -231,9 +231,9 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 		
 	}
 
-	protected void reattachZKComponent(final ZulComponentBase zcomp, FacesContext context)
+	protected void reattachZKComponent(final ZulBridgeBase bridge, FacesContext context)
 			throws IOException {
-		Desktop dt = zcomp.getDesktop();
+		Desktop dt = bridge.getDesktop();
 		if (dt == null) {
 			throw new IllegalStateException("desktop not found");
 		}
@@ -242,19 +242,20 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 		final ServletContext svlctx = (ServletContext) context.getExternalContext().getContext();
 		final ResponseWriter writer = context.getResponseWriter();
 		try {
-			Bridge bridge = Bridge.start(svlctx, request, response,dt);
+			Bridge zbridge = Bridge.start(svlctx, request, response,dt);
 			try {
 				//detach
-				zcomp.getComponent().detach();	
+				bridge.getComponent().detach();	
+				//don't need to out au, all page is reloaded
 			} finally {
-				bridge.close();
+				zbridge.close();
 			}
 			//reassign
 			Renders.render(svlctx, request, response, new GenericRichlet() {
 				public void service(Page page) throws Exception {
-					Component comp = zcomp.getComponent();
+					Component comp = bridge.getComponent();
 					comp.setPage(page);
-					zcomp.setComponent(comp);
+					bridge.setComponent(comp);
 				}
 			}, null, writer);
 		} catch (ServletException e) {
@@ -263,8 +264,8 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 		}
 	}
 	
-	protected void applyComposer(final ZulComponentBase zcomp, final Component comp) throws Exception{
-		Object o = zcomp.getApply();
+	protected void applyComposer(final ZulBridgeBase zbridge, final Component comp) throws Exception{
+		Object o = zbridge.getApply();
 		if(o instanceof String) {
 			o = Classes.newInstanceByThread(o.toString());
 		}
