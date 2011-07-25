@@ -2,20 +2,45 @@
 
 =UNDER CONSTRUCTION=
 
-==Enable Spreadsheet==
-Before using Spreadsheet, you have to enable this library for your application. To do this, In _Application Properties->Advanced_ enable Library ID *org.zkoss.xpage.core.library* and *org.zkoss.xpage.zss.library*.
+==Enable spreadsheet==
+Before using spreadsheet, you have to enable this library for your application. To do this, In _Application Properties->Advanced_ enable Library ID *org.zkoss.xpage.core.library* and *org.zkoss.xpage.zss.library*.
 
 ==Add spreadsheet component to a page==
 To add a Spreadsheet component to a XPage, 
  # Edit the page
- # In *Controls View*, open *ZK* Category, you should see the component Spreadsheet(http://zkxpage.googlecode.com/svn/trunk/org.zkoss.xpage.zss/images/icon/zss_16.png), drag it to the page.
- # In page *Design* tab, you will see the Spreadsheet preview image as follow http://zkxpage.googlecode.com/svn/trunk/org.zkoss.xpage.zss/images/zss_preview.jpg
- # In page *Source* tab, you will see the zk component namespace({{{xmlns:zk="http://www.zkoss.org/xpage"}}}) in the root node, and Spreadsheet xml tag in the xml content.
+ # In *Controls View*, open *ZK* category, you should see the component spreadsheet(http://zkxpage.googlecode.com/svn/trunk/org.zkoss.xpage.zss/images/icon/zss_16.png), drag it to the page.
+ # In page *Design* tab, you will see the spreadsheet preview image as follow http://zkxpage.googlecode.com/svn/trunk/org.zkoss.xpage.zss/images/zss_preview.jpg
+ # In page *Source* tab, you will see the zk component namespace({{{xmlns:zk="http://www.zkoss.org/xpage"}}}) in the root node, and spreadsheet node in the xml content.
 {{{
 <zk:spreadsheet id="spreadsheet1">
 </zk:spreadsheet>
 }}}
 
 ==Component Properties==
+In ZK Spreadsheet for XPage Component, not all native ZK Spreadsheet are available. following are available/essential properties in XPage.
+|| *Prpoerty* || *Description* ||
+|| id || the component id (ex, {{{spreadsheet1}}}) ||
+|| width || the width (ex, {{{600px}}})||
+|| height || the height (ex, {{{400px}}})||
+|| src || the src location of book model, it could locate in {{{WebContent}}} or class path (ex, {{{/WEB-INF/demo.xls}}})|| 
+|| maxcolumns || the maximum visible number of columns of the spreadsheet (ex, {{{40}}})||
+|| maxrows || the maximum visible number of rows of this spreadsheet (ex, {{{40}}})||
+|| binding || the component binding expression, it is usually a EL expression like {{{ #{zkComponentBinding['a_binding_name']} }}} ||
+
+Following are other available properties in XPage.
+|| *Prpoerty* || *Description* ||
+|| apply || the ZK component composer, please read zk developer document for more detail ||
+|| style || the CSS style ||
+|| sclass || the CSS class ||
+|| zclass || the ZK Cascading Style class(es) for this component ||
+|| zindex || the Z index ||
+|| hflex || horizontal flex hint of this component ||
+|| vflex || vertical flex hint of this component ||
+
+
+
+
+
+
 
 ==Access Spreadsheet in Controller==
