@@ -9,15 +9,15 @@ Before using spreadsheet, you have to enable this library for your application. 
 To add a Spreadsheet component to a XPage, 
  # Edit the page
  # In *Controls View*, open *ZK* category, you should see the component spreadsheet(http://zkxpage.googlecode.com/svn/trunk/org.zkoss.xpage.zss/images/icon/zss_16.png), drag it to the page.
- # In page *Design* tab, you will see the spreadsheet preview image as follow http://zkxpage.googlecode.com/svn/trunk/org.zkoss.xpage.zss/images/zss_preview.jpg
- # In page *Source* tab, you will see the zk component namespace({{{xmlns:zk="http://www.zkoss.org/xpage"}}}) in the root node, and spreadsheet node in the xml content.
+ # In page *Design* tab, you will see the spreadsheet preview image as following http://zkxpage.googlecode.com/svn/trunk/org.zkoss.xpage.zss/images/zss_preview.jpg
+ # In the page *Source* tab, you will see a zk component namespace({{{xmlns:zk="http://www.zkoss.org/xpage"}}}) in the root node, and a spreadsheet node in the xml content like below
 {{{
 <zk:spreadsheet id="spreadsheet1">
 </zk:spreadsheet>
 }}}
 
 ==Component Properties==
-In ZK Spreadsheet for XPage Component, not all native ZK Spreadsheet are available. 
+Not all native Spreadsheet properties are directly available in ZK Spreadsheet for XPage Component, following are the available properties.
 ===Essential properties===
 || *Prpoerty* || *Description* ||
 || id || the component id (ex, {{{spreadsheet1}}}) ||
@@ -49,14 +49,44 @@ In ZK Spreadsheet for XPage Component, not all native ZK Spreadsheet are availab
 
 
 ==Access Spreadsheet in Controller==
-It is very easy to interact with spreadsheet component in XPage Java controller. To access Spreadsheet, 
- # you first use {{{ComponentBinding.getComponent("a_binding_name")}}} to get a {{{org.zkoss.xpage.zss.component.SpreadsheetBridge}}} back.
- # You cannot use the {{{SpreadsheetBridge}}} directly, instead of, you call {{{SpreadsheetBridge.execute(Action action)}}}
+It is very easy to interact with spreadsheet component in XPage Java controller. 
+ # Use {{{ComponentBinding.getBridge("a_binding_name")}}} to get a {{{org.zkoss.xpage.zss.component.SpreadsheetBridge}}} back.
+ # It is a bridge component, you cannot use the it to access Spreadsheet directly, instead of, you call {{{SpreadsheetBridge.execute(Action action)}}} to get and update the ZK Spreadsheet component in the method {{{Action.doAction(ZulBridgeBase bridge)}}} by invoking {{{bridge.getComponent();}}}
+following is a simple example to set/get value of a spreadsheet
+{{{
+public void doSet(){
+	//get the binding bridge back, and execute the action
+	ComponentBinding.getBridge("spreadsheet1").execute(new Action(){
+		public void doAction(ZulBridgeBase bridge) {
+			//get the spreadsheet
+			org.zkoss.zss.ui.Spreadsheet ss = (org.zkoss.zss.ui.Spreadsheet)bridge.getComponent();
+			//use spreadsheet api to get value
+			final Range range = Ranges.range(ss.getSelectedSheet(), cell);
+			range.setEditText(value);
+			
+		}});
+}
+public void doGet(){
+	//get the binding bridge back, and execute the action
+	ComponentBinding.getBridge("spreadsheet1").execute(new Action(){
+		public void doAction(ZulBridgeBase bridge) {
+			//get the spreadsheet
+			org.zkoss.zss.ui.Spreadsheet ss = (org.zkoss.zss.ui.Spreadsheet)bridge.getComponent();
+			//use spreadsheet api to get value
+			Range range = Ranges.range(ss.getSelectedSheet(), cell);
+			FormatText ft = range.getFormatText();
+			if (ft != null && ft.isCellFormatResult()) {
+				value = ft.getCellFormatResult().text;
+			} else {
+				final RichTextString rstr = range == null ? null : range
+						.getRichEditText();
+				value = rstr != null ? rstr.getString() : "";
+			}
+		}});
+}
+}}}
 
-
-For example, when clicking a button, in the action method ctrl.doSetValueClicked(), you want to set a spreadsheet cell value to 100.
-
-
+In the {{{Action.doAction(ZulBridgeBase bridge)}}} method, it is safe to access ZK component's, you can get and update value, and all the update will automatically update to ZK server/client side components.
 
 
 
