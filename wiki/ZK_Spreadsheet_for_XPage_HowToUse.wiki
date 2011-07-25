@@ -48,9 +48,17 @@ In ZK Spreadsheet for XPage Component, not all native ZK Spreadsheet are availab
 || vflex || vertical flex hint of this component ||
 
 
-
-
-
-
-
 ==Access Spreadsheet in Controller==
+It is very easy to interact with spreadsheet component in XPage Java controller. To access Spreadsheet, 
+ # you first use {{{ComponentBinding.getComponent("a_binding_name")}}} to get a {{{org.zkoss.xpage.zss.component.SpreadsheetBridge}}} back.
+ # You cannot use the {{{SpreadsheetBridge}}} directly, instead of, you call {{{SpreadsheetBridge.execute(Action action)}}}
+
+
+For example, when clicking a button, in the action method ctrl.doSetValueClicked(), you want to set a spreadsheet cell value to 100.
+
+
+
+
+
+
+
