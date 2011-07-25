@@ -4,15 +4,161 @@ In this demo, I have two input field that bind to Controller(SBean) {{{cell}}} a
 
 == Create XPage ==
  # Create a xpage in your database
- # Drag 2 inputTexts(named inputCell,inputValue) to the page, layout it. Binding the value to #{SBean.cell} & #{SBean.value} respectively. 
+ # Drag 2 inputTexts(named inputCell,inputValue) to the page, layout it. Binding the value to #{sbean.cell} & #{sbean.value} respectively. 
  # Add 2 button(named getBtn,setBtn) to the page.
- # Add action to get button, invoke SBean.doGet, Set partial update id 
+ # Add action to get button, invoke sbean.doGet, Set partial update id 
 to inputValue.
- # Add action to set button, invoke SBean.doSet, Set partial update id to setBtn
+ # Add action to set button, invoke sbean.doSet, Set partial update id to setBtn
+here is the code look like
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:zk="http://www.zkoss.org/xpage"
+	xmlns:xp_1="http://www.ibm.com/xsp/coreex">
+
+	Cell:
+	<xp:inputText id="inputCell" value="#{sbean.cell}"></xp:inputText>
+	,Value:
+	<xp:inputText id="inputValue" value="#{sbean.value}"></xp:inputText>
+	<xp:br></xp:br>
+
+	<xp:button value="Get" id="getBtn">
+		<xp:eventHandler event="onclick" submit="true" refreshMode="partial" refreshId="inputValue">
+			<xp:this.action>
+				<xp:executeScript script="#{javascript:sbean.doGet()}"></xp:executeScript>
+			</xp:this.action>
+		</xp:eventHandler>
+	</xp:button>
+	<xp:button value="Set" id="setBtn">
+		<xp:eventHandler event="onclick" submit="true" refreshMode="partial" refreshId="setBtn">
+			<xp:this.action>
+				<xp:executeScript script="#{javascript:sbean.doSet()}"></xp:executeScript>
+			</xp:this.action>
+		</xp:eventHandler>
+	</xp:button>
+</xp:view>
+
+}}}
 == Add Spreadsheet component ==
+ # continue the above example, drag a spreadsheet component from Controls View (in ZK category) to the page.
+ # name it myspreadsheet, binding to{{{ zkComponentBinding['spreadsheet1']}}}, set the width and height to 600px,400px
+now the xpage look like this
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:zk="http://www.zkoss.org/xpage"
+	xmlns:xp_1="http://www.ibm.com/xsp/coreex">
 
+	Cell:
+	<xp:inputText id="inputCell" value="#{sbean.cell}"></xp:inputText>
+	,Value:
+	<xp:inputText id="inputValue" value="#{sbean.value}"></xp:inputText>
+	<xp:br></xp:br>
 
+	<xp:button value="Get" id="getBtn">
+		<xp:eventHandler event="onclick" submit="true" refreshMode="partial" refreshId="inputValue">
+			<xp:this.action>
+				<xp:executeScript script="#{javascript:sbean.doGet()}"></xp:executeScript>
+			</xp:this.action>
+		</xp:eventHandler>
+	</xp:button>
+	<xp:button value="Set" id="setBtn">
+		<xp:eventHandler event="onclick" submit="true" refreshMode="partial" refreshId="setBtn">
+			<xp:this.action>
+				<xp:executeScript script="#{javascript:sbean.doSet()}"></xp:executeScript>
+			</xp:this.action>
+		</xp:eventHandler>
+	</xp:button>
+	<xp:br></xp:br>
+	<zk:spreadsheet id="myspreadsheet" height="400px" width="600px">
+		<zk:this.binding><![CDATA[#{zkComponentBinding['spreadsheet1']}]]></zk:this.binding>
+	</zk:spreadsheet>	
+</xp:view>
+}}}
 == Write the Controller (SBean) ==
+In this demo, we use general JSF Backing Bean to control the xpage. here is the steps.
+ # create a Java Class(test.SBean) in one of the source folder (except {{{Local}}}, if you don't have it, then create a new source folder).
+ # add 2 member field {{{cell}}}, {{{value}}} and the getter/setter. The xpage will binding to these member fields.
+ # add 2 method {{{doGet}}}, {{{doSet}}}. Implement the logic to get and set the spreadsheet value depends on selected cell. When clicking the button, these 2 method will be called. 
+following is the code looks like
+{{{
+package test;
 
+import org.zkoss.poi.ss.usermodel.RichTextString;
+import org.zkoss.xpage.core.bean.ComponentBinding;
+import org.zkoss.xpage.core.component.Action;
+import org.zkoss.xpage.core.component.ZulBridgeBase;
+import org.zkoss.zss.model.FormatText;
+import org.zkoss.zss.model.Range;
+import org.zkoss.zss.model.Ranges;
+public class SBean {
+
+	String cell = "A1";
+	String value;
+
+	public String getCell() {
+		return cell;
+	}
+	public void setCell(String cell) {
+		this.cell = cell;
+	}
+	public String getValue() {
+		return value;
+	}
+	public void setValue(String value) {
+		this.value = value;
+	}
+
+	public void doSet(){
+		//get the binding bridge back, and execute the action
+		ComponentBinding.getBridge("spreadsheet1").execute(new Action(){
+			public void doAction(ZulBridgeBase bridge) {
+				//get the spreadsheet
+				org.zkoss.zss.ui.Spreadsheet ss = (org.zkoss.zss.ui.Spreadsheet)bridge.getComponent();
+				//use spreadsheet api to get value
+				final Range range = Ranges.range(ss.getSelectedSheet(), cell);
+				range.setEditText(value);
+				
+			}});
+	}
+	
+	public void doGet(){
+		//get the binding bridge back, and execute the action
+		ComponentBinding.getBridge("spreadsheet1").execute(new Action(){
+			public void doAction(ZulBridgeBase bridge) {
+				//get the spreadsheet
+				org.zkoss.zss.ui.Spreadsheet ss = (org.zkoss.zss.ui.Spreadsheet)bridge.getComponent();
+				//use spreadsheet api to get value
+				Range range = Ranges.range(ss.getSelectedSheet(), cell);
+				FormatText ft = range.getFormatText();
+				if (ft != null && ft.isCellFormatResult()) {
+					value = ft.getCellFormatResult().text;
+				} else {
+					final RichTextString rstr = range == null ? null : range
+							.getRichEditText();
+					value = rstr != null ? rstr.getString() : "";
+				}
+			}});
+	}
+}
+
+}}}
+
+Ok, You have to do the final step.
+ # Edit file {{{WebContent/WEB-INF/faces-config.xml}}}, add a sbean which uses the bean you just created.
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config>
+  <managed-bean>
+    <managed-bean-name>sbean</managed-bean-name>
+    <managed-bean-class>test.SBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <!--AUTOGEN-START-BUILDER: Automatically generated by IBM Lotus Domino Designer. Do not modify.-->
+  <!--AUTOGEN-END-BUILDER: End of automatically generated section-->
+</faces-config>
+}}}
+
+== Test and Run ==
 
 == Screenshoot ==
