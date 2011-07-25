@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Eclipse-RegisterBuddy: org.zkoss.xpage.core
 Bundle-ManifestVersion: 2
-Bundle-Name: ZK XPage Pivottable Plug-in
+Bundle-Name: ZK Pivottable for XPage
 Bundle-SymbolicName: org.zkoss.xpage.pivot;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 0.9.0.qualifier
 Bundle-Vendor: www.zkoss.org
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: com.ibm.xsp.core;bundle-version="8.5.2",
- org.zkoss.xpage.core;bundle-version="0.8.0"
+ org.zkoss.xpage.core;bundle-version="0.9.0"
 Bundle-ClassPath: .

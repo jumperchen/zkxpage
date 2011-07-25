@@ -1,3 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- *******************************************************************      -->
+<!-- Copyright 2011 Potix Corporation. All Rights Reserved.                   -->
+<!--                                                                          -->
+<!-- Licensed under the GNU GENERAL PUBLIC LICENSE Version 3 (the "License"); --> 
+<!-- you may not use this file except in compliance with the License.         -->
+<!-- You may obtain a copy of the License at:                                 -->
+<!--                                                                          -->
+<!-- http://www.gnu.org/licenses/gpl-3.0.txt                                  -->
+<!--                                                                          -->
+<!-- Unless required by applicable law or agreed to in writing, software      --> 
+<!-- distributed under the License is distributed on an "AS IS" BASIS,        -->
+<!-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or          -->
+<!-- implied. See the License for the specific language governing             -->
+<!-- permissions and limitations under the License.                           -->
+<!-- *******************************************************************      -->
 <faces-config>
 	<faces-config-extension>
 		<namespace-uri>http://www.zkoss.org/xpage</namespace-uri>
@@ -128,7 +144,7 @@
 		<component-class>org.zkoss.xpage.zss.component.Spreadsheet</component-class>
 		<group-type-ref>org.zkoss.xpage.xul</group-type-ref>
 		<component-extension>
-			<since>0.8.0</since>
+			<since>0.9.0</since>
 			<component-family>org.zkoss.xpage</component-family>
 			<renderer-type>org.zkoss.xpage.spreadsheet</renderer-type>
 			<tag-name>spreadsheet</tag-name>

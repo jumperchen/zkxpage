@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.zkoss.xpage.zss.feature_0.8.0.201107221830.jar" id="org.zkoss.xpage.zss.feature" version="0.8.0.201107221830">
-      <category name="ZK XPage"/>
+   <feature url="features/org.zkoss.xpage.zss.feature_0.9.0.201107251426.jar" id="org.zkoss.xpage.zss.feature" version="0.9.0.201107251426">
+      <category name="ZK Components for XPage"/>
    </feature>
-   <category-def name="ZK XPage" label="ZK XPage">
+   <feature url="features/org.zkoss.xpage.pivot.feature_0.9.0.201107251426.jar" id="org.zkoss.xpage.pivot.feature" version="0.9.0.201107251426">
+      <category name="ZK Components for XPage"/>
+   </feature>
+   <category-def name="ZK Components for XPage" label="ZK Components for XPage">
       <description>
-         ZK XPage Components
+         ZK Components for XPage
       </description>
    </category-def>
 </site>
