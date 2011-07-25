@@ -1,3 +1,21 @@
 #summary How to use Spreadsheet component
 
-*UNDER CONSTRUCTION*
+=UNDER CONSTRUCTION=
+
+==Enable Spreadsheet==
+Before using Spreadsheet, you have to enable this library for your application. To do this, In _Application Properties->Advanced_ enable Library ID *org.zkoss.xpage.core.library* and *org.zkoss.xpage.zss.library*.
+
+==Add spreadsheet component to a page==
+To add a Spreadsheet component to a XPage, 
+ # Edit the page
+ # In *Controls View*, open *ZK* Category, you should see the component Spreadsheet(http://zkxpage.googlecode.com/svn/trunk/org.zkoss.xpage.zss/images/icon/zss_16.png), drag it to the page.
+ # In page *Design* tab, you will see the Spreadsheet preview image as follow http://zkxpage.googlecode.com/svn/trunk/org.zkoss.xpage.zss/images/zss_preview.jpg
+ # In page *Source* tab, you will see the zk component namespace({{{xmlns:zk="http://www.zkoss.org/xpage"}}}) in the root node, and Spreadsheet xml tag in the xml content.
+{{{
+<zk:spreadsheet id="spreadsheet1">
+</zk:spreadsheet>
+}}}
+
+==Component Properties==
+
+==Access Spreadsheet in Controller==
