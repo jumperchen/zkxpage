@@ -3,7 +3,7 @@
 =UNDER CONSTRUCTION=
 
 The installation is just like any other XPage extension, ex [http://extlib.openntf.org/ XPages Extension Library].
-If you have any problem about installation, please refer to [http://www.openntf.org/Projects/pmt.nsf/122B29BEE5A3E3A58625779F001DEA75/%24file/XPages%20Extension%20Library%20Documentation.pdf document] of XPages Extension Library or other online [http://www.slideshare.net/WorkFlowStudios/xpages-extension-toolkit-library-installation-steps slides], they have more screenshots for the installation. Following are similar steps from the XPages Extension Library but for spreadsheet.
+If you have any problem about installation, please refer to [http://www.openntf.org/Projects/pmt.nsf/122B29BEE5A3E3A58625779F001DEA75/%24file/XPages%20Extension%20Library%20Documentation.pdf document] of XPages Extension Library or other online [http://www.slideshare.net/WorkFlowStudios/xpages-extension-toolkit-library-installation-steps slides], they have more screenshots for the installation. Following are similar steps for spreadsheet.
 
 ==Installing the library in Domino Designer==
  # The library is provided as an Eclipse update site which should be installed using the Eclipse update manager. To enable the update manager, you should display the Designer _Preferences->Domino Designer_ and check _Enable Eclipse plug-in installation_
