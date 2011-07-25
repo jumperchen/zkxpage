@@ -1,0 +1,18 @@
+#summary Simple Demo of using ZK Spreadsheet for XPage
+
+In this demo, I have two input field that bind to Controller(SBean) {{{cell}}} and {{{value}}} attribute, and I also have two button to get and set value to spreadsheet.
+
+== Create XPage ==
+ # Create a xpage in your database
+ # Drag 2 inputTexts(named inputCell,inputValue) to the page, layout it. Binding the value to #{SBean.cell} & #{SBean.value} respectively. 
+ # Add 2 button(named getBtn,setBtn) to the page.
+ # Add action to get button, invoke SBean.doGet, Set partial update id 
+to inputValue.
+ # Add action to set button, invoke SBean.doSet, Set partial update id to setBtn
+== Add Spreadsheet component ==
+
+
+== Write the Controller (SBean) ==
+
+
+== Screenshoot ==
