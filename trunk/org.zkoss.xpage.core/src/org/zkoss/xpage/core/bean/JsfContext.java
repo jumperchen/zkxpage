@@ -28,7 +28,6 @@ import com.ibm.xsp.context.FacesContextEx;
  */
 public class JsfContext {
 
-	@SuppressWarnings("unchecked")
 	public static JsfContext instance(){
 		FacesContext fc = FacesContext.getCurrentInstance();
 		if(fc==null){

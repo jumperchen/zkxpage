@@ -15,11 +15,11 @@
  */
 package org.zkoss.xpage.core.component;
 /**
- * a action that will be invoke in {@link ZulComponentBase#execute(Action)}
+ * a action that will be invoke in {@link ZulBridgeBase#execute(Action)}
  * @author Dennis Chen
  *
  */
 public interface Action {
 
-	public void doAction(ZulComponentBase zcomp);
+	public void doAction(ZulBridgeBase bridge);
 }

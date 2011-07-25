@@ -18,18 +18,18 @@ package org.zkoss.xpage.zss.component;
 import javax.faces.el.ValueBinding;
 
 import org.zkoss.xpage.core.Constants;
-import org.zkoss.xpage.core.component.ZulComponentBase;
+import org.zkoss.xpage.core.component.ZulBridgeBase;
 import org.zkoss.zss.model.Book;
 /**
  * zk spreadsheet jsf component in Domino.
  * @author Dennis Chen
  *
  */
-public class Spreadsheet extends ZulComponentBase {
+public class SpreadsheetBridge extends ZulBridgeBase {
 
 	private static final long serialVersionUID = 1L;
 
-	public Spreadsheet() {
+	public SpreadsheetBridge() {
 		super();
 		setRendererType("org.zkoss.xpage.spreadsheet");
 	}
