@@ -180,6 +180,7 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 					comp.setPage(page);
 					applyAttributes(bridge,comp);
 					applyComposer(bridge,comp);
+					afterComposer(bridge,comp);
 					bridge.setComponent(comp);
 				}
 			}, null, writer);
@@ -264,8 +265,11 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 		}
 	}
 	
-	protected void applyComposer(final ZulBridgeBase zbridge, final Component comp) throws Exception{
-		Object o = zbridge.getApply();
+	protected void afterComposer(final ZulBridgeBase bridge, final Component comp) throws Exception{
+		
+	}
+	protected void applyComposer(final ZulBridgeBase bridge, final Component comp) throws Exception{
+		Object o = bridge.getApply();
 		if(o instanceof String) {
 			o = Classes.newInstanceByThread(o.toString());
 		}
