@@ -41,13 +41,13 @@ import org.zkoss.zkplus.embed.Bridge;
 public abstract class ZulBridgeBase extends UIComponentBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	/* zk component instance, will be assign by renderer */
-	transient Component component;
+	/* the root zk component instance, will be assign by renderer */
+	private transient Component component;
 	/* is desktop already timeout */
-	transient boolean desktopTimeout;
+	private transient boolean desktopTimeout;
 	
 	@SuppressWarnings("unchecked")
-	transient List auScripts = new ArrayList();
+	private transient List auScripts = new ArrayList();
 	
 	private Object apply = null;
 	protected StateValueMap states = new StateValueMap();
@@ -88,7 +88,7 @@ public abstract class ZulBridgeBase extends UIComponentBase implements Serializa
 		this.apply = apply;
 	}
 
-	/** get ZK Component that was created by this ZK JSF Component**/
+	/** get root ZK Component of this bridge**/
 	public Component getComponent() {
 		return component;
 	}
@@ -217,7 +217,7 @@ public abstract class ZulBridgeBase extends UIComponentBase implements Serializa
 		// state[2] = dt;//not work, state will be serialized and deserialized,
 		// after reference between desktop and component is lost.
 		state[3] = getDesktop().getId();
-		state[4] = apply instanceof String?(String)apply:null;
+		state[4] = (apply instanceof Serializable)?apply:null;
 		
 		return state;
 	}

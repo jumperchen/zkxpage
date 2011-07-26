@@ -21,19 +21,19 @@ import org.zkoss.pivot.Pivottable;
 import org.zkoss.xpage.core.component.ZulBridgeBase;
 import org.zkoss.xpage.core.renderkit.html_basic.ZulRendererBase;
 import org.zkoss.xpage.pivot.component.PivottableBridge;
-import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.HtmlBasedComponent;
 import org.zkoss.zk.ui.Page;
 
 public class PivottableRenderer extends ZulRendererBase {
 	
 	@Override
-	protected Component createZKComponent(Page page,ZulBridgeBase zbridge){
+	protected HtmlBasedComponent createRootComponent(Page page,ZulBridgeBase zbridge){
 		Pivottable comp = new Pivottable();
 		return comp;
 	}
 	
 	@Override
-	protected void applyAttributes(ZulBridgeBase bridge, Component comp) throws Exception {
+	protected void applyAttributes(ZulBridgeBase bridge, HtmlBasedComponent comp) throws Exception {
 		super.applyAttributes(bridge, comp);
 		if(comp instanceof Pivottable){
 			PivottableBridge pivb = (PivottableBridge)bridge;
@@ -65,7 +65,7 @@ public class PivottableRenderer extends ZulRendererBase {
 	}
 	
 	@Override
-	protected void afterComposer(final ZulBridgeBase bridge, final Component comp) throws Exception{
+	protected void afterComposer(final ZulBridgeBase bridge, final HtmlBasedComponent comp) throws Exception{
 		if(comp instanceof Pivottable){
 			Pivottable piv = (Pivottable)comp;
 			

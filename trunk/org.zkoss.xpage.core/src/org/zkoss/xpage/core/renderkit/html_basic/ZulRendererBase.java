@@ -35,11 +35,11 @@ import org.zkoss.xpage.core.util.Log;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Desktop;
 import org.zkoss.zk.ui.GenericRichlet;
+import org.zkoss.zk.ui.HtmlBasedComponent;
 import org.zkoss.zk.ui.Page;
 import org.zkoss.zk.ui.util.Composer;
 import org.zkoss.zkplus.embed.Bridge;
 import org.zkoss.zkplus.embed.Renders;
-import org.zkoss.zul.impl.XulElement;
 
 import com.ibm.xsp.ajax.AjaxUtil;
 import com.ibm.xsp.component.UIViewRootEx;
@@ -53,7 +53,7 @@ import com.ibm.xsp.resource.ScriptResource;
  */
 public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 
-	abstract protected Component createZKComponent(Page page, ZulBridgeBase bridge);
+	abstract protected HtmlBasedComponent createRootComponent(Page page, ZulBridgeBase bridge);
 
 	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
 		if (!(component instanceof ZulBridgeBase)) {
@@ -175,7 +175,7 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 			
 			Renders.render(svlctx, request, response, new GenericRichlet() {
 				public void service(Page page) throws Exception {
-					Component comp = createZKComponent(page, bridge);
+					HtmlBasedComponent comp = createRootComponent(page, bridge);
 					comp.setId(bridge.getId());
 					comp.setPage(page);
 					applyAttributes(bridge,comp);
@@ -191,45 +191,42 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 		
 	}
 
-	protected void applyAttributes(ZulBridgeBase bridge, Component comp) throws Exception {
-		if(comp instanceof XulElement){
-			XulElement xul = (XulElement)comp;
-			String s ;
-			s = bridge.getStyle();
-			if(s!=null){
-				xul.setStyle(bridge.getStyle());
-			}
-			s = bridge.getSclass();
-			if(s!=null){
-			xul.setSclass(s);
-			}
-			s = bridge.getZclass();
-			if(s!=null){
-				xul.setZclass(s);
-			}
-			Integer zi = bridge.getZindex();
-			if(zi!=null){
-				xul.setZindex(zi.intValue());
-			}
-			
-			s = bridge.getHeight();
-			if(s!=null){
-				xul.setHeight(s);
-			}
-			s = bridge.getWidth();
-			if(s!=null){
-				xul.setWidth(s);
-			}
-			s = bridge.getHflex();
-			if(s!=null){
-				xul.setHflex(s);
-			}
-			s = bridge.getVflex();
-			if(s!=null){
-				xul.setVflex(s);
-			}
+	protected void applyAttributes(ZulBridgeBase bridge, HtmlBasedComponent comp) throws Exception {
+		String s;
+		s = bridge.getStyle();
+		if (s != null) {
+			comp.setStyle(bridge.getStyle());
 		}
-		
+		s = bridge.getSclass();
+		if (s != null) {
+			comp.setSclass(s);
+		}
+		s = bridge.getZclass();
+		if (s != null) {
+			comp.setZclass(s);
+		}
+		Integer zi = bridge.getZindex();
+		if (zi != null) {
+			comp.setZindex(zi.intValue());
+		}
+
+		s = bridge.getHeight();
+		if (s != null) {
+			comp.setHeight(s);
+		}
+		s = bridge.getWidth();
+		if (s != null) {
+			comp.setWidth(s);
+		}
+		s = bridge.getHflex();
+		if (s != null) {
+			comp.setHflex(s);
+		}
+		s = bridge.getVflex();
+		if (s != null) {
+			comp.setVflex(s);
+		}
+
 	}
 
 	protected void reattachZKComponent(final ZulBridgeBase bridge, FacesContext context)
@@ -265,16 +262,20 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 		}
 	}
 	
-	protected void afterComposer(final ZulBridgeBase bridge, final Component comp) throws Exception{
+	protected void afterComposer(final ZulBridgeBase bridge, final HtmlBasedComponent comp) throws Exception{
 		
 	}
-	protected void applyComposer(final ZulBridgeBase bridge, final Component comp) throws Exception{
+	protected void applyComposer(final ZulBridgeBase bridge, final HtmlBasedComponent comp) throws Exception{
 		Object o = bridge.getApply();
+		if(o == null) return;
+		Object composer = null;
 		if(o instanceof String) {
-			o = Classes.newInstanceByThread(o.toString());
+			composer = Classes.newInstanceByThread(o.toString());
 		}
-		if(o instanceof Composer) {
-			((Composer)o).doAfterCompose(comp);
+		if(composer instanceof Composer) {
+			((Composer)composer).doAfterCompose(comp);
+		}else{
+			throw new IllegalArgumentException("illegal composer "+composer +" is not "+Composer.class);
 		}
 	}
 	

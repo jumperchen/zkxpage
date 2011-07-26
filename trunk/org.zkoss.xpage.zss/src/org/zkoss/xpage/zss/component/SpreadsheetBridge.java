@@ -19,7 +19,9 @@ import javax.faces.el.ValueBinding;
 
 import org.zkoss.xpage.core.Constants;
 import org.zkoss.xpage.core.component.ZulBridgeBase;
+import org.zkoss.zk.ui.Component;
 import org.zkoss.zss.model.Book;
+import org.zkoss.zss.ui.Spreadsheet;
 /**
  * zk spreadsheet jsf component in Domino.
  * @author Dennis Chen
@@ -73,15 +75,26 @@ public class SpreadsheetBridge extends ZulBridgeBase {
 		states.set("src", src);
 	}
 	
+	public void setBook(Object book) {
+		if(book instanceof ValueBinding){
+			this.setValueBinding("book", (ValueBinding)book);
+		}
+		throw new UnsupportedOperationException("Please use ValueBinding to set the book");
+    }
+
+	
 	
 	public Book getBook() {
-		ValueBinding vb = getValueBinding("book");
-		if(vb!=null){
-			return (Book)vb.getValue(getFacesContext());
+		return (Book)states.get("book",getFacesContext(),this);
+	}
+	
+	public Spreadsheet getSpreadsheet(){
+		Component comp = getComponent();
+		if(comp instanceof Spreadsheet){
+			return (Spreadsheet)comp;
 		}
 		return null;
 	}
-	
 	
 
 }

@@ -198,7 +198,7 @@
             </property-extension>
         </property>
         <property>
-            <description>the pivot model, value binding only</description>
+            <description>the pivot model, allow value binding only</description>
             <display-name>Model</display-name>
             <property-name>model</property-name>
             <property-class>java.lang.Object</property-class>
