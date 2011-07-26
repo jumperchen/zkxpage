@@ -54,6 +54,17 @@ public class StateValueMap implements Serializable{
 		return values==null?null:values.get(key);
 	}
 	
+	public Object get(String name,FacesContext context, UIComponent comp){
+		if(contains(name)){
+			return get(name);
+		}
+		ValueBinding vb = comp.getValueBinding(name);
+		if(vb!=null){
+			return vb.getValue(context);
+		}
+		return null;
+	}
+	
 	public String getString(String key){
 		return (String)get(key);
 	}

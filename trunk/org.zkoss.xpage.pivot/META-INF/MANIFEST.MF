@@ -8,4 +8,13 @@ Bundle-Vendor: www.zkoss.org
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: com.ibm.xsp.core;bundle-version="8.5.2",
  org.zkoss.xpage.core;bundle-version="0.9.0"
-Bundle-ClassPath: .
+Bundle-ClassPath: lib/pivottable.jar,
+ .
+Export-Package: org.zkoss.pivot,
+ org.zkoss.pivot.event,
+ org.zkoss.pivot.impl,
+ org.zkoss.pivot.impl.util,
+ org.zkoss.pivot.util,
+ org.zkoss.xpage.pivot,
+ org.zkoss.xpage.pivot.component,
+ org.zkoss.xpage.pivot.renderkit.html_basic
