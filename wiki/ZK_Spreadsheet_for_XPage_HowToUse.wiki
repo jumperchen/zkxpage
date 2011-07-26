@@ -3,21 +3,21 @@
 =UNDER CONSTRUCTION=
 
 ==Enable spreadsheet==
-Before using spreadsheet, you have to enable this library for your application. To do this, In _Application Properties->Advanced_ enable Library ID *org.zkoss.xpage.core.library* and *org.zkoss.xpage.zss.library*.
+Before using spreadsheet, you have to enable this library for your application. To do this, go to _Application Properties->Advanced_, enable Library ID *org.zkoss.xpage.core.library* and *org.zkoss.xpage.zss.library*.
 
-==Add spreadsheet component to a page==
+==Add spreadsheet component to a XPage==
 To add a Spreadsheet component to a XPage, 
  # Edit the page
- # In *Controls View*, open *ZK* category, you should see the component spreadsheet(http://zkxpage.googlecode.com/svn/trunk/org.zkoss.xpage.zss/images/icon/zss_16.png), drag it to the page.
- # In page *Design* tab, you will see the spreadsheet preview image as following http://zkxpage.googlecode.com/svn/trunk/org.zkoss.xpage.zss/images/zss_preview.jpg
- # In the page *Source* tab, you will see a zk component namespace({{{xmlns:zk="http://www.zkoss.org/xpage"}}}) in the root node, and a spreadsheet node in the xml content like below
+ # In *Controls View*, open *ZK* category, you should see the component *spreadsheet*(http://zkxpage.googlecode.com/svn/trunk/org.zkoss.xpage.zss/images/icon/zss_16.png), drag it to the page.
+ # In page *Design* tab, you will see the spreadsheet preview as following http://zkxpage.googlecode.com/svn/trunk/org.zkoss.xpage.zss/images/zss_preview.jpg
+ # In the page *Source* tab, you will see a zk component namespace({{{xmlns:zk="http://www.zkoss.org/xpage"}}}) in the root node, and a spreadsheet node in the xml content is like below
 {{{
 <zk:spreadsheet id="spreadsheet1">
 </zk:spreadsheet>
 }}}
 
 ==Component Properties==
-Not all native Spreadsheet properties are directly available in ZK Spreadsheet for XPage Component, following are the available properties.
+You need to set following property to configure the spreadsheet.
 ===Essential properties===
 || *Prpoerty* || *Description* ||
 || id || the component id (ex, {{{spreadsheet1}}}) ||
@@ -28,14 +28,13 @@ Not all native Spreadsheet properties are directly available in ZK Spreadsheet f
 || maxrows || the maximum visible number of rows of this spreadsheet (ex, {{{40}}})||
 || binding || the component binding expression, it is usually a EL expression like {{{ #{zkComponentBinding['a_binding_name']} }}} ||
 
- * *_zkComponentBinding_* is a util bean which help you to easy to bind component in XPage and access it in Java code.
+ * *_zkComponentBinding_* is a util bean which helps you to easy to bind component in XPage and access it in Java code.
  * Following is a very general example of using this component
 {{{
 <zk:spreadsheet id="spreadsheet1" height="400px" width="600px"
 	src="/WEB-INF/demo_sample.xls" binding="#{zkComponentBinding['spreadsheet1']}">
 </zk:spreadsheet>
 }}}
-
 
 ===Other available properties in XPage===
 || *Prpoerty* || *Description* ||
@@ -48,11 +47,14 @@ Not all native Spreadsheet properties are directly available in ZK Spreadsheet f
 || vflex || vertical flex hint of this component ||
 
 
+ * Not all ZK Spreadsheet properties/features are directly available in ZK Spreadsheet for XPage Component
+ * More ZK Spreadsheet feature please read [http://books.zkoss.org/wiki/ZK_Spreadsheet_Docs online document]
+
 ==Access Spreadsheet in Controller==
-It is very easy to interact with spreadsheet component in XPage Java controller. 
+It is very easy to interact with ZK Spreadsheet in XPage Java controller. 
  # Use {{{ComponentBinding.getBridge("a_binding_name")}}} to get a {{{org.zkoss.xpage.zss.component.SpreadsheetBridge}}} back.
- # It is a bridge component, you cannot use the it to access Spreadsheet directly, instead of, you call {{{SpreadsheetBridge.execute(Action action)}}} to get and update the ZK Spreadsheet component in the method {{{Action.doAction(ZulBridgeBase bridge)}}} by invoking {{{bridge.getComponent();}}}
-following is a simple example to set/get value of a spreadsheet
+ # It is a bridge component, you cannot directlly use it to access ZK Spreadsheet directly, instead of, you call {{{SpreadsheetBridge.execute(Action action)}}} to do a action( get and update the ZK Spreadsheet) in the method {{{Action.doAction(ZulBridgeBase bridge)}}}, get ZK Spreadsheet by invoking {{{bridge.getComponent();}}} in the action.
+Following is a simple example to set/get value of a ZK Spreadsheet
 {{{
 public void doSet(){
 	//get the binding bridge back, and execute the action
@@ -86,9 +88,5 @@ public void doGet(){
 }
 }}}
 
-In the {{{Action.doAction(ZulBridgeBase bridge)}}} method, it is safe to access ZK component's, you can get and update value, and all the update will automatically update to ZK server/client side components.
-
-
-
-
+In the {{{Action.doAction(ZulBridgeBase bridge)}}} method, it is safe to access ZK Component's, you can get and update value, all the update will be automatically updated to ZK server/client side components.
 
