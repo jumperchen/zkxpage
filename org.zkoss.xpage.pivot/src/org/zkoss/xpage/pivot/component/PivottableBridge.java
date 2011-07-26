@@ -18,8 +18,10 @@ package org.zkoss.xpage.pivot.component;
 import javax.faces.el.ValueBinding;
 
 import org.zkoss.pivot.PivotModel;
+import org.zkoss.pivot.Pivottable;
 import org.zkoss.xpage.core.Constants;
 import org.zkoss.xpage.core.component.ZulBridgeBase;
+import org.zkoss.zk.ui.Component;
 
 /**
  * zk pivottable jsf component in Domino.
@@ -78,6 +80,13 @@ public class PivottableBridge extends ZulBridgeBase {
     }
 
 
+	public Pivottable getPivottable(){
+		Component comp = getComponent();
+		if(comp instanceof Pivottable){
+			return (Pivottable)comp;
+		}
+		return null;
+	}
 	
 	
 	

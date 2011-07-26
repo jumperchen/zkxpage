@@ -28,7 +28,7 @@ import org.zkoss.util.resource.ClassLocator;
 import org.zkoss.xpage.core.component.ZulBridgeBase;
 import org.zkoss.xpage.core.renderkit.html_basic.ZulRendererBase;
 import org.zkoss.xpage.core.util.Log;
-import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.HtmlBasedComponent;
 import org.zkoss.zk.ui.Page;
 import org.zkoss.zk.ui.UiException;
 import org.zkoss.zss.model.Book;
@@ -39,13 +39,13 @@ import org.zkoss.zss.ui.Spreadsheet;
 public class SpreadsheetRenderer extends ZulRendererBase {
 	
 	@Override
-	protected Component createZKComponent(Page page,ZulBridgeBase zbridge){
+	protected HtmlBasedComponent createRootComponent(Page page,ZulBridgeBase bridge){
 		Spreadsheet spreadsheet = new Spreadsheet();
 		return spreadsheet;
 	}
 	
 	@Override
-	protected void applyAttributes(ZulBridgeBase bridge, Component comp) throws Exception {
+	protected void applyAttributes(ZulBridgeBase bridge, HtmlBasedComponent comp) throws Exception {
 		super.applyAttributes(bridge, comp);
 		if(comp instanceof Spreadsheet){
 			org.zkoss.xpage.zss.component.SpreadsheetBridge zss = (org.zkoss.xpage.zss.component.SpreadsheetBridge)bridge;
@@ -61,16 +61,26 @@ public class SpreadsheetRenderer extends ZulRendererBase {
 				ss.setMaxcolumns(in.intValue());
 			}
 			
-			String src = zss.getSrc();
-			Book book = zss.getBook();
 			
+			Book book = zss.getBook();
 			if(book!=null){
 				ss.setBook(book);
 			}else{
+				String src = zss.getSrc();
 				book = loadBook(FacesContext.getCurrentInstance(),ss.getImporter(),src);
-				ss.setBook(book);
+				if(book!=null){
+					ss.setBook(book);
+				}
 			}
 
+		}
+	}
+	
+	@Override
+	protected void afterComposer(final ZulBridgeBase bridge, final HtmlBasedComponent comp) throws Exception{
+		Book book = ((Spreadsheet)comp).getBook();
+		if(book==null){
+			((Spreadsheet)comp).setBook(loadDefaultBook());
 		}
 	}
 	
@@ -79,7 +89,7 @@ public class SpreadsheetRenderer extends ZulRendererBase {
 	 */
 	private Book loadBook(FacesContext context, Importer importer, String src) throws MalformedURLException {
 		if (Strings.isBlank(src)) {
-			return loadDefaultBook();
+			return null;
 		}
 
 		if (importer == null) {

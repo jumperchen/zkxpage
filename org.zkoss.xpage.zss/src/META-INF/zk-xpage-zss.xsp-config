@@ -193,5 +193,16 @@
                 </designer-extension>
             </property-extension>
         </property>
+		<property>
+            <description>the book, allow value binding only, the returned object has to be org.zkoss.zss.model.Book</description>
+            <display-name>Book</display-name>
+            <property-name>book</property-name>
+            <property-class>java.lang.Object</property-class>
+            <property-extension>
+                <designer-extension>
+                    <category>model</category>
+                </designer-extension>
+            </property-extension>
+        </property>       
 	</component>
 </faces-config>

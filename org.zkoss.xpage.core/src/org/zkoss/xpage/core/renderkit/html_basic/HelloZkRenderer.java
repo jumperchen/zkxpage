@@ -19,6 +19,7 @@ import java.lang.reflect.Method;
 
 import org.zkoss.xpage.core.component.ZulBridgeBase;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.HtmlBasedComponent;
 import org.zkoss.zk.ui.Page;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.EventListener;
@@ -50,7 +51,7 @@ public class HelloZkRenderer extends ZulRendererBase {
 	}
 	
 	@Override
-	protected Component createZKComponent(Page page,ZulBridgeBase bridge){
+	protected HtmlBasedComponent createRootComponent(Page page,ZulBridgeBase bridge){
 		Button button = new Button();
 		button.setLabel("Hi "+getUserName()+", Click me to verify zk ajax");
 		button.addEventListener("onClick", new EventListener(){
