@@ -3,7 +3,7 @@
 =UNDER CONSTRUCTION=
 
 ==Enable spreadsheet==
-Before using spreadsheet, you have to enable this library for your application. To do this, go to _Application Properties->Advanced_, enable Library ID *org.zkoss.xpage.core.library* and *org.zkoss.xpage.zss.library*.
+Before using spreadsheet, you have to enable this library for your application. To do this, go to _Application Properties->Advanced_, enable Library ID *org.zkoss.xpage.core.library* and *org.zkoss.xpage.zss.library*. <br/> http://zkxpage.googlecode.com/svn/trunk/docs/images/howto_1.png
 
 ==Add spreadsheet component to a XPage==
 To add a Spreadsheet component to a XPage, 
@@ -89,4 +89,3 @@ public void doGet(){
 }}}
 
 In the {{{Action.doAction(ZulBridgeBase bridge)}}} method, it is safe to access ZK Component's, you can get and update value, all the update will be automatically updated to ZK server/client side components.
-
