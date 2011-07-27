@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="lib/zpoi.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/zss.jar" sourcepath="Y:/zk/svn/zss-google/zss/src"/>
+	<classpathentry exported="true" kind="lib" path="lib/ooxml-schemas-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/dom4j-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/xmlbeans-2.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/zssapp.jar" sourcepath="Y:/zk/download/zss-app-2.1.0/zssapp/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="lib" path="lib/zpoi.jar" sourcepath="Y:/zk/download/zss-bin-2.1.0/dist/src/zpoi-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/zss.jar" />
 	<classpathentry kind="output" path="bin"/>
 </classpath>

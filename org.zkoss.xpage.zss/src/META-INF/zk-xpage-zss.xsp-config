@@ -205,4 +205,78 @@
             </property-extension>
         </property>       
 	</component>
+	<component>
+		<description>A zk spreadsheet-app component</description>
+		<display-name>SpreadsheetApp</display-name>
+		<icon>
+			<small-icon>images/icon/zss_16.png</small-icon>
+			<large-icon>images/icon/zss_24.png</large-icon>
+		</icon>		
+		<component-type>org.zkoss.xpage.spreadsheetapp</component-type>
+		<component-class>org.zkoss.xpage.zss.component.SpreadsheetAppBridge</component-class>
+		<group-type-ref>org.zkoss.xpage.xul</group-type-ref>
+		<component-extension>
+			<since>0.9.0</since>
+			<component-family>org.zkoss.xpage</component-family>
+			<renderer-type>org.zkoss.xpage.spreadsheetapp</renderer-type>
+			<tag-name>spreadsheetapp</tag-name>
+			<designer-extension>
+        		<in-palette>true</in-palette>
+        		<category>ZK</category>
+        		<!-- 
+				<render-markup>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xd;
+&lt;xp:view xmlns:xp="http://www.ibm.com/xsp/core"&gt;&#xd;
+	&lt;div style="width:100px" &gt;&#xd;
+	&lt;xp:image url="/images/zssapp_preview.jpg" id="image1"&gt;&lt;/xp:image&gt;&#xd;
+	&lt;/div&gt;&#xd;
+&lt;/xp:view&gt;&#xd;
+				</render-markup>
+				 -->         		
+      		</designer-extension>
+		</component-extension>
+		<property>
+            <description>the maximum visible number of columns of this spreadsheet</description>
+            <display-name>Maxcolumns</display-name>
+            <property-name>maxcolumns</property-name>
+            <property-class>int</property-class>
+            <property-extension>
+                <designer-extension>
+                    <category>control</category>
+                </designer-extension>
+            </property-extension>
+        </property>
+        <property>
+            <description>the maximum visible number of rows of this spreadsheet</description>
+            <display-name>Maxrows</display-name>
+            <property-name>maxrows</property-name>
+            <property-class>int</property-class>
+            <property-extension>
+                <designer-extension>
+                    <category>control</category>
+                </designer-extension>
+            </property-extension>
+        </property>
+		<property>
+            <description>the src location of book model, it could locate in WebContent or class path</description>
+            <display-name>Source</display-name>
+            <property-name>src</property-name>
+            <property-class>java.lang.String</property-class>
+            <property-extension>
+                <designer-extension>
+                    <category>model</category>
+                </designer-extension>
+            </property-extension>
+        </property>
+		<property>
+            <description>the book, allow value binding only, the returned object has to be org.zkoss.zss.model.Book</description>
+            <display-name>Book</display-name>
+            <property-name>book</property-name>
+            <property-class>java.lang.Object</property-class>
+            <property-extension>
+                <designer-extension>
+                    <category>model</category>
+                </designer-extension>
+            </property-extension>
+        </property> 
+	</component>
 </faces-config>
