@@ -3,8 +3,12 @@ OpenNTF Alliance [PROJECT_NAME]
 Copyright 2011 Potix Corporation. All Rights Reserved.
 
 This product includes software developed for
-OpenNTF Alliance – (http://www.OpenNTF.org/)
+OpenNTF Alliance ??(http://www.OpenNTF.org/)
 
 [ZK Framework]
 This product includes software from http://www.zkoss.org/, 
 the ZK Framework CE, which license is LGPL. 
+
+
+[bsh.jar]
+http://www.beanshell.org/, LGPL

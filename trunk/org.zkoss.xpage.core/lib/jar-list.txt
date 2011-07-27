@@ -8,3 +8,7 @@ zweb.jar
 zkex.jar - if EE
 zkmax.jar - if EE
 zml.jar - if EE
+
+
+3rd party.
+bsh.jar
