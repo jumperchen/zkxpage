@@ -9,13 +9,14 @@ Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: com.ibm.xsp.core;bundle-version="8.5.2",
  com.ibm.xsp.domino;bundle-version="8.5.2",
  com.ibm.domino.xsp.adapter;bundle-version="8.5.2"
-Bundle-ClassPath: lib/zcommon.jar,
+Bundle-ClassPath: .,
+ lib/zcommon.jar,
  lib/zcommons-el.jar,
  lib/zk.jar,
  lib/zkplus.jar,
  lib/zul.jar,
  lib/zweb.jar,
- .
+ lib/bsh.jar
 Export-Package: org.zkforge.apache.commons.el,
  org.zkforge.apache.commons.el.parser,
  org.zkoss.idom,
