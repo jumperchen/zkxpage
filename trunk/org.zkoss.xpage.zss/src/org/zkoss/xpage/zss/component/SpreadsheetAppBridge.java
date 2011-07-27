@@ -18,6 +18,7 @@ package org.zkoss.xpage.zss.component;
 import javax.faces.el.ValueBinding;
 
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zss.app.zul.Zssapp;
 import org.zkoss.zss.model.Book;
 import org.zkoss.zss.ui.Spreadsheet;
 /**
@@ -25,16 +26,14 @@ import org.zkoss.zss.ui.Spreadsheet;
  * @author Dennis Chen
  *
  */
-public class SpreadsheetBridge extends SpreadsheetBridgeBase {
+public class SpreadsheetAppBridge extends SpreadsheetBridgeBase {
 
 	private static final long serialVersionUID = 1L;
 
-	public SpreadsheetBridge() {
+	public SpreadsheetAppBridge() {
 		super();
-		setRendererType("org.zkoss.xpage.spreadsheet");
+		setRendererType("org.zkoss.xpage.spreadsheetapp");
 	}
-
-
 	
 	public void setBook(Object book) {
 		if(book instanceof ValueBinding){
@@ -47,10 +46,18 @@ public class SpreadsheetBridge extends SpreadsheetBridgeBase {
 		return (Book)states.get("book",getFacesContext(),this);
 	}
 	
-	public Spreadsheet getSpreadsheet(){
+	public Zssapp getSpreadsheetApp(){
 		Component comp = getComponent();
-		if(comp instanceof Spreadsheet){
-			return (Spreadsheet)comp;
+		if(comp instanceof Zssapp){
+			return (Zssapp)comp;
+		}
+		return null;
+	}
+	
+	public Spreadsheet getSpreadsheet(){
+		Zssapp app = getSpreadsheetApp();
+		if(app!=null){
+			return app.getSpreadsheet();
 		}
 		return null;
 	}

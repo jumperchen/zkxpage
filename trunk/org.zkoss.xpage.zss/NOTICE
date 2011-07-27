@@ -7,4 +7,14 @@ OpenNTF Alliance – (http://www.OpenNTF.org/)
 
 [ZK Spreadsheet]
 This product includes software from http://www.zkoss.org/, 
-the ZK Spreadsheet OSE, which license is GPL. 
+the ZK Spreadsheet OSE, GPL. 
+
+[xmlbeans-2.3.0.jar]
+http://xmlbeans.apache.org/, Apache License Version 2.0
+
+
+[dom4j-1.6.1.jar]
+http://dom4j.sourceforge.net/dom4j-1.6.1/license.html, BSD style license
+
+[ooxml-schemas-1.1.jar]
+http://poi.apache.org/overview.html,  Apache License Version 2.0
