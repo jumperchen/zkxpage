@@ -37,6 +37,16 @@ public class JsfContext {
 		JsfContext context = (JsfContext)fc.getApplication().createValueBinding("#{zkJsfContext}").getValue(fc);
 		return context;
 	}
+	
+	public Object getBean(String name){
+		FacesContext fc = FacesContext.getCurrentInstance();
+		if(fc==null){
+			return null;
+		}
+		Object bean = fc.getApplication().createValueBinding("#{"+name+"}").getValue(fc);
+		return bean;
+	}
+	
 	private FacesContext check(){
 		FacesContextEx fc =  (FacesContextEx)FacesContext.getCurrentInstance();
 		if(fc==null){
