@@ -172,9 +172,11 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 		final ServletContext svlctx = (ServletContext) context.getExternalContext().getContext();
 		final ResponseWriter writer = context.getResponseWriter();
 		try {
-			
 			Renders.render(svlctx, request, response, new GenericRichlet() {
 				public void service(Page page) throws Exception {
+					
+					applyVariableResolver(page);
+					
 					HtmlBasedComponent comp = createRootComponent(page, bridge);
 					comp.setId(bridge.getId());
 					comp.setPage(page);
@@ -190,6 +192,10 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 		}
 		
 	}
+
+	protected void applyVariableResolver(Page page) {
+		//I canot apply variableresolver to page, because in incoming au, it will resolve nothing, since the bean is only in facescontext not in au
+    }
 
 	protected void applyAttributes(ZulBridgeBase bridge, HtmlBasedComponent comp) throws Exception {
 		String s;
