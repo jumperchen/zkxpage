@@ -1,4 +1,4 @@
-package org.zkoss.xpage.zss.renderkit.html_basic;
+package org.zkoss.xpage.zss.renderkit.zul;
 
 import java.io.File;
 import java.io.IOException;

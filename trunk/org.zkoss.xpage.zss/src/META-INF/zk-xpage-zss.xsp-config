@@ -206,32 +206,30 @@
         </property>       
 	</component>
 	<component>
-		<description>A zk spreadsheet-app component</description>
-		<display-name>SpreadsheetApp</display-name>
+		<description>A zk spreadsheet-rich component, contains menu, toolbar, able to copy,paste, insert ..etc</description>
+		<display-name>Spreadsheet Rich</display-name>
 		<icon>
 			<small-icon>images/icon/zss_16.png</small-icon>
 			<large-icon>images/icon/zss_24.png</large-icon>
 		</icon>		
-		<component-type>org.zkoss.xpage.spreadsheetapp</component-type>
-		<component-class>org.zkoss.xpage.zss.component.SpreadsheetAppBridge</component-class>
+		<component-type>org.zkoss.xpage.spreadsheetRich</component-type>
+		<component-class>org.zkoss.xpage.zss.component.SpreadsheetRichBridge</component-class>
 		<group-type-ref>org.zkoss.xpage.xul</group-type-ref>
 		<component-extension>
 			<since>0.9.0</since>
 			<component-family>org.zkoss.xpage</component-family>
-			<renderer-type>org.zkoss.xpage.spreadsheetapp</renderer-type>
-			<tag-name>spreadsheetapp</tag-name>
+			<renderer-type>org.zkoss.xpage.spreadsheetRich</renderer-type>
+			<tag-name>spreadsheetRich</tag-name>
 			<designer-extension>
         		<in-palette>true</in-palette>
         		<category>ZK</category>
-        		<!-- 
 				<render-markup>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xd;
 &lt;xp:view xmlns:xp="http://www.ibm.com/xsp/core"&gt;&#xd;
-	&lt;div style="width:100px" &gt;&#xd;
-	&lt;xp:image url="/images/zssapp_preview.jpg" id="image1"&gt;&lt;/xp:image&gt;&#xd;
+	&lt;div style="width:1080px" &gt;&#xd;
+	&lt;xp:image url="/images/zssrich_preview.jpg" id="image1"&gt;&lt;/xp:image&gt;&#xd;
 	&lt;/div&gt;&#xd;
 &lt;/xp:view&gt;&#xd;
-				</render-markup>
-				 -->         		
+				</render-markup>       		
       		</designer-extension>
 		</component-extension>
 		<property>

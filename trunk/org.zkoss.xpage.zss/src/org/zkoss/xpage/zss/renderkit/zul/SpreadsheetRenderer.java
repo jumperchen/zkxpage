@@ -13,31 +13,31 @@
  * implied. See the License for the specific language governing 
  * permissions and limitations under the License.
  */
-package org.zkoss.xpage.zss.renderkit.html_basic;
+package org.zkoss.xpage.zss.renderkit.zul;
 
 import javax.faces.context.FacesContext;
 
 import org.zkoss.xpage.core.component.ZulBridgeBase;
-import org.zkoss.xpage.core.renderkit.html_basic.ZulRendererBase;
-import org.zkoss.xpage.zss.component.SpreadsheetAppBridge;
+import org.zkoss.xpage.core.renderkit.zul.ZulRendererBase;
+import org.zkoss.xpage.zss.component.SpreadsheetBridge;
 import org.zkoss.zk.ui.HtmlBasedComponent;
 import org.zkoss.zk.ui.Page;
-import org.zkoss.zss.app.zul.Zssapp;
 import org.zkoss.zss.model.Book;
+import org.zkoss.zss.ui.Spreadsheet;
 
-public class SpreadsheetAppRenderer extends ZulRendererBase {
+public class SpreadsheetRenderer extends ZulRendererBase {
 	
 	@Override
 	protected HtmlBasedComponent createRootComponent(Page page,ZulBridgeBase bridge){
-		Zssapp app = new Zssapp();
-		return app;
+		Spreadsheet spreadsheet = new Spreadsheet();
+		return spreadsheet;
 	}
 	
 	@Override
 	protected void applyAttributes(ZulBridgeBase bridge, HtmlBasedComponent comp) throws Exception {
 		super.applyAttributes(bridge, comp);
-		SpreadsheetAppBridge zss = (SpreadsheetAppBridge) bridge;
-		Zssapp ss = (Zssapp) comp;
+		SpreadsheetBridge zss = (SpreadsheetBridge) bridge;
+		Spreadsheet ss = (Spreadsheet) comp;
 
 		Integer in = zss.getMaxrows();
 
@@ -54,7 +54,7 @@ public class SpreadsheetAppRenderer extends ZulRendererBase {
 			ss.setBook(book);
 		} else {
 			String src = zss.getSrc();
-			book = BookLoader.loadBook(FacesContext.getCurrentInstance(), ss.getSpreadsheet().getImporter(), src);
+			book = BookLoader.loadBook(FacesContext.getCurrentInstance(), ss.getImporter(), src);
 			if (book != null) {
 				ss.setBook(book);
 			}
@@ -63,9 +63,11 @@ public class SpreadsheetAppRenderer extends ZulRendererBase {
 	
 	@Override
 	protected void afterComposer(final ZulBridgeBase bridge, final HtmlBasedComponent comp) throws Exception{
-		Book book = ((Zssapp)comp).getSpreadsheet().getBook();
+		Book book = ((Spreadsheet)comp).getBook();
 		if(book==null){
-			((Zssapp)comp).setBook(BookLoader.loadDefaultBook());
+			((Spreadsheet)comp).setBook(BookLoader.loadDefaultBook());
 		}
 	}
+	
+	
 }

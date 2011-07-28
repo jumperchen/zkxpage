@@ -25,7 +25,7 @@
 			<renderer-type>org.zkoss.xpage.hellozk
 			</renderer-type>
 			<renderer-class>
-				org.zkoss.xpage.core.renderkit.html_basic.HelloZkRenderer
+				org.zkoss.xpage.core.renderkit.zul.HelloZkRenderer
 			</renderer-class>
 		</renderer>
 	</render-kit>

@@ -13,43 +13,31 @@
  * implied. See the License for the specific language governing 
  * permissions and limitations under the License.
  */
-package org.zkoss.xpage.zss.renderkit.html_basic;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
+package org.zkoss.xpage.zss.renderkit.zul;
 
 import javax.faces.context.FacesContext;
 
-import org.zkoss.lang.Strings;
-import org.zkoss.util.resource.ClassLocator;
 import org.zkoss.xpage.core.component.ZulBridgeBase;
-import org.zkoss.xpage.core.renderkit.html_basic.ZulRendererBase;
-import org.zkoss.xpage.core.util.Log;
-import org.zkoss.xpage.zss.component.SpreadsheetBridge;
+import org.zkoss.xpage.core.renderkit.zul.ZulRendererBase;
+import org.zkoss.xpage.zss.component.SpreadsheetRichBridge;
 import org.zkoss.zk.ui.HtmlBasedComponent;
 import org.zkoss.zk.ui.Page;
-import org.zkoss.zk.ui.UiException;
+import org.zkoss.zss.app.zul.Zssapp;
 import org.zkoss.zss.model.Book;
-import org.zkoss.zss.model.Importer;
-import org.zkoss.zss.model.impl.ExcelImporter;
-import org.zkoss.zss.ui.Spreadsheet;
 
-public class SpreadsheetRenderer extends ZulRendererBase {
+public class SpreadsheetRichRenderer extends ZulRendererBase {
 	
 	@Override
 	protected HtmlBasedComponent createRootComponent(Page page,ZulBridgeBase bridge){
-		Spreadsheet spreadsheet = new Spreadsheet();
-		return spreadsheet;
+		Zssapp app = new Zssapp();
+		return app;
 	}
 	
 	@Override
 	protected void applyAttributes(ZulBridgeBase bridge, HtmlBasedComponent comp) throws Exception {
 		super.applyAttributes(bridge, comp);
-		SpreadsheetBridge zss = (SpreadsheetBridge) bridge;
-		Spreadsheet ss = (Spreadsheet) comp;
+		SpreadsheetRichBridge zss = (SpreadsheetRichBridge) bridge;
+		Zssapp ss = (Zssapp) comp;
 
 		Integer in = zss.getMaxrows();
 
@@ -66,7 +54,7 @@ public class SpreadsheetRenderer extends ZulRendererBase {
 			ss.setBook(book);
 		} else {
 			String src = zss.getSrc();
-			book = BookLoader.loadBook(FacesContext.getCurrentInstance(), ss.getImporter(), src);
+			book = BookLoader.loadBook(FacesContext.getCurrentInstance(), ss.getSpreadsheet().getImporter(), src);
 			if (book != null) {
 				ss.setBook(book);
 			}
@@ -75,11 +63,9 @@ public class SpreadsheetRenderer extends ZulRendererBase {
 	
 	@Override
 	protected void afterComposer(final ZulBridgeBase bridge, final HtmlBasedComponent comp) throws Exception{
-		Book book = ((Spreadsheet)comp).getBook();
+		Book book = ((Zssapp)comp).getSpreadsheet().getBook();
 		if(book==null){
-			((Spreadsheet)comp).setBook(BookLoader.loadDefaultBook());
+			((Zssapp)comp).setBook(BookLoader.loadDefaultBook());
 		}
 	}
-	
-	
 }
