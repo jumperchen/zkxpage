@@ -16,7 +16,8 @@ Bundle-ClassPath: .,
  lib/zkplus.jar,
  lib/zul.jar,
  lib/zweb.jar,
- lib/bsh.jar
+ lib/bsh.jar,
+ lib/breeze.jar
 Export-Package: org.zkforge.apache.commons.el,
  org.zkforge.apache.commons.el.parser,
  org.zkoss.idom,
