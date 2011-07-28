@@ -26,13 +26,13 @@ import org.zkoss.zss.ui.Spreadsheet;
  * @author Dennis Chen
  *
  */
-public class SpreadsheetAppBridge extends SpreadsheetBridgeBase {
+public class SpreadsheetRichBridge extends SpreadsheetBridgeBase {
 
 	private static final long serialVersionUID = 1L;
 
-	public SpreadsheetAppBridge() {
+	public SpreadsheetRichBridge() {
 		super();
-		setRendererType("org.zkoss.xpage.spreadsheetapp");
+		setRendererType("org.zkoss.xpage.spreadsheetRich");
 	}
 	
 	public void setBook(Object book) {

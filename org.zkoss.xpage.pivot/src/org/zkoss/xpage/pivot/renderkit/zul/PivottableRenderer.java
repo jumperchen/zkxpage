@@ -13,13 +13,13 @@
  * implied. See the License for the specific language governing 
  * permissions and limitations under the License.
  */
-package org.zkoss.xpage.pivot.renderkit.html_basic;
+package org.zkoss.xpage.pivot.renderkit.zul;
 
 import org.zkoss.pivot.PivotField;
 import org.zkoss.pivot.PivotModel;
 import org.zkoss.pivot.Pivottable;
 import org.zkoss.xpage.core.component.ZulBridgeBase;
-import org.zkoss.xpage.core.renderkit.html_basic.ZulRendererBase;
+import org.zkoss.xpage.core.renderkit.zul.ZulRendererBase;
 import org.zkoss.xpage.pivot.component.PivottableBridge;
 import org.zkoss.zk.ui.HtmlBasedComponent;
 import org.zkoss.zk.ui.Page;

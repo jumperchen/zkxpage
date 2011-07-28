@@ -13,7 +13,7 @@
  * implied. See the License for the specific language governing 
  * permissions and limitations under the License.
  */
-package org.zkoss.xpage.core.renderkit.html_basic;
+package org.zkoss.xpage.core.renderkit.zul;
 
 import java.lang.reflect.Method;
 

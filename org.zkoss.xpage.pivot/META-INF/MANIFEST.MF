@@ -17,4 +17,4 @@ Export-Package: org.zkoss.pivot,
  org.zkoss.pivot.util,
  org.zkoss.xpage.pivot,
  org.zkoss.xpage.pivot.component,
- org.zkoss.xpage.pivot.renderkit.html_basic
+ org.zkoss.xpage.pivot.renderkit.zul
