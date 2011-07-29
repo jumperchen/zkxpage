@@ -12,3 +12,8 @@ the ZK Framework CE, which license is LGPL.
 
 [bsh.jar]
 http://www.beanshell.org/, LGPL
+
+[jfreechart.jar]
+http://www.jfree.org/jfreechart/, LGPL
+
+[jcommon.jar]

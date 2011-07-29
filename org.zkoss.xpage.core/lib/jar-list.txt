@@ -1,14 +1,20 @@
+[ZK-CE]
 zcommon.jar
 zcommons-el.jar
 zk.jar
 zkplus.jar
 zul.jar
 zweb.jar
+breeze.jar - theme
 
+[3rd Party]
+bsh.jar - for zscript
+jfreechart.jar - for chart
+jcommon.jar - for chart
+
+[ZK-Commercial]
 zkex.jar - if EE
 zkmax.jar - if EE
 zml.jar - if EE
 
 
-3rd party.
-bsh.jar
