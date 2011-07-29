@@ -8,7 +8,10 @@ xmlbeans-2.3.0.jar - for reading xlsx
 dom4j-1.6.1.jar - for reading xlsx
 ooxml-schemas-1.1.jar - for reading xlsx
 
+iText-5.0.3.jar - for export pdf
+
 [Commercial]
 zssex.jar - if EE
+zsspdf.jar - if EE
 
 

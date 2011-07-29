@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/iText-5.0.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/zsspdf.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/zssex.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/ooxml-schemas-1.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/dom4j-1.6.1.jar"/>
@@ -9,6 +11,6 @@
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="lib" path="lib/zpoi.jar" sourcepath="Y:/zk/download/zss-bin-2.1.0/dist/src/zpoi-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/zss.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/zss.jar" sourcepath="Y:/zk/svn/zss-google/zss/src"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

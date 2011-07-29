@@ -12,10 +12,12 @@ Bundle-ClassPath: .,
  lib/zpoi.jar,
  lib/zss.jar,
  lib/zssex.jar,
+ lib/zsspdf.jar,
  lib/zssapp.jar,
  lib/xmlbeans-2.3.0.jar,
  lib/dom4j-1.6.1.jar,
- lib/ooxml-schemas-1.1.jar
+ lib/ooxml-schemas-1.1.jar,
+ lib/iText-5.0.3.jar
 Export-Package: org.zkoss.poi,
  org.zkoss.poi.common.usermodel,
  org.zkoss.poi.ddf,
