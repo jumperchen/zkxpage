@@ -166,7 +166,7 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 		}
 	}
 	
-	protected void newZKComponent(final ZulBridgeBase bridge, FacesContext context) throws IOException {
+	protected void newZKComponent(final ZulBridgeBase bridge, final FacesContext context) throws IOException {
 		final HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
 		final HttpServletResponse response = (HttpServletResponse) context.getExternalContext().getResponse();
 		final ServletContext svlctx = (ServletContext) context.getExternalContext().getContext();
@@ -180,10 +180,12 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 					HtmlBasedComponent comp = createRootComponent(page, bridge);
 					comp.setId(bridge.getId());
 					comp.setPage(page);
-					applyAttributes(bridge,comp);
-					applyComposer(bridge,comp);
-					afterComposer(bridge,comp);
 					bridge.setComponent(comp);
+					
+					applyAttributes(bridge,comp);
+					applyComposer(bridge,comp,context);
+					afterComposer(bridge,comp,context);
+					
 				}
 			}, null, writer);
 		} catch (ServletException e) {
@@ -268,10 +270,10 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 		}
 	}
 	
-	protected void afterComposer(final ZulBridgeBase bridge, final HtmlBasedComponent comp) throws Exception{
+	protected void afterComposer(final ZulBridgeBase bridge, final HtmlBasedComponent comp,final FacesContext context) throws Exception{
 		
 	}
-	protected void applyComposer(final ZulBridgeBase bridge, final HtmlBasedComponent comp) throws Exception{
+	protected void applyComposer(final ZulBridgeBase bridge, final HtmlBasedComponent comp, final FacesContext context) throws Exception{
 		Object o = bridge.getApply();
 		if(o == null) return;
 		Object composer = null;
@@ -280,6 +282,8 @@ public abstract class ZulRendererBase extends javax.faces.render.Renderer {
 		}
 		if(composer instanceof Composer) {
 			((Composer)composer).doAfterCompose(comp);
+		}else if(composer instanceof org.zkoss.xpage.core.util.Composer) {
+			((org.zkoss.xpage.core.util.Composer)composer).doAfterCompose(bridge,context);
 		}else{
 			throw new IllegalArgumentException("illegal composer "+composer +" is not "+Composer.class);
 		}
