@@ -15,6 +15,8 @@
  */
 package org.zkoss.xpage.pivot.renderkit.zul;
 
+import javax.faces.context.FacesContext;
+
 import org.zkoss.pivot.PivotField;
 import org.zkoss.pivot.PivotModel;
 import org.zkoss.pivot.Pivottable;
@@ -65,7 +67,7 @@ public class PivottableRenderer extends ZulRendererBase {
 	}
 	
 	@Override
-	protected void afterComposer(final ZulBridgeBase bridge, final HtmlBasedComponent comp) throws Exception{
+	protected void afterComposer(final ZulBridgeBase bridge, final HtmlBasedComponent comp,final FacesContext context) throws Exception{
 		if(comp instanceof Pivottable){
 			Pivottable piv = (Pivottable)comp;
 			

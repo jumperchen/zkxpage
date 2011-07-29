@@ -62,7 +62,7 @@ public class SpreadsheetRichRenderer extends ZulRendererBase {
 	}
 	
 	@Override
-	protected void afterComposer(final ZulBridgeBase bridge, final HtmlBasedComponent comp) throws Exception{
+	protected void afterComposer(final ZulBridgeBase bridge, final HtmlBasedComponent comp,final FacesContext context) throws Exception{
 		Book book = ((Zssapp)comp).getSpreadsheet().getBook();
 		if(book==null){
 			((Zssapp)comp).setBook(BookLoader.loadDefaultBook());
