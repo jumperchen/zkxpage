@@ -3,18 +3,7 @@
 	<b>
 		Balance Form
 		<xp:br></xp:br></b>
-	<xp:button value="Submit" id="button1">
-		<xp:eventHandler event="onclick" submit="true">
-			<xp:this.action>
-				<xp:actionGroup>
-					<xp:executeScript
-						script="#{javascript:quarterForm.doSubmit()}">
-					</xp:executeScript>
-					<xp:openPage name="/quarterFormResult.xsp"></xp:openPage>
-				</xp:actionGroup>
-			</xp:this.action>
-		</xp:eventHandler>
-	</xp:button>
+
 	<table>
 		<tr>
 			<td>Style :</td>
@@ -44,4 +33,24 @@
 		apply="demo.ctrl.QuarterFormComposer" maxrows="20" maxcolumns="20"
 		binding="#{zkComponentBinding['formsheet']}" src="/formsheet1.xlsx">
 	</zk:spreadsheet>
+	<xp:button value="Submit" id="button1">
+		<xp:eventHandler event="onclick" submit="true">
+			<xp:this.action>
+				<xp:actionGroup>
+					<xp:executeScript
+						script="#{javascript:quarterForm.doSubmit()}">
+					</xp:executeScript>
+					<xp:openPage name="/quarterFormResult.xsp"></xp:openPage>
+				</xp:actionGroup>
+			</xp:this.action>
+		</xp:eventHandler>
+	</xp:button>
+		<xp:button value="Back" id="button2">
+			<xp:eventHandler event="onclick" submit="true"
+				refreshMode="complete">
+				<xp:this.action>
+					<xp:openPage name="/index.xsp"></xp:openPage>
+				</xp:this.action>
+			</xp:eventHandler>
+		</xp:button>			
 </xp:view>

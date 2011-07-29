@@ -67,8 +67,25 @@
 			</td>
 		</tr>
 	</table>
-	<zk:spreadsheet id="sheet" width="600px" height="400px" apply="demo.ctrl.QuarterReportComposer"
+	<zk:spreadsheet id="sheet" width="600px" height="450px" apply="demo.ctrl.QuarterReportComposer"
 		maxrows="20" maxcolumns="20" binding="#{zkComponentBinding['quartersheet']}"
 		src="/quartersheet1.xls">
 	</zk:spreadsheet>
+	<xp:button value="Download PDF" id="button1">
+		<xp:eventHandler event="onclick" submit="true"
+			refreshMode="partial" refreshId="quarter1">
+			<xp:this.action>
+				<xp:executeScript script="#{javascript:quarterReport.doDownload()}">
+				</xp:executeScript>
+			</xp:this.action>
+		</xp:eventHandler>
+	</xp:button>
+		<xp:button value="Back" id="button2">
+			<xp:eventHandler event="onclick" submit="true"
+				refreshMode="complete">
+				<xp:this.action>
+					<xp:openPage name="/index.xsp"></xp:openPage>
+				</xp:this.action>
+			</xp:eventHandler>
+		</xp:button>		
 </xp:view>

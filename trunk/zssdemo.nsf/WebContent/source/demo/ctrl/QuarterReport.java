@@ -4,13 +4,33 @@ import org.zkoss.xpage.core.bean.ComponentBinding;
 import org.zkoss.xpage.core.component.Action;
 import org.zkoss.xpage.core.component.ZulBridgeBase;
 import org.zkoss.xpage.zss.component.SpreadsheetBridge;
+import org.zkoss.zkmax.zul.Filedownload;
+import org.zkoss.zss.model.Book;
+import org.zkoss.zss.model.Exporter;
+import org.zkoss.zss.model.Exporters;
 import org.zkoss.zss.ui.Spreadsheet;
+
+import com.ibm.jvm.util.ByteArrayOutputStream;
 
 import demo.data.QuarterBean;
 import demo.data.QuarterBeanProvider;
 
 public class QuarterReport {
 
+	
+	public void doDownload(){
+		ComponentBinding.getBridge("quartersheet").execute(new Action(){
+			public void doAction(ZulBridgeBase bridge) {
+				//get the spreadsheet
+				Spreadsheet ss = ((SpreadsheetBridge)bridge).getSpreadsheet();
+				Exporter c = Exporters.getExporter("pdf");//need to setup pdf jars
+			    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			    Book book = ss.getBook();
+			    c.export(book.getWorksheetAt(0), baos);
+			    Filedownload.save(baos.toByteArray(), "application/pdf","demo-report.pdf");
+			}});
+		
+	}
 	
 	public void doQuarter1(){
 		doQuarter(1);
