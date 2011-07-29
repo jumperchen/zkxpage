@@ -17,8 +17,11 @@ If you have any problem in following installation steps, you could also refer to
  # Add permission to jvm security policy grant session (ex, *C:\IBM\Lotus\Domino\jvm\lib\security\java.policy*), please consult your Domino admin if you have any security issue.
 {{{
 grant { 
-  //other permission....
+  //....other permission....
+  //for components
   permission java.lang.RuntimePermission "getClassLoader";
+  //for zk spreadsheet pdf export
+  permission java.lang.RuntimePermission "getenv.windir"
 }
 }}}
  # Then restart your server, or the http task(*restart task http*). The library should be available. To verify that the library is properly installed and running command *tell http osgi ss org.zkoss.xpage* . You should get a result showing the plug-ins at least with in the *RESOLVED* state. <br/>http://zkxpage.googlecode.com/svn/trunk/docs/images/installation_1.png
