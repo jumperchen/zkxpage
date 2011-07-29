@@ -20,6 +20,7 @@ import java.util.HashMap;
 import javax.faces.context.FacesContext;
 
 import org.zkoss.xpage.core.component.ZulBridgeBase;
+import org.zkoss.xpage.core.util.Log;
 /**
  * a request scope jsf helper context 
  * @author Dennis Chen
@@ -42,6 +43,25 @@ public class ComponentBinding extends HashMap{
 	}
 	
 	public static ZulBridgeBase getBridge(String name){
-		return ((ZulBridgeBase)ComponentBinding.instance().get(name));
+		Object obj = ComponentBinding.instance().get(name);
+		try{
+			if(obj instanceof ZulBridgeBase){
+				return (ZulBridgeBase)obj;
+			}else if(obj == null){
+				throw new NullPointerException("bridge for '"+name+"' not found");
+			}
+			throw new NullPointerException("wrong bridge type of '"+name+"', it is "+obj);
+		}catch(RuntimeException x){
+			Log.error(ComponentBinding.class, x.getMessage(),x);
+			throw x;
+		}
+	}
+	
+	public static ZulBridgeBase getBridgeIfAny(String name){
+		Object obj = ComponentBinding.instance().get(name);
+		if(obj instanceof ZulBridgeBase){
+			return (ZulBridgeBase)obj;
+		}
+		return null;
 	}
 }

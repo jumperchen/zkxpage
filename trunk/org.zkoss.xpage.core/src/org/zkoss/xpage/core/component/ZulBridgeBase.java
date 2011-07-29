@@ -29,6 +29,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.zkoss.lang.Strings;
+import org.zkoss.xpage.core.util.Log;
 import org.zkoss.xpage.core.util.ZkUtil;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Desktop;
@@ -234,20 +235,25 @@ public abstract class ZulBridgeBase extends UIComponentBase implements Serializa
 		HttpServletResponse response = (HttpServletResponse) ec.getResponse();
 
 		Desktop dt = getDesktop();
+		Bridge bridge = null;
 		
-		if(dt==null){
-			throw new IllegalStateException("desktop not found");
-		}
-
-		Bridge bridge = Bridge.start(svlctx, request, response,dt);
-		try {
+		try{
+			if(dt==null){
+				throw new IllegalStateException("desktop not found");
+			}
+			bridge = Bridge.start(svlctx, request, response,dt);
 			action.doAction(this);
 			String auResult = bridge.getResult();
 			if(!Strings.isBlank(auResult)){
 				addAuScript(auResult);
 			}
+		}catch(RuntimeException x){
+			Log.error(this,x.getMessage(),x);
+			throw x;
 		} finally {
-			bridge.close();
+			if(bridge!=null){
+				bridge.close();
+			}
 		}
 	}
 	

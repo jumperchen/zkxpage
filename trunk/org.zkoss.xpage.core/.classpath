@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/jcommon.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jfreechart.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/zkex.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/zkmax.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/zml.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/breeze.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/bsh.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/zcommon.jar"/>
