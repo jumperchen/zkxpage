@@ -1,0 +1,18 @@
+.formResult td.label{
+	font-weight: bold;
+    padding-right: 10px;
+    text-align: right;
+    width: 150px;
+}
+
+.formResult td.value{
+	padding-left: 10px;
+}
+
+.index .link{
+	font-size: 18px;
+}
+
+.title{
+	font-size:26px;
+}
