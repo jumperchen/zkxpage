@@ -1,9 +1,14 @@
+[GPL]
 zpoi.jar
 zss.jar
 zssapp.jar
-zssex.jar - if EE
 
-3rd party
+[3rd party]
 xmlbeans-2.3.0.jar - for reading xlsx
 dom4j-1.6.1.jar - for reading xlsx
 ooxml-schemas-1.1.jar - for reading xlsx
+
+[Commercial]
+zssex.jar - if EE
+
+
