@@ -11,8 +11,8 @@
 			ZK XPage Components&#160;for
 			XPage&#160;-&#160;http://www.zkoss.org
 			</span>
-		<xp:br/>
-		<xp:br/>
+		<xp:br/><xp:br/>
+		<h2>Spreadsheet</h2>
 		<xp:link escape="true" text="Rich Spreadsheet" id="link1"
 			styleClass="link">
 			<xp:eventHandler event="onclick" submit="true"
@@ -39,6 +39,17 @@
 				refreshMode="complete">
 				<xp:this.action>
 					<xp:openPage name="/quarterForm.xsp"></xp:openPage>
+				</xp:this.action>
+			</xp:eventHandler>
+		</xp:link>
+		<xp:br></xp:br><xp:br/>
+		<h2>Pivottable</h2>
+		<xp:link escape="true" text="Flight Ticket Sales" id="link4"
+			styleClass="link">
+			<xp:eventHandler event="onclick" submit="true"
+				refreshMode="complete">
+				<xp:this.action>
+					<xp:openPage name="/flightTicketPre.xsp"></xp:openPage>
 				</xp:this.action>
 			</xp:eventHandler>
 		</xp:link>

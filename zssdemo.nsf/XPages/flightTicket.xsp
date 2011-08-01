@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:zk="http://www.zkoss.org/xpage">
+	<xp:this.resources>
+		<xp:styleSheet href="/main.css"></xp:styleSheet>
+	</xp:this.resources>
+	<div style="padding:10px 20px">
+		<b>Flight Ticket Sales</b>
+		<br />
+		<xp:button value="Performance" id="button1">
+			<xp:eventHandler event="onclick" submit="true"
+				refreshMode="partial" refreshId="button1">
+				<xp:this.action>
+					<xp:executeScript script="#{javascript:flightTicket.doPerformance()}">
+					</xp:executeScript>
+				</xp:this.action>
+			</xp:eventHandler>
+		</xp:button>
+		<xp:button value="Sales by City" id="button2">
+			<xp:eventHandler event="onclick" submit="true"
+				refreshMode="partial" refreshId="button2">
+				<xp:this.action>
+					<xp:executeScript script="#{javascript:flightTicket.doSalesByCity()}">
+					</xp:executeScript>
+				</xp:this.action>
+			</xp:eventHandler>
+		</xp:button>
+		<xp:button value="Sales Race" id="button3">
+			<xp:eventHandler event="onclick" submit="true"
+				refreshMode="partial" refreshId="button3">
+				<xp:this.action>
+					<xp:executeScript script="#{javascript:flightTicket.doSalesRace()}">
+					</xp:executeScript>
+				</xp:this.action>
+			</xp:eventHandler>
+		</xp:button>
+		<xp:br></xp:br>
+
+		Data field orient :
+		<xp:radioGroup id="radioGroup1" defaultValue="#{flightTicket.orient}"
+			value="#{flightTicket.orient}">
+			<xp:selectItem itemLabel="row" itemValue="row"></xp:selectItem>
+			<xp:selectItem itemLabel="column" itemValue="column"></xp:selectItem>
+			<xp:eventHandler event="onchange" submit="true"
+				refreshMode="partial" refreshId="radioGroup1">
+				<xp:this.action>
+					<xp:executeScript script="#{javascript:flightTicket.doOrient()}"></xp:executeScript>
+				</xp:this.action>
+			</xp:eventHandler>
+		</xp:radioGroup>
+		<br />
+		<zk:pivottable model="#{flightTicket.model}" width="900px"
+			dataFieldOrient="column">
+			<zk:this.binding><![CDATA[#{zkComponentBinding['pivottable']}]]></zk:this.binding>
+		</zk:pivottable>
+	</div>
+</xp:view>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:zk="http://www.zkoss.org/xpage"
+	style="height:100%;width:100%">
+
+	<xp:button id="button1" value="Use Pivottable ->">
+		<xp:eventHandler event="onclick" submit="true"
+			refreshMode="complete">
+			<xp:this.action>
+				<xp:openPage name="/flightTicket.xsp"></xp:openPage>
+			</xp:this.action>
+		</xp:eventHandler>
+	</xp:button>
+	<xp:br></xp:br>
+	<zk:spreadsheetRich id="spreadsheetRich1" width="1080px"
+		height="600px" src="/flightTicket.xlsx">
+	</zk:spreadsheetRich>
+</xp:view>
