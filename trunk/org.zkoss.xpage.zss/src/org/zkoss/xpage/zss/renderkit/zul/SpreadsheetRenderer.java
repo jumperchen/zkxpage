@@ -24,7 +24,11 @@ import org.zkoss.zk.ui.HtmlBasedComponent;
 import org.zkoss.zk.ui.Page;
 import org.zkoss.zss.model.Book;
 import org.zkoss.zss.ui.Spreadsheet;
-
+/**
+ * 
+ * @author Dennis Chen
+ *
+ */
 public class SpreadsheetRenderer extends ZulRendererBase {
 	
 	@Override
