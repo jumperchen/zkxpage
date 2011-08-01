@@ -27,59 +27,61 @@ import org.zkoss.zk.ui.HtmlBasedComponent;
 import org.zkoss.zk.ui.Page;
 
 public class PivottableRenderer extends ZulRendererBase {
-	
+
 	@Override
-	protected HtmlBasedComponent createRootComponent(Page page,ZulBridgeBase zbridge){
+	protected HtmlBasedComponent createRootComponent(Page page, ZulBridgeBase zbridge) {
 		Pivottable comp = new Pivottable();
 		return comp;
 	}
-	
+
 	@Override
 	protected void applyAttributes(ZulBridgeBase bridge, HtmlBasedComponent comp) throws Exception {
 		super.applyAttributes(bridge, comp);
-		if(comp instanceof Pivottable){
-			PivottableBridge pivb = (PivottableBridge)bridge;
-			Pivottable piv = (Pivottable)comp;
-			
-			Integer in = pivb.getPageSize();
+		PivottableBridge pivb = (PivottableBridge) bridge;
+		Pivottable piv = (Pivottable) comp;
 
-			if(in!=null){
-				piv.setPageSize(in.intValue());
-			}
-			
-			Boolean bol = pivb.getGrandTotalForColumns();
-			if(bol!=null){
-				piv.setGrandTotalForColumns(bol.booleanValue());
-			}
-			
-			bol = pivb.getGrandTotalForRows();
-			if(bol!=null){
-				piv.setGrandTotalForRows(bol.booleanValue());
-			}
-			
-			PivotModel model = pivb.getModel();
-			
-			if(model!=null){
-				piv.setModel(model);
-			}
-			
+		String str = pivb.getDataFieldOrient();
+		if(str!=null){
+			piv.setDataFieldOrient(str);
 		}
+		
+		Integer in = pivb.getPageSize();
+		if (in != null) {
+			piv.setPageSize(in.intValue());
+		}
+
+		Boolean bo = pivb.getGrandTotalForColumns();
+		if (bo != null) {
+			piv.setGrandTotalForColumns(bo.booleanValue());
+		}
+
+		bo = pivb.getGrandTotalForRows();
+		if (bo != null) {
+			piv.setGrandTotalForRows(bo.booleanValue());
+		}
+
+		PivotModel model = pivb.getModel();
+
+		if (model != null) {
+			piv.setModel(model);
+		}
+
 	}
-	
+
 	@Override
-	protected void afterComposer(final ZulBridgeBase bridge, final HtmlBasedComponent comp,final FacesContext context) throws Exception{
-		if(comp instanceof Pivottable){
-			Pivottable piv = (Pivottable)comp;
-			
-			//double check, for friendly message
-			PivotModel model = piv.getModel();
-			if(model==null){
-				throw new NullPointerException("PivotModel is null");
-			}
-			PivotField pfs[] = model.getDataFields();
-			if(pfs==null || pfs.length==0){
-				throw new IllegalStateException("Must have aleast one data field in model");
-			}
+	protected void afterComposer(final ZulBridgeBase bridge, final HtmlBasedComponent comp, final FacesContext context)
+	        throws Exception {
+		Pivottable piv = (Pivottable) comp;
+
+		// double check, for friendly message
+		PivotModel model = piv.getModel();
+		if (model == null) {
+			throw new NullPointerException("PivotModel is null");
 		}
+		PivotField pfs[] = model.getDataFields();
+		if (pfs == null || pfs.length == 0) {
+			throw new IllegalStateException("Must have aleast one data field in model");
+		}
+
 	}
 }

@@ -136,12 +136,10 @@
 	<component>
 		<description>A zk pivottable component</description>
 		<display-name>Pivottable</display-name>
-		<!-- 
 		<icon>
 			<small-icon>images/icon/pivot_16.png</small-icon>
 			<large-icon>images/icon/pivot_24.png</large-icon>
-		</icon>
-		 -->		
+		</icon>		
 		<component-type>org.zkoss.xpage.pivottable</component-type>
 		<component-class>org.zkoss.xpage.pivot.component.PivottableBridge</component-class>
 		<group-type-ref>org.zkoss.xpage.xul</group-type-ref>
@@ -153,7 +151,6 @@
 			<designer-extension>
         		<in-palette>true</in-palette>
         		<category>ZK</category>
-        		<!-- 
 				<render-markup>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#xd;
 &lt;xp:view xmlns:xp="http://www.ibm.com/xsp/core"&gt;&#xd;
 	&lt;div style="width:100px" &gt;&#xd;
@@ -161,7 +158,6 @@
 	&lt;/div&gt;&#xd;
 &lt;/xp:view&gt;&#xd;
 				</render-markup>
-				 -->         		
       		</designer-extension>
 		</component-extension>
 		<property>
@@ -198,7 +194,20 @@
             </property-extension>
         </property>
         <property>
-            <description>the pivot model, allow value binding only</description>
+            <description>the value of data field orientation [column | row]</description>
+            <display-name>DataFieldOrient</display-name>
+            <property-name>dataFieldOrient</property-name>
+            <property-class>java.lang.String</property-class>
+            <property-extension>
+                <designer-extension>
+                    <category>control</category>
+                </designer-extension>
+            </property-extension>
+        </property>
+        
+        
+        <property>
+            <description>the pivot model, allow value binding only, the value should be instance of org.zkoss.pivot.PivotModel</description>
             <display-name>Model</display-name>
             <property-name>model</property-name>
             <property-class>java.lang.Object</property-class>
