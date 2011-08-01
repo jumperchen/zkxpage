@@ -12,7 +12,7 @@ bsh.jar - for zscript
 jfreechart.jar - for chart
 jcommon.jar - for chart
 
-[ZK-Commercial]
+[ZK-Commercial, doesn't included in GPL version]
 zkex.jar - if EE
 zkmax.jar - if EE
 zml.jar - if EE
