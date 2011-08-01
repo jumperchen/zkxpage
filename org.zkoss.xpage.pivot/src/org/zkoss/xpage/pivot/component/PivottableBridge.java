@@ -67,6 +67,14 @@ public class PivottableBridge extends ZulBridgeBase {
 	public void setPageSize(Integer pageSize) {
 		states.set("pageSize", pageSize);
     }
+	
+	public String getDataFieldOrient() {
+		return states.getString("dataFieldOrient",getFacesContext(),this);
+    }
+
+	public void setDataFieldOrient(String dataFieldOrient) {
+		states.set("dataFieldOrient", dataFieldOrient);
+    }
 
 	public PivotModel getModel() {
 		return (PivotModel)states.get("model",getFacesContext(),this);
