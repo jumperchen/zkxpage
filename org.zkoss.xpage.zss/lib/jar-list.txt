@@ -10,7 +10,7 @@ ooxml-schemas-1.1.jar - for reading xlsx
 
 iText-5.0.3.jar - for export pdf
 
-[Commercial]
+[ZK-Commercial, doesn't included in GPL version]
 zssex.jar - if EE
 zsspdf.jar - if EE
 

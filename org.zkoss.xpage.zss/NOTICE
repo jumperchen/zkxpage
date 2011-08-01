@@ -12,12 +12,11 @@ the ZK Spreadsheet, GPL.
 [xmlbeans-2.3.0.jar]
 http://xmlbeans.apache.org/, Apache License Version 2.0
 
-
 [dom4j-1.6.1.jar]
 http://dom4j.sourceforge.net/dom4j-1.6.1/license.html, BSD style license
 
 [ooxml-schemas-1.1.jar]
 http://poi.apache.org/overview.html,  Apache License Version 2.0
 
-[iText-5.0.3.jar]
-//
+[iText-5.0.3.jar, if needs pdf export]
+http://itextpdf.com/terms-of-use/index.php, Affero General Public License.
