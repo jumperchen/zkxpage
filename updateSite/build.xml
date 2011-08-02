@@ -1,0 +1,22 @@
+<project basedir="." default="release-ontf">
+	<target name="release-lugc">
+		<zip destfile="updateSite-TWLUGC.zip">
+			<fileset dir=".">
+				<include name="site.xml" />
+				<include name="features/*.jar" />
+				<include name="plugins/*.jar" />
+			</fileset>
+		</zip>
+	</target>
+	<target name="release-ontf">
+		<zip destfile="updateSite-ONTF.zip">
+			<fileset dir=".">
+				<include name="site.xml" />
+				<include name="features/org.zkoss.xpage.core.*.jar" />
+				<include name="features/org.zkoss.xpage.zss.*.jar" />
+				<include name="plugins/org.zkoss.xpage.core_*.jar" />
+				<include name="plugins/org.zkoss.xpage.zss_*.jar" />
+			</fileset>
+		</zip>
+	</target>
+</project>
