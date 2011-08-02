@@ -13,7 +13,7 @@ If you have any problem in following installation steps, you could also refer to
  # Then verify that the plug-ins are properly installed from the menu _Help->About Domino Designer_ using the plug-in details button, check if there are *org.zkoss.xpage.core* and *org.zkoss.xpage.zss* <br/>http://zkxpage.googlecode.com/svn/trunk/docs/images/installation_4.png
 ==Installing the library in Domino Server==
  The library is also installed as a set of plug-in in the Domino server, but there is no update manager UI currently available in the Domino server. So you have to do it manually.
- # Unpack the content of the *updateSite.zip* file into the directory(ex, *C:\IBM\Lotus\Domino\data\domino\workspace\applications\eclipse*) located in your Domino data directory (be careful to strictly respect the directory hierarchy), under eclipse folder, there should be to folder *features* and *plugins*.<br/>http://zkxpage.googlecode.com/svn/trunk/docs/images/installation_2.png
+ # Unpack the folder *features*,*plugins* of the *updateSite.zip* into the directory(ex, *C:\IBM\Lotus\Domino\data\domino\workspace\applications\eclipse*) located in your Domino data directory (be careful to strictly respect the directory hierarchy), under eclipse folder, there should be to folder *features* and *plugins*. (Note, you have to delete old version jar files if it have.<br/>http://zkxpage.googlecode.com/svn/trunk/docs/images/installation_2.png
  # Add permission to jvm security policy grant session (ex, *C:\IBM\Lotus\Domino\jvm\lib\security\java.policy*), please consult your Domino admin if you have any security issue.
 {{{
 grant { 
