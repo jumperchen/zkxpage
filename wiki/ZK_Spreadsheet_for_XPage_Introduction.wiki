@@ -3,4 +3,4 @@
 
 [http://www.zkoss.org/product/zkspreadsheet.dsp ZK Spreadsheet] is an embeddable and open source web-based spreadsheet application. It brings feature-rich Excel functionality on browsers using pure Java. With embeddable Excel functionality, developers can now create interactive, collaborative and dynamic enterprise applications more easily than ever.
 
-With XPage integration into ZK Spreadsheet, ZK Spreadsheet components can be incorporated into IBM Lotus Domino [http://xpages.info/XPagesHome.nsf/Home.xsp XPage] to provide powerful spreadsheet features for XPage applications.
+With XPage integration into ZK Spreadsheet, ZK Spreadsheet components can be combined with IBM Lotus Domino [http://xpages.info/XPagesHome.nsf/Home.xsp XPage] to provide powerful spreadsheet features for XPage applications.
