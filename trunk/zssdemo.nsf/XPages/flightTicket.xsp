@@ -40,7 +40,7 @@
 			value="#{flightTicket.orient}">
 			<xp:selectItem itemLabel="row" itemValue="row"></xp:selectItem>
 			<xp:selectItem itemLabel="column" itemValue="column"></xp:selectItem>
-			<xp:eventHandler event="onchange" submit="true"
+			<xp:eventHandler event="onclick" submit="true"
 				refreshMode="partial" refreshId="radioGroup1">
 				<xp:this.action>
 					<xp:executeScript script="#{javascript:flightTicket.doOrient()}"></xp:executeScript>
@@ -49,7 +49,7 @@
 		</xp:radioGroup>
 		<br />
 		<zk:pivottable model="#{flightTicket.model}" width="900px"
-			dataFieldOrient="column">
+			dataFieldOrient="#{flightTicket.orient}">
 			<zk:this.binding><![CDATA[#{zkComponentBinding['pivottable']}]]></zk:this.binding>
 		</zk:pivottable>
 	</div>

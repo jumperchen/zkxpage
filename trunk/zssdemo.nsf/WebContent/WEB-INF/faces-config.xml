@@ -15,8 +15,6 @@
     <managed-bean-class>demo.data.QuarterBean</managed-bean-class>
     <managed-bean-scope>session</managed-bean-scope>
   </managed-bean>
-  
-  
   <managed-bean>
     <managed-bean-name>flightTicket</managed-bean-name>
     <managed-bean-class>demo.ctrl.FlightTicket</managed-bean-class>

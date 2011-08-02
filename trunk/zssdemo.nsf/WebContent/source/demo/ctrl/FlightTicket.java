@@ -117,7 +117,7 @@ public class FlightTicket {
 		model.getField("Agent").setSubtotals(new Calculator[] { Calculators.AVERAGE, Calculators.COUNT });
 
 		fillRemainingFields(model);
-		expandRowTree(model);
+//		expandRowTree(model);
 	}
 
 	private void configCitySales(TabularPivotModel model) {
