@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- *******************************************************************      -->
 <feature
-      id="org.zkoss.xpage.pivot.feature"
-      label="ZK Pivottable for XPage"
+      id="org.zkoss.xpage.core.feature"
+      label="ZK Core for XPage"
       version="0.9.0.qualifier"
       provider-name="www.zkoss.org">
 
-   <description url="http://www.zkoss.org/product/zkpivottable">
-      ZK Pivottable for XPage
+   <description url="http://www.zkoss.org/product/zk">
+      ZK Core for XPage
    </description>
 
    <copyright>
@@ -690,12 +691,8 @@ Public License instead of this License.  But first, please read
 &lt;http://www.gnu.org/philosophy/why-not-lgpl.html&gt;.
    </license>
 
-   <requires>
-      <import feature="org.zkoss.xpage.core.feature" version="0.9.0" match="greaterOrEqual"/>
-   </requires>
-
    <plugin
-         id="org.zkoss.xpage.pivot"
+         id="org.zkoss.xpage.core"
          download-size="0"
          install-size="0"
          version="0.0.0"/>

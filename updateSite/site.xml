@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.zkoss.xpage.zss.feature_0.9.0.201108011502.jar" id="org.zkoss.xpage.zss.feature" version="0.9.0.201108011502">
+   <feature url="features/org.zkoss.xpage.zss.feature_0.9.0.201108021047.jar" id="org.zkoss.xpage.zss.feature" version="0.9.0.201108021047">
       <category name="ZK Components for XPage"/>
    </feature>
-   <feature url="features/org.zkoss.xpage.pivot.feature_0.9.0.201108011502.jar" id="org.zkoss.xpage.pivot.feature" version="0.9.0.201108011502">
+   <feature url="features/org.zkoss.xpage.pivot.feature_0.9.0.201108021047.jar" id="org.zkoss.xpage.pivot.feature" version="0.9.0.201108021047">
+      <category name="ZK Components for XPage"/>
+   </feature>
+   <feature url="features/org.zkoss.xpage.core.feature_0.9.0.201108021047.jar" id="org.zkoss.xpage.core.feature" version="0.9.0.201108021047">
       <category name="ZK Components for XPage"/>
    </feature>
    <category-def name="ZK Components for XPage" label="ZK Components for XPage">
