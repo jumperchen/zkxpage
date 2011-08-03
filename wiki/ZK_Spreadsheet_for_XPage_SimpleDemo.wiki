@@ -167,7 +167,7 @@ Ok, now comes to the final step:
 </faces-config>
 }}}
 == Test and Run ==
-Open browser, link to the page , ex http://localhost/demo.nsf/spreadsheet.xsp, and try following simple test steps.
+Open the browser, link to the Xpage , for example http://localhost/demo.nsf/spreadsheet.xsp, and try the following simple test steps:
  # Click at spreadsheet, edit cell A1, set the value to {{{ABCD}}}, in inputTexts, edit the cell to {{{A1}}}, click the Get button. you will see the value become {{{ABCD}}}
  # In inputTexts, edit the cell to {{{A2}}}, value to {{{1234}}}, click the Set button. you will see the cell A2 of spreadsheet become to {{{1234}}}
  # Click at spreadsheet, edit cell B1, set the value to a formula {{{=SUM(C1:C3)}}}, you will see B1 value become 0, that is because C1 to C3 is empty. Now, set the cell C1 to C3 by editing spreadsheet or inputText & Set button, you will see B2 will always the sum value of C1 to C3.
