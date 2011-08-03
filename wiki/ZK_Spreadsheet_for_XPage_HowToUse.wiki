@@ -50,7 +50,7 @@ You need to set the following properties to configure the spreadsheet.
  * Not all ZK Spreadsheet properties/features are directly available in the ZK Spreadsheet for XPage Components.
  * For more ZK Spreadsheet features, please read [http://books.zkoss.org/wiki/ZK_Spreadsheet_Docs online document].
 
-==Access Spreadsheet in Controller==
+==Access ZK Spreadsheet in Controller==
 It is very easy to interact with ZK Spreadsheet in XPage Java controller. 
  # Use {{{ComponentBinding.getBridge("a_binding_name")}}} to get a {{{org.zkoss.xpage.zss.component.SpreadsheetBridge}}} back.
  # It is a bridge component, you cannot directlly use it to access ZK Spreadsheet directly, instead of, you call {{{SpreadsheetBridge.execute(Action action)}}} to do a action( get and update the ZK Spreadsheet) in the method {{{Action.doAction(ZulBridgeBase bridge)}}}, get ZK Spreadsheet by invoking {{{bridge.getComponent();}}} in the action.
