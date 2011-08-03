@@ -5,7 +5,7 @@
 In this demo, we have two input fields that bind to a controller (SBean)'s {{{cell}}} and {{{value}}} attributes. It also has two buttons to get and set values in Spreadsheet.
 
 == Create an XPage ==
- # Create an xpage in your database
+ # Create an Xpage in your database
  # Drag 2 inputTexts(named inputCell,inputValue) to the page, layout it. Binding the value to #{sbean.cell} & #{sbean.value} respectively. 
  # Add 2 button(named getBtn,setBtn) to the page.
  # Add action to getBtn button, invoke {{{sbean.doGet()}}}, set partial update id to inputValue.
