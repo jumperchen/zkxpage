@@ -43,12 +43,12 @@ You need to set the following properties to configure the spreadsheet.
 || sclass || the CSS class ||
 || zclass || the ZK Cascading Style class(es) for this component ||
 || zindex || the Z index ||
-|| hflex || horizontal flex hint of this component ||
-|| vflex || vertical flex hint of this component ||
+|| hflex || the horizontal flex hint of this component ||
+|| vflex || the vertical flex hint of this component ||
 
 
- * Not all ZK Spreadsheet properties/features are directly available in ZK Spreadsheet for XPage Component
- * More ZK Spreadsheet feature please read [http://books.zkoss.org/wiki/ZK_Spreadsheet_Docs online document]
+ * Not all ZK Spreadsheet properties/features are directly available in the ZK Spreadsheet for XPage Components.
+ * For more ZK Spreadsheet features, please read [http://books.zkoss.org/wiki/ZK_Spreadsheet_Docs online document].
 
 ==Access Spreadsheet in Controller==
 It is very easy to interact with ZK Spreadsheet in XPage Java controller. 
