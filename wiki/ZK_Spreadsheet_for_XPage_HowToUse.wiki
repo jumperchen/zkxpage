@@ -1,4 +1,4 @@
-#summary How to use Spreadsheet component
+#summary How to use ZK Spreadsheet components
 
 =UNDER CONSTRUCTION=
 
