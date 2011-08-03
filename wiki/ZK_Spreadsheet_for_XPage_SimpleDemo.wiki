@@ -152,7 +152,7 @@ public class SBean {
 
 }}}
 
-Ok, now You have to do the final step.
+Ok, now comes to the final step.
  # Edit file {{{WebContent/WEB-INF/faces-config.xml}}}, add a sbean which uses the Java class you just created.
 {{{
 <?xml version="1.0" encoding="UTF-8"?>
