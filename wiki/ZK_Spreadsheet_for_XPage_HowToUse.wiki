@@ -51,10 +51,10 @@ You need to set the following properties to configure the spreadsheet.
  * For more ZK Spreadsheet features, please read [http://books.zkoss.org/wiki/ZK_Spreadsheet_Docs online document].
 
 ==Access ZK Spreadsheet in Controller==
-It is very easy to interact with ZK Spreadsheet in XPage Java controller. 
+It is very easy to interact with ZK Spreadsheet  with the XPage Java Controller. 
  # Use {{{ComponentBinding.getBridge("a_binding_name")}}} to get a {{{org.zkoss.xpage.zss.component.SpreadsheetBridge}}} back.
- # It is a bridge component, you cannot directlly use it to access ZK Spreadsheet directly, instead of, you call {{{SpreadsheetBridge.execute(Action action)}}} to do a action( get and update the ZK Spreadsheet) in the method {{{Action.doAction(ZulBridgeBase bridge)}}}, get ZK Spreadsheet by invoking {{{bridge.getComponent();}}} in the action.
-Following is a simple example to set/get value of a ZK Spreadsheet
+ # Because the above is a bridge component, you cannot directly use it for ZK Spreadsheet access. Instead, you call {{{SpreadsheetBridge.execute(Action action)}}} to do an action( get and update the ZK Spreadsheet) in the method. Get ZK Spreadsheet through {{{Action.doAction(ZulBridgeBase bridge)}}} by invoking {{{bridge.getComponent();}}} in the action.
+Following is a simple example to set/get values in a ZK Spreadsheet
 {{{
 public void doSet(){
 	//get the binding bridge back, and execute the action
@@ -88,4 +88,4 @@ public void doGet(){
 }
 }}}
 
-In the {{{Action.doAction(ZulBridgeBase bridge)}}} method, it is safe to access ZK Component's, you can get and update value, all the update will be automatically updated to ZK server/client side components.
+In the {{{Action.doAction(ZulBridgeBase bridge)}}} method, it is safe to access ZK Components. You can get and update values as all the updates will be automatically uploaded to ZK server/client side components.
