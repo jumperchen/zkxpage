@@ -29,7 +29,7 @@ You need to set the following properties to configure the spreadsheet.
 || binding || the component binding expression. This is usually an EL expression like {{{ #{zkComponentBinding['a_binding_name']} }}} ||
 
  * *_zkComponentBinding_* is a util bean which helps you to easily bind components in an XPage and access components in the Java code.
- * Following is a very general example of using this component
+ * Following is a very general example of using this component:
 {{{
 <zk:spreadsheet id="spreadsheet1" height="400px" width="600px"
 	src="/WEB-INF/demo_sample.xls" binding="#{zkComponentBinding['spreadsheet1']}">
