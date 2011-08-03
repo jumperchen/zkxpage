@@ -43,7 +43,7 @@ The source code:
 </xp:view>
 
 }}}
-== Add spreadsheet component ==
+== Add a spreadsheet component ==
  # Continue above example, drag a spreadsheet from Controls view (in ZK category) to the page.
  # Name it myspreadsheet, binding to {{{zkComponentBinding['spreadsheet1']}}}, set the width and height to 600px,400px
 Now the xpage source look looks like this
