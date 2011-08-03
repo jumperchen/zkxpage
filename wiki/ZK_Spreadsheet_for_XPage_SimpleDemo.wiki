@@ -6,7 +6,7 @@ In this demo, we have two input fields that bind to a controller (SBean)'s {{{ce
 
 == Create an XPage ==
  # Create an Xpage in your database
- # Drag 2 inputTexts(named inputCell,inputValue) to the page, layout it. Binding the value to #{sbean.cell} & #{sbean.value} respectively. 
+ # Drag two inputText boxes(named inputCell and inputValue) to the Xpage. Change the layout. Bind the values to #{sbean.cell} & #{sbean.value} respectively. 
  # Add 2 button(named getBtn,setBtn) to the page.
  # Add action to getBtn button, invoke {{{sbean.doGet()}}}, set partial update id to inputValue.
  # Add action to setBtn button, invoke {{{sbean.doSet()}}}, set partial update id to setBtn (you don't need to set partial update to ZK component, it will handle it automatically. However if you didn't set any partial update id, whole from will be refreshed, so we set the setBtn to less the effort).
