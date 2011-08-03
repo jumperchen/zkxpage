@@ -8,7 +8,7 @@ Installing [http://extlib.openntf.org/ XPages Extension Library] for ZK Spreadsh
  # The library is provided as an Eclipse update site which should be installed using the Eclipse update manager. To enable the update manager, you should display the Designer _Preferences->Domino Designer_ and check _Enable Eclipse plug-in installation_
  # Now, the new _File->Application->Install..._ menu is enabled. Select it and choose to install a new feature
  # Add the *updateSite.zip* file
- # Accept the license and install the plugin and restart Designer
+ # Accept the License terms and install the plugin and restart Designer
  # Then verify that the plug-ins are properly installed from the menu _Help->About Domino Designer_ using the plug-in details button, check if there are *org.zkoss.xpage.core* and *org.zkoss.xpage.zss* <br/>http://zkxpage.googlecode.com/svn/trunk/docs/images/installation_4.png
 ==Installing the library on the Domino Server==
  The library can also be installed as a set of plug-in on the Domino server, but currently there is no update manager UI available on the Domino server. Therefore you must install it manually.
