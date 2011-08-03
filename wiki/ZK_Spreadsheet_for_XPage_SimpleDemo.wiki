@@ -2,7 +2,7 @@
 
 =UNDER CONSTRUCTION=
 
-In this demo, we have two input fields that bind to a controller(SBean)'s {{{cell}}} and {{{value}}} attribute, and also have two button to get and set value to spreadsheet.
+In this demo, we have two input fields that bind to a controller (SBean)'s {{{cell}}} and {{{value}}} attributes. It also has two buttons to get and set values in Spreadsheet.
 
 == Create XPage ==
  # Create a xpage in your database
