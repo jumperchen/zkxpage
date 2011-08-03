@@ -3,7 +3,7 @@
 =UNDER CONSTRUCTION=
 
 ==Enable a spreadsheet==
-Before using a spreadsheet, you have to enable this library for your application. To do this, go to _Application Properties->Advanced_, enable Library ID *org.zkoss.xpage.core.library* and *org.zkoss.xpage.zss.library*. <br/> http://zkxpage.googlecode.com/svn/trunk/docs/images/howto_1.png
+Before using a spreadsheet, you have to enable this library for your application. To do this, go to _Application Properties->Advanced_ to enable the library IDs *org.zkoss.xpage.core.library* and *org.zkoss.xpage.zss.library*. <br/> http://zkxpage.googlecode.com/svn/trunk/docs/images/howto_1.png
 
 ==Add spreadsheet component to a XPage==
 To add a Spreadsheet component to a XPage, 
