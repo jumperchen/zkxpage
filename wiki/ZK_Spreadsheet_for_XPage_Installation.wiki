@@ -23,4 +23,4 @@ grant {
   permission java.lang.RuntimePermission "getenv.windir"
 }
 }}}
- # Then restart your server, or the http task(*restart task http*). The library should be available. To verify that the library is properly installed and running command *tell http osgi ss org.zkoss.xpage* . You should get a result showing the plug-ins at least with in the *RESOLVED* state. <br/>http://zkxpage.googlecode.com/svn/trunk/docs/images/installation_1.png
+ # Then restart your server, or the http task(*restart task http*). The library should be available. To verify that the library is properly installed and running, use command *tell http osgi ss org.zkoss.xpage*. You should get a result showing the plug-ins at least with in the *RESOLVED* state. <br/>http://zkxpage.googlecode.com/svn/trunk/docs/images/installation_1.png
