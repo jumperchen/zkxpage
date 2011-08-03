@@ -88,7 +88,7 @@ In this demo, we will use the general JSF Backing Bean to control the Xpage. Her
  # Create a Java class(test.SBean) in one of the source folders (except {{{Local}}}. If you do not have any other source folders, please create a new source folder).
  # Add two member fields {{{cell}}}, {{{value}}} and the getter/setter. The Xpage will be binded with these member fields (remember what we have binded in the Xpage?, the {{{#{sbean.cell},#{sbean.value}}}}).
  # Add two methods {{{doGet}}}, {{{doSet}}}. Implementing the logic to get and set the spreadsheet values will depend on the selected cell. When clicking the button, these two methods will be called. 
-Following is the code looks like
+Following is the source code to control the Xpage:
 {{{
 package test;
 
