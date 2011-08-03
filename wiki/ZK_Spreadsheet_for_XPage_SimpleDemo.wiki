@@ -1,4 +1,4 @@
-#summary Simple Demo of using ZK Spreadsheet for XPage
+#summary Simple Demo of using ZK Spreadsheet with XPage
 
 =UNDER CONSTRUCTION=
 
