@@ -84,10 +84,10 @@ You page preview should be like : <br/>
 Page Preview<br/>http://zkxpage.googlecode.com/svn/trunk/docs/images/simpledemo_2.png 
 
 == Write the controller (SBean) ==
-In this demo, we use general JSF Backing Bean to control the xpage. here is the steps.
- # Create a Java class(test.SBean) in one of the source folder (except {{{Local}}}, if you don't have other source folder, please create a new source folder).
- # add 2 member field {{{cell}}}, {{{value}}} and the getter/setter. The xpage will binding to these member fields ( remember what we have binded in xpage?, the {{{#{sbean.cell},#{sbean.value}}}}).
- # add 2 method {{{doGet}}}, {{{doSet}}}. Implement the logic to get and set the spreadsheet value depends on selected cell. When clicking the button, these 2 methods will be called. 
+In this demo, we will use the general JSF Backing Bean to control the Xpage. Here is the steps:
+ # Create a Java class(test.SBean) in one of the source folders (except {{{Local}}}. If you do not have any other source folders, please create a new source folder).
+ # Add two member fields {{{cell}}}, {{{value}}} and the getter/setter. The Xpage will be binded with these member fields (remember what we have binded in the Xpage?, the {{{#{sbean.cell},#{sbean.value}}}}).
+ # Add two methods {{{doGet}}}, {{{doSet}}}. Implementing the logic to get and set the spreadsheet values will depend on the selected cell. When clicking the button, these two methods will be called. 
 Following is the code looks like
 {{{
 package test;
