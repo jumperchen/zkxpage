@@ -44,9 +44,9 @@ The source code:
 
 }}}
 == Add a spreadsheet component ==
- # Let's continue with the above example. Now, drag a spreadsheet from Controls View (in the ZK category) to the XPage.
- # Name it myspreadsheet, binding to {{{zkComponentBinding['spreadsheet1']}}}, set the width and height to 600px,400px
-Now the xpage source look looks like this
+ # Let's continue with the above example. Drag a spreadsheet from Controls View (in the ZK category) to the XPage.
+ # Name the spreadsheet <i>myspreadsheet</i> before binding it to {{{zkComponentBinding['spreadsheet1']}}}. Set the width and height to 600px and 400px respectively.
+Now the Xpage source code will look something like this:
 {{{
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core"
@@ -81,7 +81,7 @@ Now the xpage source look looks like this
 }}}
 
 You page preview should be like : <br/>
-Page preview<br/>http://zkxpage.googlecode.com/svn/trunk/docs/images/simpledemo_2.png 
+Page Preview<br/>http://zkxpage.googlecode.com/svn/trunk/docs/images/simpledemo_2.png 
 
 == Write the controller (SBean) ==
 In this demo, we use general JSF Backing Bean to control the xpage. here is the steps.
