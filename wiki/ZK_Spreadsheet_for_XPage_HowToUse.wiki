@@ -2,8 +2,8 @@
 
 =UNDER CONSTRUCTION=
 
-==Enable a spreadsheet==
-Before using a spreadsheet, you have to enable the ZK Spreadsheet for XPage library for your application. To do this, go to _Application Properties->Advanced_ to enable the library IDs *org.zkoss.xpage.core.library* and *org.zkoss.xpage.zss.library*. <br/> http://zkxpage.googlecode.com/svn/trunk/docs/images/howto_1.png
+==Enable the library in project==
+Before using a spreadsheet, you have to enable the ZK Spreadsheet for XPage library for your application. To do this, go to _Application Properties->Advanced_, enable the library IDs *org.zkoss.xpage.core.library* and *org.zkoss.xpage.zss.library*. <br/> http://zkxpage.googlecode.com/svn/trunk/docs/images/howto_1.png
 
 ==Add the spreadsheet component to an XPage==
 To add a spreadsheet component to an XPage, 
@@ -17,16 +17,16 @@ To add a spreadsheet component to an XPage,
 }}}
 
 ==Component Properties==
-You need to set the following properties to configure the spreadsheet.
+You need to set following properties to configure the spreadsheet. 
 ===Essential properties===
 || *Prpoerty* || *Description* ||
-|| id || the component id (ex, {{{spreadsheet1}}}) ||
-|| width || the width (ex, {{{600px}}})||
-|| height || the height (ex, {{{400px}}})||
-|| src || the src location of a book model. It could locate either in the {{{WebContent}}} or class path (ex, {{{/WEB-INF/demo.xls}}})|| 
-|| maxcolumns || the maximum visible number of columns of the spreadsheet (ex, {{{40}}})||
-|| maxrows || the maximum visible number of rows of this spreadsheet (ex, {{{40}}})||
-|| binding || the component binding expression. This is usually an EL expression like {{{ #{zkComponentBinding['a_binding_name']} }}} ||
+|| id || The component id (ex, {{{spreadsheet1}}}) ||
+|| width || The width (ex, {{{600px}}})||
+|| height || The height (ex, {{{400px}}})||
+|| src || The src location of a book model. It could locate either in the {{{WebContent}}} or class path (ex, {{{/WEB-INF/demo.xls}}})|| 
+|| maxcolumns || The maximum visible number of columns of the spreadsheet (ex, {{{40}}})||
+|| maxrows || The maximum visible number of rows of this spreadsheet (ex, {{{40}}})||
+|| binding || The component binding expression. This is usually an EL expression like {{{ #{zkComponentBinding['a_binding_name']} }}} ||
 
  * *_zkComponentBinding_* is a util bean which helps you to easily bind components in an XPage and access components in the Java code.
  * Following is a very general example of using this component:
@@ -53,7 +53,7 @@ You need to set the following properties to configure the spreadsheet.
 ==Access ZK Spreadsheet in Controller==
 It is very easy to interact with ZK Spreadsheet  with the XPage Java Controller. 
  # Use {{{ComponentBinding.getBridge("a_binding_name")}}} to get a {{{org.zkoss.xpage.zss.component.SpreadsheetBridge}}} back.
- # Because the above is a bridge component, you cannot directly use it for ZK Spreadsheet access. Instead, you call {{{SpreadsheetBridge.execute(Action action)}}} to do an action( get and update the ZK Spreadsheet) in the method. Get ZK Spreadsheet through {{{Action.doAction(ZulBridgeBase bridge)}}} by invoking {{{bridge.getComponent();}}} in the action.
+ # To use the bridge component, you cannot directly use it access it's internal ZK Spreadsheet. Instead, you call {{{SpreadsheetBridge.execute(Action action)}}} to do an action( get and update the ZK Spreadsheet) in the method. Get ZK Spreadsheet through {{{Action.doAction(ZulBridgeBase bridge)}}} by invoking {{{bridge.getSpreadsheet();}}} in the action.
 Following is a simple example to set/get values in a ZK Spreadsheet
 {{{
 public void doSet(){
@@ -61,7 +61,7 @@ public void doSet(){
 	ComponentBinding.getBridge("spreadsheet1").execute(new Action(){
 		public void doAction(ZulBridgeBase bridge) {
 			//get the spreadsheet
-			org.zkoss.zss.ui.Spreadsheet ss = (org.zkoss.zss.ui.Spreadsheet)bridge.getComponent();
+			Spreadsheet ss = ((SpreadsheetBridge)bridge).getSpreadsheet();
 			//use spreadsheet api to get value
 			final Range range = Ranges.range(ss.getSelectedSheet(), cell);
 			range.setEditText(value);
@@ -73,7 +73,7 @@ public void doGet(){
 	ComponentBinding.getBridge("spreadsheet1").execute(new Action(){
 		public void doAction(ZulBridgeBase bridge) {
 			//get the spreadsheet
-			org.zkoss.zss.ui.Spreadsheet ss = (org.zkoss.zss.ui.Spreadsheet)bridge.getComponent();
+			Spreadsheet ss = ((SpreadsheetBridge)bridge).getSpreadsheet();
 			//use spreadsheet api to get value
 			Range range = Ranges.range(ss.getSelectedSheet(), cell);
 			FormatText ft = range.getFormatText();
@@ -88,4 +88,4 @@ public void doGet(){
 }
 }}}
 
-In the {{{Action.doAction(ZulBridgeBase bridge)}}} method, it is safe to access ZK Components. You can get and update values as all the updates will be automatically uploaded to ZK server/client side components.
+In the {{{Action.doAction(ZulBridgeBase bridge)}}} method, it is safe to access ZK Components. You can get and update values, the updates will be automatically refresh to client side (user's browser)
