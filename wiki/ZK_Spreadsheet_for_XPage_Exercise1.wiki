@@ -1,7 +1,5 @@
 #summary Exercise1 of using ZK Spreadsheet with XPage
 
-=UNDER CONSTRUCTION=
-
 In this exercise, we have two input fields that bind to a controller (SBean)'s {{{cell}}} and {{{value}}} attributes. It also has two buttons to get and set values in Spreadsheet.
 
 == Create an XPage ==
