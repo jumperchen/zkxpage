@@ -1,7 +1,5 @@
 #summary Installation steps
 
-=UNDER CONSTRUCTION=
-
 Installing [http://extlib.openntf.org/ XPages Extension Library] for ZK Spreadsheet is very straightforward. If you have any problems following the instruction below, you could also refer to the [http://www.openntf.org/Projects/pmt.nsf/122B29BEE5A3E3A58625779F001DEA75/%24file/XPages%20Extension%20Library%20Documentation.pdf documentation] of XPages Extension Library or other online [http://www.slideshare.net/WorkFlowStudios/xpages-extension-toolkit-library-installation-steps slideshows]. They have more installation screenshots.
 
 ==Installing the library on Domino Designer==
