@@ -45,7 +45,7 @@ The source code:
 }}}
 == Add a spreadsheet component ==
  # Let's continue with the above example. Drag a spreadsheet from Controls View (in the ZK category) to the XPage.
- # Name the spreadsheet <i>myspreadsheet</i> before binding it to {{{zkComponentBinding['spreadsheet1']}}}. Set the width and height to 600px and 400px respectively.
+ # Name the spreadsheet <i>myspreadsheet</i>, Bind it to {{{zkComponentBinding['spreadsheet1']}}}. Set the width and height to 600px and 400px respectively.
 Now the Xpage source code will look something like this:
 {{{
 <?xml version="1.0" encoding="UTF-8"?>
@@ -122,7 +122,7 @@ public class SBean {
 		ComponentBinding.getBridge("spreadsheet1").execute(new Action(){
 			public void doAction(ZulBridgeBase bridge) {
 				//get the spreadsheet
-				org.zkoss.zss.ui.Spreadsheet ss = (org.zkoss.zss.ui.Spreadsheet)bridge.getComponent();
+				Spreadsheet ss = ((SpreadsheetBridge)bridge).getSpreadsheet();
 				//use spreadsheet api to get value
 				final Range range = Ranges.range(ss.getSelectedSheet(), cell);
 				range.setEditText(value);
@@ -135,7 +135,7 @@ public class SBean {
 		ComponentBinding.getBridge("spreadsheet1").execute(new Action(){
 			public void doAction(ZulBridgeBase bridge) {
 				//get the spreadsheet
-				org.zkoss.zss.ui.Spreadsheet ss = (org.zkoss.zss.ui.Spreadsheet)bridge.getComponent();
+				Spreadsheet ss = ((SpreadsheetBridge)bridge).getSpreadsheet();
 				//use spreadsheet api to get value
 				Range range = Ranges.range(ss.getSelectedSheet(), cell);
 				FormatText ft = range.getFormatText();
@@ -168,8 +168,8 @@ Ok, now comes to the final step:
 }}}
 == Test and Run ==
 Open the browser, link to the Xpage , for example http://localhost/demo.nsf/spreadsheet.xsp, and try the following simple test steps:
- # Click the spreadsheet and make cell A1 the active cell. To edit the cell content of A1, set the value to {{{abcd}}} in the input text field. When you press the Get button, you will see the value for Cell A1 contain {{{abcd}}}.
- # Click the Set button to edit the cell content of A2 to value {{{1234}}} in the input text field. You will then see Cell A2 become {{{1234}}}.
- # Click the spreadsheet. To sum up a range of cells (say from C1 to C3), select the blank cell you want to sum, cell B1 in this example. To add up the numbers from cell C1 to C3 and place the answer the cell B1, write the formula {{{=SUM(C1:C3)}}} in cell B1. Now, you can set any values you want in cell C1 to C3 by entering the numbers in the input text fields and clicking the Set button. You will always see B1 be the sum of values between cell C1 to C3.
+ # Click the spreadsheet and make cell A1 the active cell, set the cell value to {{{abcd}}}. When you press the Get button, you will see the value for cell A1 become {{{abcd}}}.
+ # Edit the input text fields, set Cell to A2, Value to {{{1234}}}, When you press the Set button, you will then see cell A2 of spreadsheet become {{{1234}}}.
+ # Click the spreadsheet. To sum up a range of cells (say from C1 to C3), select a blank cell you want to sum, cell B1 in this example. To add up the numbers from cell C1 to C3 and place the answer the cell B1, write the formula {{{=SUM(C1:C3)}}} in cell B1. Now, you can set any values you want in cell C1 to C3 in spreadsheet or by entering the numbers in the input text fields and clicking the Set button. You will always see B1 be the sum of values between cell C1 to C3.
 
 http://zkxpage.googlecode.com/svn/trunk/docs/images/simpledemo_3.png 
