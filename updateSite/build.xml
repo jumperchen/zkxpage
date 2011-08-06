@@ -1,6 +1,9 @@
 <project basedir="." default="release-ontf">
-	<target name="release-lugc">
-		<zip destfile="updateSite-TWLUGC.zip">
+
+	<property name="version" value="0.9.0" />
+
+	<target name="release">
+		<zip destfile="org.zkoss.xpage.updateSite-${version}.zip">
 			<fileset dir=".">
 				<include name="site.xml" />
 				<include name="features/*.jar" />
@@ -9,13 +12,38 @@
 		</zip>
 	</target>
 	<target name="release-ontf">
-		<zip destfile="updateSite-ONTF.zip">
+		<zip destfile="org.zkoss.xpage.zss-updateSite-${version}-ontf.zip">
 			<fileset dir=".">
 				<include name="site.xml" />
 				<include name="features/org.zkoss.xpage.core.*.jar" />
 				<include name="features/org.zkoss.xpage.zss.*.jar" />
 				<include name="plugins/org.zkoss.xpage.core_*.jar" />
 				<include name="plugins/org.zkoss.xpage.zss_*.jar" />
+			</fileset>
+		</zip>
+		<zip destfile="org.zkoss.xpage.zss-src-${version}-ontf.zip">
+			<fileset dir=".">
+				<include name="LICENSE" />
+				<include name="NOTICE" />
+			</fileset>
+			<fileset dir="..">
+				<include name="org.zkoss.xpage.core/**/*" />
+				<exclude name="org.zkoss.xpage.core/.settings/" />
+				<exclude name="org.zkoss.xpage.core/bin/" />
+				<exclude name="org.zkoss.xpage.core/lib/*.jar" />
+				<include name="org.zkoss.xpage.core/lib/jar-list.txt" />
+				<exclude name="org.zkoss.xpage.core/images/" />
+
+				<include name="org.zkoss.xpage.core.feature/**/*" />
+
+				<include name="org.zkoss.xpage.zss/**/*" />
+				<exclude name="org.zkoss.xpage.zss/.settings/" />
+				<exclude name="org.zkoss.xpage.zss/bin/" />
+				<exclude name="org.zkoss.xpage.zss/lib/*.jar" />
+				<include name="org.zkoss.xpage.zss/lib/jar-list.txt" />
+				<exclude name="org.zkoss.xpage.zss/images/" />
+
+				<include name="org.zkoss.xpage.zss.feature/**/*" />
 			</fileset>
 		</zip>
 	</target>

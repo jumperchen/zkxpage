@@ -5,10 +5,12 @@ Copyright 2011 Potix Corporation. All Rights Reserved.
 This product includes software developed for
 OpenNTF Alliance ??(http://www.OpenNTF.org/)
 
-[ZK Framework]
+[ZK CE]
 This product includes software from http://www.zkoss.org/, 
 the ZK Framework CE, which license is LGPL. 
 
+[ZK EE]
+is not included in GPL version, please contact project owner if you need zk-ee in this plugin
 
 [bsh.jar]
 http://www.beanshell.org/, LGPL
@@ -18,3 +20,5 @@ http://www.jfree.org/jfreechart/, LGPL
 
 [jcommon.jar]
 http://www.jfree.org/jcommon/, LGPL
+
+

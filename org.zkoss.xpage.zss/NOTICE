@@ -9,6 +9,9 @@ OpenNTF Alliance – (http://www.OpenNTF.org/)
 This product includes software from http://www.zkoss.org/, 
 the ZK Spreadsheet, GPL. 
 
+[ZK Spreadsheet  EE]
+is not included in GPL version, please contact project owner if you need zss-ee in this plugin
+
 [xmlbeans-2.3.0.jar]
 http://xmlbeans.apache.org/, Apache License Version 2.0
 
@@ -18,5 +21,6 @@ http://dom4j.sourceforge.net/dom4j-1.6.1/license.html, BSD style license
 [ooxml-schemas-1.1.jar]
 http://poi.apache.org/overview.html,  Apache License Version 2.0
 
-[iText-5.0.3.jar, if needs pdf export]
+[iText-5.0.3.jar]
+is not included in GPL version.
 http://itextpdf.com/terms-of-use/index.php, Affero General Public License.

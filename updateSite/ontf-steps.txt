@@ -1,0 +1,21 @@
+org.zkoss.xpage.core
+	1.remove jar in plugin/runtime/class path
+		lib/zkex.jar,
+		lib/zkmax.jar,
+ 		lib/zml.jar,
+ 		lib/jfreechart.jar,
+ 		lib/jcommon.jar
+	2.remove unnecessary exported packaged in plugin/runtime/class path
+
+
+org.zkoss.xpage.core
+	1.remove jar in plugin/runtime/lass path
+ 		lib/zssex.jar,
+ 		lib/zsspdf.jar,
+ 		lib/iText-5.0.3.jar
+	2.remove unnecessary exported packaged in plugin/runtime/class path
+		
+		
+updateSite
+	1.remove pivottable feature
+	
