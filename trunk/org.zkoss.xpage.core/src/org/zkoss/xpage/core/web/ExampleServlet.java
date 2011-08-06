@@ -27,7 +27,11 @@ import javax.servlet.http.HttpSession;
 
 import com.ibm.domino.xsp.module.nsf.NotesContext;
 
-
+/**
+ * 
+ * @author Dennis Chen
+ *
+ */
 public class ExampleServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 3492056914599940177L;
