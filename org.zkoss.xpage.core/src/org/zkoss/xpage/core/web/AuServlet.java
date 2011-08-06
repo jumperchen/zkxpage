@@ -58,6 +58,11 @@ public class AuServlet /* extends HttpServlet {// */extends DHtmlUpdateServlet {
 		ClassLoader cl = Thread.currentThread().getContextClassLoader();
 		try {
 			Thread.currentThread().setContextClassLoader(AuServlet.class.getClassLoader());
+			//to workaround request.getSession(false) always return null in Domino 8.5.3 designer preview
+			//this is in au, so it is ok to always getSession(true), except DOS
+			//TODO, remove this if a better way to workaround
+			request.getSession(true);
+			
 //			String dtid = request.getParameter("dtid");
 //			final Session sess = WebManager.getSession(getServletContext(), request, false);
 //			if(sess!=null){
