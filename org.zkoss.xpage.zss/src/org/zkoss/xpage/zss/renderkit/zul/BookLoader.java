@@ -30,7 +30,11 @@ import org.zkoss.zk.ui.UiException;
 import org.zkoss.zss.model.Book;
 import org.zkoss.zss.model.Importer;
 import org.zkoss.zss.model.impl.ExcelImporter;
-
+/**
+ * 
+ * @author Dennis Chen
+ *
+ */
 class BookLoader {
 	/*
 	 * the zk implementation cannot load resource form web content, so we use jsfcontext to load web context resource here 
