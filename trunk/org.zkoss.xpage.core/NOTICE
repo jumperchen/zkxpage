@@ -1,5 +1,5 @@
 [XPage]
-OpenNTF Alliance [PROJECT_NAME]
+OpenNTF Alliance [org.zkoss.xpage.core]
 Copyright 2011 Potix Corporation. All Rights Reserved.
 
 This product includes software developed for
@@ -13,12 +13,12 @@ the ZK Framework CE, which license is LGPL.
 is not included in GPL version, please contact project owner if you need zk-ee in this plugin
 
 [bsh.jar]
-http://www.beanshell.org/, LGPL
+http://www.beanshell.org/, LGPL (no version info, http://www.beanshell.org/license.html)
 
 [jfreechart.jar]
-http://www.jfree.org/jfreechart/, LGPL
+http://www.jfree.org/jfreechart/, LGPL (no version info, http://www.jfree.org/jfreechart/)
 
 [jcommon.jar]
-http://www.jfree.org/jcommon/, LGPL
+http://www.jfree.org/jcommon/, LGPL (version 2.1 or later)
 
 
