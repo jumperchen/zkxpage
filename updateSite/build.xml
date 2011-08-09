@@ -11,7 +11,7 @@
 			</fileset>
 		</zip>
 	</target>
-	<target name="release-ontf">
+	<target name="package-ontf">
 		<zip destfile="org.zkoss.xpage.zss-updateSite-${version}-ontf.zip">
 			<fileset dir=".">
 				<include name="site.xml" />
@@ -22,10 +22,6 @@
 			</fileset>
 		</zip>
 		<zip destfile="org.zkoss.xpage.zss-src-${version}-ontf.zip">
-			<fileset dir=".">
-				<include name="LICENSE" />
-				<include name="NOTICE" />
-			</fileset>
 			<fileset dir="..">
 				<include name="org.zkoss.xpage.core/**/*" />
 				<exclude name="org.zkoss.xpage.core/.settings/" />
@@ -46,5 +42,24 @@
 				<include name="org.zkoss.xpage.zss.feature/**/*" />
 			</fileset>
 		</zip>
+	</target>
+	<target name="release-ontf" depends="package-ontf">
+		<delete dir="release" />
+		<copy tofile="release/readme.txt" file="readme-ontf.txt" />
+		<copy todir="release">
+			<fileset dir=".">
+				<include name="LICENSE" />
+				<include name="NOTICE" />
+			</fileset>
+		</copy>
+		<unzip dest="release/sources" src="org.zkoss.xpage.zss-src-${version}-ontf.zip" overwrite="true" />
+		<unzip dest="release/updatesite" src="org.zkoss.xpage.zss-updateSite-${version}-ontf.zip" overwrite="true" />
+
+		<zip destfile="org.zkoss.xpage.zss-${version}-ONTF.zip">
+			<fileset dir="release/.">
+				<include name="**/*" />
+			</fileset>
+		</zip>
+		<delete dir="release" />
 	</target>
 </project>
