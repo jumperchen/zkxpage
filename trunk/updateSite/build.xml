@@ -29,6 +29,11 @@
 		<jar destfile="temp0/plugins/org.zkoss.xpage.core_${version-ts}.jar" manifest="temp0/MANIFEST-ontf.MF">
 			<fileset dir="temp0/plugins/org.zkoss.xpage.core_${version-ts}">
 				<include name="**/*" />
+				<exclude name="lib/zkex.jar"/>
+				<exclude name="lib/zkmax.jar"/>
+				<exclude name="lib/zml.jar"/>
+				<exclude name="lib/jfreechart.jar"/>
+				<exclude name="lib/jcommon.jar"/>
 			</fileset>
 		</jar>
 		
@@ -38,9 +43,12 @@
 		<jar destfile="temp0/plugins/org.zkoss.xpage.zss_${version-ts}.jar" manifest="temp0/MANIFEST-ontf.MF">
 			<fileset dir="temp0/plugins/org.zkoss.xpage.zss_${version-ts}">
 				<include name="**/*" />
+				<exclude name="lib/zssex.jar"/>
+				<exclude name="lib/zsspdf.jar"/>
+				<exclude name="lib/iText-5.0.3.jar"/>				
 			</fileset>
 		</jar>
-		
+
 		<copy todir="temp0">
 			<fileset dir=".">
 				<include name="features/org.zkoss.xpage.core.feature_${version-ts}.jar" />
@@ -107,5 +115,7 @@
 			</fileset>
 		</zip>
 		<delete dir="temp1" />
+		<delete file="org.zkoss.xpage.zss-src-${version}-ONTF.zip"/>
+		<delete file="org.zkoss.xpage.zss-updateSite-${version}-ONTF.zip" />
 	</target>
 </project>
