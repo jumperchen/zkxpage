@@ -1,3 +1,6 @@
+
+==License Notification==
+
 [XPage]
 OpenNTF Alliance [org.zkoss.xpage.pivot]
 Copyright 2011 Potix Corporation. All Rights Reserved.
@@ -5,7 +8,9 @@ Copyright 2011 Potix Corporation. All Rights Reserved.
 This product includes software developed for
 OpenNTF Alliance – (http://www.OpenNTF.org/)
 
-
 [ZK Pivottable]
 This product includes software from http://www.zkoss.org/, 
-the ZK Pivottable 
+the ZK Pivottable
+
+==
+All LGPL licensed components are provided, in this project, under GPL3 

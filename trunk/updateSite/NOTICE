@@ -1,3 +1,6 @@
+
+==License Notification==
+
 [XPage]
 OpenNTF Alliance [org.zkoss.xpage]
 Copyright 2011 Potix Corporation. All Rights Reserved.
@@ -5,8 +8,10 @@ Copyright 2011 Potix Corporation. All Rights Reserved.
 This product includes software developed for
 OpenNTF Alliance – (http://www.OpenNTF.org/)
 
---
+==
 
 About detail license information for each sub project, please check NOTICE file in each sub-project folder
 
---  
+==  
+
+All LGPL licensed components are provided, in this project, under GPL3

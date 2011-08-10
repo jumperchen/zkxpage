@@ -1,24 +1,32 @@
+
+==License Notification==
+
 [XPage]
 OpenNTF Alliance [org.zkoss.xpage.core]
 Copyright 2011 Potix Corporation. All Rights Reserved.
 
 This product includes software developed for
-OpenNTF Alliance ??(http://www.OpenNTF.org/)
+OpenNTF Alliance (http://www.OpenNTF.org/)
 
 [ZK CE]
 This product includes software from http://www.zkoss.org/, 
 the ZK Framework CE, which license is LGPL. 
 
+[bsh.jar]
+http://www.beanshell.org/, LGPL
+
+==
+All LGPL licensed components are provided, in this project, under GPL3
+
+
+==
+Some of the 3rd party jar files that listed in build file will not be released to GPL version.
+
 [ZK EE]
 is not included in GPL version, please contact project owner if you need zk-ee in this plugin
 
-[bsh.jar]
-http://www.beanshell.org/, LGPL (no version info, http://www.beanshell.org/license.html)
-
 [jfreechart.jar]
-http://www.jfree.org/jfreechart/, LGPL (no version info, http://www.jfree.org/jfreechart/)
+http://www.jfree.org/jfreechart/, LGPL
 
 [jcommon.jar]
 http://www.jfree.org/jcommon/, LGPL (version 2.1 or later)
-
-
