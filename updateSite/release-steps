@@ -1,3 +1,10 @@
+1.open site.xml, rebuild all
+2.copy content of site.xml to site-ontf.xml, remove pivottable plugin
+3.run build.xml - release-all 
+
+
+
+--implict--
 org.zkoss.xpage.core
 	1.remove jar in plugin/runtime/class path
 		lib/zkex.jar,

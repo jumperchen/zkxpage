@@ -1,8 +1,13 @@
-<project basedir="." default="release-ontf">
+<project basedir="." default="release-all">
 
 	<property name="version" value="0.9.0" />
+	<property name="version-ts" value="${version}.201108101632" />
 
-	<target name="release">
+	<target name="release-all" depends="release-updatesite,release-ontf">
+		
+	</target>
+	
+	<target name="release-updatesite">
 		<zip destfile="org.zkoss.xpage.updateSite-${version}.zip">
 			<fileset dir=".">
 				<include name="site.xml" />
@@ -12,8 +17,40 @@
 		</zip>
 	</target>
 	<target name="package-ontf">
-		<zip destfile="org.zkoss.xpage.zss-updateSite-${version}-ontf.zip">
+		<delete dir="temp0" />
+		<copy tofile="temp0/site.xml" file="site-ontf.xml" />
+		
+
+		
+		
+		<unzip dest="temp0/plugins/org.zkoss.xpage.core_${version-ts}" src="plugins/org.zkoss.xpage.core_${version-ts}.jar" overwrite="true" />
+		<copy todir="temp0" file="../org.zkoss.xpage.core/META-INF/MANIFEST-ontf.MF" overwrite="true" />
+		<replace file="temp0/MANIFEST-ontf.MF" token="@@version@@" value="${version-ts}"/>
+		<jar destfile="temp0/plugins/org.zkoss.xpage.core_${version-ts}.jar" manifest="temp0/MANIFEST-ontf.MF">
+			<fileset dir="temp0/plugins/org.zkoss.xpage.core_${version-ts}">
+				<include name="**/*" />
+			</fileset>
+		</jar>
+		
+		<unzip dest="temp0/plugins/org.zkoss.xpage.zss_${version-ts}" src="plugins/org.zkoss.xpage.zss_${version-ts}.jar" overwrite="true" />
+		<copy todir="temp0"  file="../org.zkoss.xpage.zss/META-INF/MANIFEST-ontf.MF" overwrite="true" />
+		<replace file="temp0/MANIFEST-ontf.MF" token="@@version@@" value="${version-ts}"/>
+		<jar destfile="temp0/plugins/org.zkoss.xpage.zss_${version-ts}.jar" manifest="temp0/MANIFEST-ontf.MF">
+			<fileset dir="temp0/plugins/org.zkoss.xpage.zss_${version-ts}">
+				<include name="**/*" />
+			</fileset>
+		</jar>
+		
+		<copy todir="temp0">
 			<fileset dir=".">
+				<include name="features/org.zkoss.xpage.core.feature_${version-ts}.jar" />
+				<include name="features/org.zkoss.xpage.zss.feature_${version-ts}.jar" />
+			</fileset>
+		</copy>
+
+
+		<zip destfile="org.zkoss.xpage.zss-updateSite-${version}-ONTF.zip">
+			<fileset dir="temp0">
 				<include name="site.xml" />
 				<include name="features/org.zkoss.xpage.core.*.jar" />
 				<include name="features/org.zkoss.xpage.zss.*.jar" />
@@ -21,15 +58,17 @@
 				<include name="plugins/org.zkoss.xpage.zss_*.jar" />
 			</fileset>
 		</zip>
-		<zip destfile="org.zkoss.xpage.zss-src-${version}-ontf.zip">
+
+		<zip destfile="org.zkoss.xpage.zss-src-${version}-ONTF.zip">
 			<fileset dir="..">
 				<include name="org.zkoss.xpage.core/**/*" />
 				<exclude name="org.zkoss.xpage.core/.settings/" />
 				<exclude name="org.zkoss.xpage.core/bin/" />
+				
 				<exclude name="org.zkoss.xpage.core/lib/*.jar" />
 				<include name="org.zkoss.xpage.core/lib/jar-list.txt" />
 				<exclude name="org.zkoss.xpage.core/images/" />
-
+				<exclude name="org.zkoss.xpage.core/META-INF/MANIFEST.MF" />
 
 				<include name="org.zkoss.xpage.core.feature/**/*" />
 
@@ -39,15 +78,17 @@
 				<exclude name="org.zkoss.xpage.zss/lib/*.jar" />
 				<include name="org.zkoss.xpage.zss/lib/jar-list.txt" />
 				<exclude name="org.zkoss.xpage.zss/images/" />
+				<exclude name="org.zkoss.xpage.zss/META-INF/MANIFEST.MF" />
 
 				<include name="org.zkoss.xpage.zss.feature/**/*" />
 			</fileset>
 		</zip>
+		<delete dir="temp0" />
 	</target>
 	<target name="release-ontf" depends="package-ontf">
-		<delete dir="release" />
-		<copy tofile="release/readme.txt" file="readme-ontf.txt" />
-		<copy todir="release">
+		<delete dir="temp1" />
+		<copy tofile="temp1/readme.txt" file="readme-ontf.txt" />
+		<copy todir="temp1">
 			<fileset dir=".">
 				<include name="LICENSE" />
 				<include name="NOTICE" />
@@ -57,14 +98,14 @@
 				<include name="NOTICE" />
 			</fileset>
 		</copy>
-		<unzip dest="release/sources" src="org.zkoss.xpage.zss-src-${version}-ontf.zip" overwrite="true" />
-		<unzip dest="release/updatesite" src="org.zkoss.xpage.zss-updateSite-${version}-ontf.zip" overwrite="true" />
+		<unzip dest="temp1/sources" src="org.zkoss.xpage.zss-src-${version}-ONTF.zip" overwrite="true" />
+		<unzip dest="temp1/updatesite" src="org.zkoss.xpage.zss-updateSite-${version}-ONTF.zip" overwrite="true" />
 
 		<zip destfile="org.zkoss.xpage.zss-${version}-ONTF.zip">
-			<fileset dir="release/.">
+			<fileset dir="temp1/.">
 				<include name="**/*" />
 			</fileset>
 		</zip>
-		<delete dir="release" />
+		<delete dir="temp1" />
 	</target>
 </project>

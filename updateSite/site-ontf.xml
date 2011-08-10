@@ -3,9 +3,6 @@
    <feature url="features/org.zkoss.xpage.zss.feature_0.9.0.201108101632.jar" id="org.zkoss.xpage.zss.feature" version="0.9.0.201108101632">
       <category name="ZK Components for XPage"/>
    </feature>
-   <feature url="features/org.zkoss.xpage.pivot.feature_0.9.0.201108101632.jar" id="org.zkoss.xpage.pivot.feature" version="0.9.0.201108101632">
-      <category name="ZK Components for XPage"/>
-   </feature>
    <feature url="features/org.zkoss.xpage.core.feature_0.9.0.201108101632.jar" id="org.zkoss.xpage.core.feature" version="0.9.0.201108101632">
       <category name="ZK Components for XPage"/>
    </feature>
