@@ -30,6 +30,7 @@
 				<include name="org.zkoss.xpage.core/lib/jar-list.txt" />
 				<exclude name="org.zkoss.xpage.core/images/" />
 
+
 				<include name="org.zkoss.xpage.core.feature/**/*" />
 
 				<include name="org.zkoss.xpage.zss/**/*" />
@@ -47,6 +48,10 @@
 		<delete dir="release" />
 		<copy tofile="release/readme.txt" file="readme-ontf.txt" />
 		<copy todir="release">
+			<fileset dir=".">
+				<include name="LICENSE" />
+				<include name="NOTICE" />
+			</fileset>
 			<fileset dir=".">
 				<include name="LICENSE" />
 				<include name="NOTICE" />

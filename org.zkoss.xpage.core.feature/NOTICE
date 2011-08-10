@@ -1,3 +1,6 @@
+
+==License Notification==
+
 [XPage]
 OpenNTF Alliance [org.zkoss.xpage.core]
 Copyright 2011 Potix Corporation. All Rights Reserved.
@@ -8,3 +11,6 @@ OpenNTF Alliance – (http://www.OpenNTF.org/)
 [ZK Framework]
 This product includes software from http://www.zkoss.org/, 
 the ZK Framework CE, which license is LGPL. 
+
+==
+All LGPL licensed components are provided, in this project, under GPL3
