@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:zk="http://www.zkoss.org/xpage">
+	<xp:this.resources>
+		<xp:styleSheet href="/main.css"></xp:styleSheet>
+	</xp:this.resources>
+	<div style="padding:10px 20px">
+		<b>Balance Form Result</b>
+		<xp:button value="Back" id="button1">
+			<xp:eventHandler event="onclick" submit="true"
+				refreshMode="complete">
+				<xp:this.action>
+					<xp:openPage name="/quarterForm.xsp"></xp:openPage>
+				</xp:this.action>
+			</xp:eventHandler>
+		</xp:button>
+		<table border="1" style="border-collapse:collapse; width:400px"
+			borderColor="black" class="formResult">
+			<tr>
+				<td class="label">Item :</td>
+				<td class="value">
+					<xp:label value="#{quarterBean.item}" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label">Liquid Assets :</td>
+				<td class="value">
+					<xp:label value="#{quarterBean.liquidAssets}" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label">Fund and Investment :</td>
+				<td class="value">
+					<xp:label value="#{quarterBean.fundInvestment}" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label">Fixed Assets :</td>
+				<td class="value">
+					<xp:label value="#{quarterBean.fixedAssets}" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label">Intangible Asset :</td>
+				<td class="value">
+					<xp:label value="#{quarterBean.intangibleAsset}" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label">Other Assets :</td>
+				<td class="value">
+					<xp:label value="#{quarterBean.otherAssets}" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label">Current Liabilities :</td>
+				<td class="value">
+					<xp:label value="#{quarterBean.currentLiabilities}" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label">Long Term Liabilities :</td>
+				<td class="value">
+					<xp:label value="#{quarterBean.longTermLiabilities}" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label">Other Liabilities :</td>
+				<td class="value">
+					<xp:label value="#{quarterBean.otherLiabilities}" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label">Capital Stock :</td>
+				<td class="value">
+					<xp:label value="#{quarterBean.capitalStock}" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label">Capital Surplus :</td>
+				<td class="value">
+					<xp:label value="#{quarterBean.capitalSurplus}" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label">Retained Earnings :</td>
+				<td class="value">
+					<xp:label value="#{quarterBean.retainedEarnings}" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label">Other Equity :</td>
+				<td class="value">
+					<xp:label value="#{quarterBean.otherEquity}" />
+				</td>
+			</tr>
+			<tr>
+				<td class="label">Treasury Stock :</td>
+				<td class="value">
+					<xp:label value="#{quarterBean.treasuryStock}" />
+				</td>
+			</tr>
+		</table>
+	</div>
+</xp:view>
