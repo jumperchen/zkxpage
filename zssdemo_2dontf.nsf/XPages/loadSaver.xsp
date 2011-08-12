@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:zk="http://www.zkoss.org/xpage" style="height:100%;width:100%">
+	This example saves and loads excel from a folder on the server (in this demo,
+	c:/temp/loadSaver.xlsx) 
+	<table>
+		<tr>
+			<td>
+				<xp:button id="button1" value="Clean">
+					<xp:eventHandler event="onclick" submit="true"
+						refreshMode="partial" refreshId="messages">
+						<xp:this.action>
+							<xp:executeScript script="#{javascript:loadSaver.doClean()}">
+							</xp:executeScript>
+						</xp:this.action>
+					</xp:eventHandler>
+				</xp:button>
+			</td>		
+			<td>
+				<xp:button id="button2" value="Load">
+					<xp:eventHandler event="onclick" submit="true"
+						refreshMode="partial" refreshId="messages">
+						<xp:this.action>
+							<xp:executeScript script="#{javascript:loadSaver.doLoad()}">
+							</xp:executeScript>
+						</xp:this.action>
+					</xp:eventHandler>
+				</xp:button>
+			</td>
+			<td>
+				<xp:button id="button3" value="Save">
+					<xp:eventHandler event="onclick" submit="true"
+						refreshMode="partial" refreshId="messages">
+						<xp:this.action>
+							<xp:executeScript script="#{javascript:loadSaver.doSave()}">
+							</xp:executeScript>
+						</xp:this.action>
+					</xp:eventHandler>
+				</xp:button>
+			</td>
+			<td>
+				<xp:button id="button4" value="Download">
+					<xp:eventHandler event="onclick" submit="true"
+						refreshMode="partial" refreshId="messages">
+						<xp:this.action>
+							<xp:executeScript script="#{javascript:loadSaver.doDownload()}">
+							</xp:executeScript>
+						</xp:this.action>
+					</xp:eventHandler>
+				</xp:button>
+			</td>
+			<td>
+				<xp:panel id="messages">
+					<xp:messages id="messages1"></xp:messages>
+				</xp:panel>
+
+			</td>
+		</tr>
+	</table>
+	<zk:spreadsheetRich id="spreadsheetRich1" width="1080px" binding="#{zkComponentBinding['sheet']}"
+		maxrows="200" maxcolumns="20" height="400px" src="/empty.xlsx">
+	</zk:spreadsheetRich>
+</xp:view>

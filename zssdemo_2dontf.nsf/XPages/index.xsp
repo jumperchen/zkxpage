@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+	<xp:this.resources>
+		<xp:styleSheet href="/main.css"></xp:styleSheet>
+	</xp:this.resources>
+	<div class="index" style="padding:10px 20px">
+
+		<xp:image url="/zkbanner.png" id="image1"></xp:image>
+		<xp:br/>
+		<span class="title">
+			ZK XPage Components&#160;for
+			XPage&#160;-&#160;http://www.zkoss.org
+			</span>
+		<xp:br/><xp:br/>
+		<h2>Spreadsheet</h2>
+		<xp:link escape="true" text="Rich Spreadsheet" id="link1"
+			styleClass="link">
+			<xp:eventHandler event="onclick" submit="true"
+				refreshMode="complete">
+				<xp:this.action>
+					<xp:openPage name="/richSpreadsheet.xsp"></xp:openPage>
+				</xp:this.action>
+			</xp:eventHandler>
+		</xp:link>
+		<xp:br></xp:br>
+		<xp:link escape="true" text="Load, Save" id="link5"
+			styleClass="link">
+			<xp:eventHandler event="onclick" submit="true"
+				refreshMode="complete">
+				<xp:this.action>
+					<xp:openPage name="/loadSaver.xsp"></xp:openPage>
+				</xp:this.action>
+			</xp:eventHandler>
+		</xp:link>		
+		<xp:br></xp:br>
+		<xp:link escape="true" text="Quarter Balance Form" id="link3"
+			styleClass="link">
+			<xp:eventHandler event="onclick" submit="true"
+				refreshMode="complete">
+				<xp:this.action>
+					<xp:openPage name="/quarterForm.xsp"></xp:openPage>
+				</xp:this.action>
+			</xp:eventHandler>
+		</xp:link>
+	</div>
+</xp:view>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+	xmlns:zk="http://www.zkoss.org/xpage" style="height:100%;width:100%">
+
+	<zk:spreadsheetRich id="spreadsheetRich1" width="1080px"
+		height="600px" src="/richSpreadsheet.xlsx">
+	</zk:spreadsheetRich>
+</xp:view>
