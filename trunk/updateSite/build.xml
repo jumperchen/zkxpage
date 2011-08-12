@@ -115,7 +115,5 @@
 			</fileset>
 		</zip>
 		<delete dir="temp1" />
-		<delete file="org.zkoss.xpage.zss-src-${version}-ONTF.zip"/>
-		<delete file="org.zkoss.xpage.zss-updateSite-${version}-ONTF.zip" />
 	</target>
 </project>
