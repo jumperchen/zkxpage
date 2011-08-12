@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faces-config>
   <managed-bean>
+    <managed-bean-name>loadSaver</managed-bean-name>
+    <managed-bean-class>demo.ctrl.LoadSaver</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>  
+  <managed-bean>
     <managed-bean-name>quarterReport</managed-bean-name>
     <managed-bean-class>demo.ctrl.QuarterReport</managed-bean-class>
     <managed-bean-scope>request</managed-bean-scope>

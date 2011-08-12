@@ -23,6 +23,16 @@
 			</xp:eventHandler>
 		</xp:link>
 		<xp:br></xp:br>
+		<xp:link escape="true" text="Load, Save" id="link5"
+			styleClass="link">
+			<xp:eventHandler event="onclick" submit="true"
+				refreshMode="complete">
+				<xp:this.action>
+					<xp:openPage name="/loadSaver.xsp"></xp:openPage>
+				</xp:this.action>
+			</xp:eventHandler>
+		</xp:link>
+		<xp:br></xp:br>
 		<xp:link escape="true" text="Quarter Balance Report" id="link2"
 			styleClass="link">
 			<xp:eventHandler event="onclick" submit="true"
