@@ -4,7 +4,7 @@ In this exercise, we will show you how to load and save excel files from File on
 
 == Create an XPage ==
  # Create an Xpage in your database
- # Add 4 button to clean, load, save and download the spreadsheet.
+ # Add four buttons labeled "clean", "load", "save" and "download the spreadsheet".
  # Add a messages to shows the message of action.
  # Add a spreadsheetRich to the page.
  # Create a {{{empty.xlsx}}} file in {{{WebContent}}} as a default template of spreadsheetRich.
