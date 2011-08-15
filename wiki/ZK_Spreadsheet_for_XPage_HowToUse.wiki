@@ -87,3 +87,5 @@ public void doGet(){
 }}}
 
 In the {{{Action.doAction(ZulBridgeBase bridge)}}} method, it is safe to access ZK Components. You can get and update values, the updates will be automatically refresh to client side (user's browser)
+
+Please refer to [http://books.zkoss.org/wiki/ZK_Spreadsheet_Essentials ZK Spreadsheet Essentials] for all the detail.
