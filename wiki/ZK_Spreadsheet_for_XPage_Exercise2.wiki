@@ -92,7 +92,7 @@ public interface BookService {
 	void saveBook(String name,Book book) throws IOException;
 }
 }}}
- # Create a Java class (demo.service.FileSystemBookService), it implement {{{BookService}}}, load and save Book from local file system by {{{ExcelImporter}}} and {{{ExcelExporter}}}
+ # Create a Java class {{{demo.service.FileSystemBookService}}} to implement {{{BookService}}}, load and save Book from local file system by {{{ExcelImporter}}} and {{{ExcelExporter}}}
 {{{
 package demo.service;
 
@@ -153,7 +153,7 @@ public class FileSystemBookService implements BookService {
 	}
 }
 }}}
- # Create a java class (demo.ctrl.LoadSaver) as a controller of the page, it will use book service to load and save the book. Add 4 method that maps to the actions respectively in the page.
+ # Create a java class {{{demo.ctrl.LoadSaver}}} as a controller of the page, it will use book service to load and save the book. Add 4 method that maps to the actions respectively in the page.
 Following is the source code to control the Xpage:
 {{{
 package demo.ctrl;
