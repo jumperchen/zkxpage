@@ -7,10 +7,12 @@ In this exercise, we show you how to load and save excel from file on server fil
  # Add 4 button to clean, load, save and download the spreadsheet.
  # Add a messages to shows the message of action.
  # Add a spreadsheetRich to the page.
+ # Create a {{{empty.xlsx}}} file in {{{WebContent}}} as a default template of spreadsheetRich.
  # Add action to clean button by invoking {{{loadSaver.doClean()}}} and set a partial update ID to messages.
  # Add action to load button by invoking {{{loadSaver.doLoad()}}} and set a partial update ID to messages.
  # Add action to save button by invoking {{{loadSaver.doSave()}}} and set a partial update ID to messages.
  # Add action to download button by invoking {{{loadSaver.doDownload()}}} and set a partial update ID to messages.
+
 
 Page Preview:<br/>http://zkxpage.googlecode.com/svn/trunk/docs/images/ex2_1.png 
 
