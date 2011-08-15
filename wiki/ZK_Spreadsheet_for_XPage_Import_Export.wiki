@@ -20,7 +20,7 @@ public Book loadBook(String name) throws IOException {
 }}}
 It is also possible to load a book from a database or other places where you only need to prepare a {{{InputStream}}} and use {{{importer.imports(inputStream,bookName)}}} to import it.
 = Save Book =
-To use an {{{ExcelExporter}}}, you have to create a new instance of the {{{ExcelExporter}}} or retrieve an instantiated object using  {{{Exporters.getExporter("excel")}}}, following is an saves a book to a local file:
+To use an {{{ExcelExporter}}}, you have to create a new instance of the {{{ExcelExporter}}} or retrieve an instantiated object using  {{{Exporters.getExporter("excel")}}}. The following shows an example of saving a book in a local file:
 {{{
 public void saveBook(String name, Book book) throws IOException {
 	File f = new File(folder, name);
