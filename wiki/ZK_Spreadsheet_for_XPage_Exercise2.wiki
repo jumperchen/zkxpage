@@ -92,7 +92,7 @@ public interface BookService {
 	void saveBook(String name,Book book) throws IOException;
 }
 }}}
- # Create a Java class {{{demo.service.FileSystemBookService}}} to implement {{{BookService}}}, load and save Book from local file system by {{{ExcelImporter}}} and {{{ExcelExporter}}}
+ # Create a Java class {{{demo.service.FileSystemBookService}}} to implement {{{BookService}}} to load and save Book from the local file system by {{{ExcelImporter}}} and {{{ExcelExporter}}}
 {{{
 package demo.service;
 
