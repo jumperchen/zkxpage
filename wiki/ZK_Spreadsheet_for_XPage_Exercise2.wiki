@@ -153,7 +153,7 @@ public class FileSystemBookService implements BookService {
 	}
 }
 }}}
- # Create a java class {{{demo.ctrl.LoadSaver}}} as a controller of the page, it will use book service to load and save the book. Add 4 method that maps to the actions respectively in the page.
+ # By creating a java class {{{demo.ctrl.LoadSaver}}} as a controller of the page, it will use the book service to load and save the book. Add four methods for mapping to the actions respectively in the page.
 Following is the source code to control the Xpage:
 {{{
 package demo.ctrl;
