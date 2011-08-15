@@ -1,12 +1,38 @@
-#summary how to import and export xlsx file to spreadsheet
+#summary How to import and export xlsx file to spreadsheet
 =*Under Construction*=
+= Model Concept = 
+In ZK Spreadsheet, It use a [http://www.zkoss.org/javadoc/latest/zss/org/zkoss/zss/model/Book.html Book] as its data model. You could set the model by {{{spreadsheet.setSrc(file_path_of_excel)}}} directly to a excel file which is locate at {{{WebContent}}} or in {{{ClassPath}}}. Otherwise, You could use {{{ExcelImporter}}} to import a {{{File}}}, {{{InputStream}}} to be a book model.
+To save the book model, you could use {{{ExcelExporter}}} to export a book model to be a byte array, then you could store it to a {{{File}}} or a {{{OutputStream}}}
+http://zkxpage.googlecode.com/svn/trunk/docs/images/impexp1.png
 
-= Spreadsheet Model Concept = 
-
-== Book ==
-
-== Src ==
-
-= Excel Importer =
-
-= Excel Exporter =
+= Load Book =
+To use an {{{ExcelImporter}}}, you could new it directly or by {{{Importers.getImporter("excel")}}}, following is an example loads a book from a local file.
+{{{
+public Book loadBook(String name) throws IOException {
+	File f = new File(folder, name);
+	if (!f.exists() || !f.isFile()) {
+		return null;
+	}
+	ExcelImporter imp = new ExcelImporter();
+	Book book = imp.imports(f);
+	return book;
+}
+}}}
+It is also possible to load a book from database or other where, you only need to prepare a InputStream and use {{{importer.imports(inputStream,bookName)}}} to import it.
+= Save Book =
+To use an {{{ExcelExporter}}}, you could new it directly or by {{{Exporters.getExporter("excel")}}}, following is an saves a book to a local file.
+{{{
+public void saveBook(String name, Book book) throws IOException {
+	File f = new File(folder, name);
+	OutputStream os = null;
+	try {
+		os = new FileOutputStream(f);
+		ExcelExporter exp = new ExcelExporter();
+		exp.export(book, os);
+	} finally {
+		if (os != null) {
+			os.close();
+		}
+	}
+}
+}}}
