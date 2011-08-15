@@ -284,4 +284,4 @@ Ok, now comes to the final step:
 == Test and Run ==
 Open the browser, link to the Xpage , for example {{{http://localhost/demo.nsf/loadSaver.xsp}}}, and try the following simple test steps:
  # Edit the spreadsheet, add some text and then click the save. Check the file in C:/temp
- # Click clean to reset the spreadsheet, than click the load. Check the book was loaded from the file you just saved.
+ # Click clean to reset the spreadsheet before pressing the button "load". Check if the book has been loaded from the file you have just saved.
