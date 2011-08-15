@@ -83,7 +83,7 @@ The source code:
 </xp:view>
 }}}
 
-== Write the controller (LoadSaver) ==
+== Write the controller {{{LoadSaver}}} ==
 In this exercise, we will use the general JSF Backing Bean to control an Xpage. Here are the steps:
  # Create a Java interface (demo.service.BookService), it contains interface to load and save a book
 {{{
