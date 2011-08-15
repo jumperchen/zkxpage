@@ -1,6 +1,6 @@
 #summary Exercise2 of using ZK Spreadsheet with XPage
 
-In this exercise, we show you how to load and save excel from file on server file system, and download excel to client side.
+In this exercise, we will show you how to load and save excel files from File on server file system, and download excel to client side.
 
 == Create an XPage ==
  # Create an Xpage in your database
