@@ -5,7 +5,7 @@ In this exercise, we will show you how to load and save excel files from File on
 == Create an XPage ==
  # Create an Xpage in your database
  # Add four buttons labeled "clean", "load", "save" and "download" to your spreadsheet.
- # Add a messages to shows the message of action.
+ # Add a {{{messages}}} component to show the message of action at runtime.
  # Add a spreadsheetRich to the page.
  # Create a {{{empty.xlsx}}} file in {{{WebContent}}} as a default template of spreadsheetRich.
  # Add action to clean button by invoking {{{loadSaver.doClean()}}} and set a partial update ID to messages.
