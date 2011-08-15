@@ -1,7 +1,7 @@
 #summary How to import and export xlsx file to spreadsheet
 =*Under Construction*=
 = Model Concept = 
-In ZK Spreadsheet, it uses a [http://www.zkoss.org/javadoc/latest/zss/org/zkoss/zss/model/Book.html Book] as its data model. You can set the model using the function {{{spreadsheet.setSrc(file_path_of_excel)}}} and giving it the location to an excel file at {{{WebContent}}} or in the {{{ClassPath}}}. Otherwise, you can use {{{ExcelImporter}}} to import a Book Mode; frp, {{{File}}} or {{{InputStream}}}.
+In ZK Spreadsheet, it uses a [http://www.zkoss.org/javadoc/latest/zss/org/zkoss/zss/model/Book.html Book] as its data model. You can set the model using the function {{{spreadsheet.setSrc(file_path_of_excel)}}} and giving it the location to an excel file at {{{WebContent}}} or in the {{{ClassPath}}}. Otherwise, you can use {{{ExcelImporter}}} to import a Book Model from, {{{File}}} or {{{InputStream}}}.
 To save the book model, you can use {{{ExcelExporter}}} to export a book model to be a byte array so that you could store it to a {{{File}}} or a {{{OutputStream}}}
 http://zkxpage.googlecode.com/svn/trunk/docs/images/impexp1.png
 
