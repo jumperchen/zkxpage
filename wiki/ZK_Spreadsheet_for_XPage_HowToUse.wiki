@@ -45,11 +45,11 @@ You need to set following properties to configure the spreadsheet.
 || vflex || the vertical flex hint of this component ||
 
 
- * Not all ZK Spreadsheet properties/features are directly available in the ZK Spreadsheet for XPage Components.
+ * Not all ZK Spreadsheet properties/features are directly available in the ZK Spreadsheet for XPages Components.
  * For more ZK Spreadsheet features, please read [http://books.zkoss.org/wiki/ZK_Spreadsheet_Docs online document].
 
 ==Access ZK Spreadsheet in Controller==
-It is very easy to interact with ZK Spreadsheet  with the XPage Java Controller. 
+It is very easy to interact with ZK Spreadsheet  with the XPages Java Controller. 
  # Use {{{ComponentBinding.getBridge("a_binding_name")}}} to get a {{{org.zkoss.xpage.zss.component.SpreadsheetBridge}}} back.
  # To use the bridge component, you cannot directly use it access it's internal ZK Spreadsheet. Instead, you call {{{SpreadsheetBridge.execute(Action action)}}} to do an action( get and update the ZK Spreadsheet) in the method. Get ZK Spreadsheet through {{{Action.doAction(ZulBridgeBase bridge)}}} by invoking {{{bridge.getSpreadsheet();}}} in the action.
 Following is a simple example to set/get values in a ZK Spreadsheet
