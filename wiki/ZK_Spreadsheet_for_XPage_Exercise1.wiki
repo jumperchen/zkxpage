@@ -2,10 +2,10 @@
 
 In this exercise, we have two input fields that bind to a controller (SBean)'s {{{cell}}} and {{{value}}} attributes. It also has two buttons to get and set values in Spreadsheet.
 
-== Create an XPage ==
- # Create an Xpage in your database
- # Drag two inputText boxes(named inputCell and inputValue) to the Xpage. Change the layout. Bind the values to #{sbean.cell} & #{sbean.value} respectively. 
- # Add two buttons(named getBtn and setBtn) to the Xpage.
+== Create XPages ==
+ # Create Xpages in your database
+ # Drag two inputText boxes(named inputCell and inputValue) to the Xpages. Change the layout. Bind the values to #{sbean.cell} & #{sbean.value} respectively. 
+ # Add two buttons(named getBtn and setBtn) to the Xpages.
  # Add action to getBtn button by invoking {{{sbean.doGet()}}} and set a partial update ID to inputValue.
  # Add action to setBtn button by invoking {{{sbean.doSet()}}} and set a partial update ID to setBtn. (Note: You don't have to set a partial update to the ZK component as this will be taken care of automatically. However if you didn't set any partial update IDs, the whole FORM will be refreshed. So it is suggested to set a partial ID to 'setBtn' element to save some effort).
 
@@ -42,9 +42,9 @@ The source code:
 
 }}}
 == Add a spreadsheet component ==
- # Let's continue with the above example. Drag a spreadsheet from Controls View (in the ZK category) to the XPage.
+ # Let's continue with the above example. Drag a spreadsheet from Controls View (in the ZK category) to the XPages.
  # Name the spreadsheet <i>myspreadsheet</i>, Bind it to {{{zkComponentBinding['spreadsheet1']}}}. Set the width and height to 600px and 400px respectively.
-Now the Xpage source code will look something like this:
+Now the Xpages source code will look something like this:
 {{{
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core"
@@ -82,11 +82,11 @@ You page preview should be like : <br/>
 Page Preview<br/>http://zkxpage.googlecode.com/svn/trunk/docs/images/simpledemo_2.png 
 
 == Write the controller (SBean) ==
-In this exercise, we will use the general JSF Backing Bean to control the Xpage. Here is the steps:
+In this exercise, we will use the general JSF Backing Bean to control the Xpages. Here is the steps:
  # Create a Java class(test.SBean) in one of the source folders (except {{{Local}}}. If you do not have any other source folders, please create a new source folder).
- # Add two member fields {{{cell}}}, {{{value}}} and the getter/setter. The Xpage will be binded with these member fields (remember what we have binded in the Xpage?, the {{{#{sbean.cell},#{sbean.value}}}}).
+ # Add two member fields {{{cell}}}, {{{value}}} and the getter/setter. The Xpages will be binded with these member fields (remember what we have binded in the Xpages?, the {{{#{sbean.cell},#{sbean.value}}}}).
  # Add two methods {{{doGet}}}, {{{doSet}}}. Implementing the logic to get and set the spreadsheet values will depend on the selected cell. When clicking the button, these two methods will be called. 
-Following is the source code to control the Xpage:
+Following is the source code to control the Xpages:
 {{{
 package test;
 
@@ -165,7 +165,7 @@ Ok, now comes to the final step:
 </faces-config>
 }}}
 == Test and Run ==
-Open the browser, link to the Xpage , for example {{{http://localhost/demo.nsf/spreadsheet.xsp}}}, and try the following simple test steps:
+Open the browser, link to the Xpages , for example {{{http://localhost/demo.nsf/spreadsheet.xsp}}}, and try the following simple test steps:
  # Click the spreadsheet and make cell A1 the active cell, set the cell value to {{{abcd}}}. When you press the Get button, you will see the value for cell A1 become {{{abcd}}}.
  # Edit the input text fields, set Cell to A2, Value to {{{1234}}}, When you press the Set button, you will then see cell A2 of spreadsheet become {{{1234}}}.
  # Click the spreadsheet. To sum up a range of cells (say from C1 to C3), select a blank cell you want to sum, cell B1 in this example. To add up the numbers from cell C1 to C3 and place the answer the cell B1, write the formula {{{=SUM(C1:C3)}}} in cell B1. Now, you can set any values you want in cell C1 to C3 in spreadsheet or by entering the numbers in the input text fields and clicking the Set button. You will always see B1 be the sum of values between cell C1 to C3.
