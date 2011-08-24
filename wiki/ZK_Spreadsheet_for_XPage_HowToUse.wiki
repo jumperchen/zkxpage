@@ -1,7 +1,7 @@
 #summary How to use ZK Spreadsheet components
 
 ==Enable the library in project==
-Before using a spreadsheet, you have to enable the ZK Spreadsheet for XPage library for your application. To do this, go to _Application Properties->Advanced_, enable the library IDs *org.zkoss.xpage.core.library* and *org.zkoss.xpage.zss.library*. <br/> http://zkxpage.googlecode.com/svn/trunk/docs/images/howto_1.png
+Before using a spreadsheet, you have to enable the ZK Spreadsheet for XPages library for your application. To do this, go to _Application Properties->Advanced_, enable the library IDs *org.zkoss.xpage.core.library* and *org.zkoss.xpage.zss.library*. <br/> http://zkxpage.googlecode.com/svn/trunk/docs/images/howto_1.png
 
 ==Add the spreadsheet component to an XPage==
 To add a spreadsheet component to an XPage, 
