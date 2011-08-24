@@ -3,7 +3,7 @@
 Installing [http://extlib.openntf.org/ XPages Extension Library] for ZK Spreadsheet is very straightforward. If you have any problems following the instruction below, you could also refer to the [http://www.openntf.org/Projects/pmt.nsf/122B29BEE5A3E3A58625779F001DEA75/%24file/XPages%20Extension%20Library%20Documentation.pdf documentation] of XPages Extension Library or other online [http://www.slideshare.net/WorkFlowStudios/xpages-extension-toolkit-library-installation-steps slideshows]. They have more installation screenshots.
 
 ==Installing the library on Domino Designer==
- # The library is provided as an Eclipse Update Site ([http://code.google.com/p/zkxpage/downloads/list Download]) which should be installed using the Eclipse Update Manager. To enable the update manager, you should display the Designer _Preferences->Domino Designer_ and check _Enable Eclipse plug-in installation_
+ # The library is provided as an Eclipse Update Site ([http://code.google.com/p/zkxpage/downloads/list Download]) which should be installed using the Eclipse Update Manager. To enable the Update Manager, you should display the Designer _Preferences->Domino Designer_ and check _Enable Eclipse plug-in installation_
  # Now, the menu _File->Application->Install..._ is enabled. Select it and choose to install a new feature
  # Add the *updateSite.zip* file
  # Accept the License terms in order to continue with the installation for the the plugin then restart Designer
