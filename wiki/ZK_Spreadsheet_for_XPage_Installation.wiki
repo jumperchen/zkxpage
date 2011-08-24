@@ -3,10 +3,10 @@
 Installing [http://extlib.openntf.org/ XPages Extension Library] for ZK Spreadsheet is very straightforward. If you have any problems following the instruction below, you could also refer to the [http://www.openntf.org/Projects/pmt.nsf/122B29BEE5A3E3A58625779F001DEA75/%24file/XPages%20Extension%20Library%20Documentation.pdf documentation] of XPages Extension Library or other online [http://www.slideshare.net/WorkFlowStudios/xpages-extension-toolkit-library-installation-steps slideshows]. They have more installation screenshots.
 
 ==Installing the library on Domino Designer==
- # The library is provided as an Eclipse Update Site ([http://code.google.com/p/zkxpage/downloads/list Download]) which should be installed using the Eclipse Update Manager. To enable the Update Manager, you should display the Designer _Preferences->Domino Designer_ and check _Enable Eclipse plug-in installation_
- # Now, the menu _File->Application->Install..._ is enabled. Select it and choose to install a new feature
- # Add the *updateSite.zip* file
- # Accept the License terms in order to continue with the installation for the the plugin then restart Designer
+ # The library is provided as an Eclipse Update Site ([http://code.google.com/p/zkxpage/downloads/list Download]) which should be installed using the Eclipse Update Manager. To enable the Update Manager, you should display the Designer _Preferences->Domino Designer_ and check _Enable Eclipse plug-in installation_.
+ # Now, the menu _File->Application->Install..._ is enabled. Select it and choose to install a new feature.
+ # Add the *updateSite.zip* file.
+ # Accept the License terms in order to continue with the installation for the the plugin then restart Designer.
  # Verify that the plug-ins are properly installed from the menu _Help->About Domino Designer_ using the plug-in details button. Check if there are *org.zkoss.xpage.core* and *org.zkoss.xpage.zss* <br/>http://zkxpage.googlecode.com/svn/trunk/docs/images/installation_4.png
 ==Installing the library on Domino Server==
  The library can also be installed as a set of plug-in on the Domino server, but currently there is no update manager UI available on the Domino server. Therefore you must install it manually.
