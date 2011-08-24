@@ -1,9 +1,9 @@
-#summary Exercise2 of using ZK Spreadsheet with XPage
+#summary Exercise2 of using ZK Spreadsheet with XPages
 
 In this exercise, we will show you how to load and save excel files from File on the Server File System and then download those excel files to the client side.
 
-== Create an XPage ==
- # Create an Xpage in your database
+== Create XPages ==
+ # Create Xpages in your database
  # Add four buttons labeled "clean", "load", "save" and "download" to the page.
  # Add a {{{messages}}} component to show the message of action at runtime.
  # Add a {{{spreadsheetRich}}} to the page.
@@ -84,7 +84,7 @@ The source code:
 }}}
 
 == Write the controller {{{LoadSaver}}} ==
-In this exercise, we use a {{{BookService}}} interface to provide functions to load and save Book and has a {{{FileSystemBookService}}} implementation, we will also use the general JSF Backing Bean to control an Xpage. Here are the steps:
+In this exercise, we use a {{{BookService}}} interface to provide functions to load and save Book and has a {{{FileSystemBookService}}} implementation, we will also use the general JSF Backing Bean to control XPages. Here are the steps:
  # Create a Java interface named {{{demo.service.BookService}}} to load and save a book
 {{{
 public interface BookService {
@@ -153,7 +153,7 @@ public class FileSystemBookService implements BookService {
 	}
 }
 }}}
- # By creating a java class {{{demo.ctrl.LoadSaver}}} as a controller of the page, it will use the book service to load and save the book. Add four methods for mapping to the actions respectively in the page. Following is the source code to control the Xpage:
+ # By creating a java class {{{demo.ctrl.LoadSaver}}} as a controller of the page, it will use the book service to load and save the book. Add four methods for mapping to the actions respectively in the page. Following is the source code to control Xpages:
 {{{
 package demo.ctrl;
 
@@ -281,6 +281,6 @@ Ok, now comes to the final step:
 </faces-config>
 }}}
 == Test and Run ==
-Open the browser, link to the Xpage , for example {{{http://localhost/demo.nsf/loadSaver.xsp}}}, and try the following simple test steps:
+Open the browser, link to Xpages, for example {{{http://localhost/demo.nsf/loadSaver.xsp}}}, and try the following simple test steps:
  # Edit the spreadsheet, add some text and then click the save. Check the file in C:/temp
  # Click clean to reset the spreadsheet before pressing the button "load". Check if the book has been loaded from the file you have just saved.
