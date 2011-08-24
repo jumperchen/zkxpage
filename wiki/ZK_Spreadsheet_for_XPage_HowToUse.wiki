@@ -34,7 +34,7 @@ You need to set following properties to configure the spreadsheet.
 </zk:spreadsheet>
 }}}
 
-===Other available properties in XPage===
+===Other available properties in XPages===
 || *Prpoerty* || *Description* ||
 || apply || the ZK component composer, please read zk developer document for more detail ||
 || style || the CSS style ||
