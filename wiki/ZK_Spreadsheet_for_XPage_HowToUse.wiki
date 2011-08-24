@@ -6,7 +6,7 @@ Before using a spreadsheet, you have to enable the ZK Spreadsheet for XPages lib
 ==Add the spreadsheet component to XPages==
 To add a spreadsheet component to XPages, 
  # Edit the page
- # In *Controls View*, open the *ZK* category. You should see the component *spreadsheet*(http://zkxpage.googlecode.com/svn/trunk/org.zkoss.xpage.zss/images/icon/zss_16.png). Drag it to the Xpage.
+ # In *Controls View*, open the *ZK* category. You should see the component *spreadsheet*(http://zkxpage.googlecode.com/svn/trunk/org.zkoss.xpage.zss/images/icon/zss_16.png). Drag it to the Xpages.
  # In the page *Design* tab, you will see the spreadsheet preview as the following: http://zkxpage.googlecode.com/svn/trunk/org.zkoss.xpage.zss/images/zss_preview.jpg
  # In the page *Source* tab, you will see a ZK component namespace({{{xmlns:zk="http://www.zkoss.org/xpage"}}}) in the root node and a spreadsheet node in the XML content. It will look like something below:
 {{{
