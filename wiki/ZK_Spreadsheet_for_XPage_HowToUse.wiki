@@ -26,7 +26,7 @@ You need to set following properties to configure the spreadsheet.
 || maxrows || The maximum visible number of rows of this spreadsheet (ex, {{{40}}})||
 || binding || The component binding expression. This is usually an EL expression like {{{ #{zkComponentBinding['a_binding_name']} }}} ||
 
- * *_zkComponentBinding_* is a util bean which helps you to easily bind components in an XPage and access components in the Java code.
+ * *_zkComponentBinding_* is a util bean which helps you to easily bind components in XPages and access components in the Java code.
  * Following is a very general example of using this component:
 {{{
 <zk:spreadsheet id="spreadsheet1" height="400px" width="600px"
